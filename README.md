@@ -1,2 +1,0 @@
-# fcalc
-Proyecto C# Universidad
