@@ -8,6 +8,9 @@ using System.Reflection;
 
 namespace FCalc.UI.windows.ApplicationController
 {
+    /*  
+     * Esta es la clase base para todos los Controller de esta aplicacion
+     */
     public class BaseController<TEntity>
     {
         
