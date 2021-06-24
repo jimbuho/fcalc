@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FcalcDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CommercialPlan">
+          <Key>
+            <PropertyRef Name="idCommercialplan" />
+          </Key>
+          <Property Name="idCommercialplan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="16" />
+          <Property Name="idPlantype" Type="int" />
+          <Property Name="price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="creationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CommercialPlanRange">
+          <Key>
+            <PropertyRef Name="idPlanrange" />
+          </Key>
+          <Property Name="idPlanrange" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="startRange" Type="int" />
+          <Property Name="endRange" Type="int" />
+          <Property Name="price" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="idCommercialplan" Type="int" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="creationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+          </Key>
+          <Property Name="idCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ruc" Type="nchar" MaxLength="13" />
+          <Property Name="legalName" Type="nchar" MaxLength="64" />
+          <Property Name="idCommercialplan" Type="int" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="creationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ExecutionLog">
+          <Key>
+            <PropertyRef Name="idExecutionlog" />
+          </Key>
+          <Property Name="idExecutionlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCustomer" Type="int" />
+          <Property Name="transactionsCount" Type="int" />
+          <Property Name="totalCalc" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="month" Type="int" />
+          <Property Name="creationDate" Type="datetime" />
+          <Property Name="status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="PlanType">
+          <Key>
+            <PropertyRef Name="idPlantype" />
+          </Key>
+          <Property Name="idPlantype" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="16" />
+          <Property Name="requireRange" Type="bit" />
+          <Property Name="isDynamic" Type="bit" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="creationDate" Type="date" />
+        </EntityType>
+        <Association Name="FK_CommercialPlan_PlanType">
+          <End Role="PlanType" Type="Self.PlanType" Multiplicity="0..1" />
+          <End Role="CommercialPlan" Type="Self.CommercialPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanType">
+              <PropertyRef Name="idPlantype" />
+            </Principal>
+            <Dependent Role="CommercialPlan">
+              <PropertyRef Name="idPlantype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommercialPlanRange_CommercialPlan">
+          <End Role="CommercialPlan" Type="Self.CommercialPlan" Multiplicity="0..1" />
+          <End Role="CommercialPlanRange" Type="Self.CommercialPlanRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommercialPlan">
+              <PropertyRef Name="idCommercialplan" />
+            </Principal>
+            <Dependent Role="CommercialPlanRange">
+              <PropertyRef Name="idCommercialplan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CommercialPlan">
+          <End Role="CommercialPlan" Type="Self.CommercialPlan" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommercialPlan">
+              <PropertyRef Name="idCommercialplan" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="idCommercialplan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionLog_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="ExecutionLog" Type="Self.ExecutionLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="idCustomer" />
+            </Principal>
+            <Dependent Role="ExecutionLog">
+              <PropertyRef Name="idCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FcalcDBModelStoreContainer">
+          <EntitySet Name="CommercialPlan" EntityType="Self.CommercialPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommercialPlanRange" EntityType="Self.CommercialPlanRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExecutionLog" EntityType="Self.ExecutionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanType" EntityType="Self.PlanType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CommercialPlan_PlanType" Association="Self.FK_CommercialPlan_PlanType">
+            <End Role="PlanType" EntitySet="PlanType" />
+            <End Role="CommercialPlan" EntitySet="CommercialPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommercialPlanRange_CommercialPlan" Association="Self.FK_CommercialPlanRange_CommercialPlan">
+            <End Role="CommercialPlan" EntitySet="CommercialPlan" />
+            <End Role="CommercialPlanRange" EntitySet="CommercialPlanRange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CommercialPlan" Association="Self.FK_Customer_CommercialPlan">
+            <End Role="CommercialPlan" EntitySet="CommercialPlan" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionLog_Customer" Association="Self.FK_ExecutionLog_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ExecutionLog" EntitySet="ExecutionLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FcalcDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CommercialPlan">
+          <Key>
+            <PropertyRef Name="idCommercialplan" />
+          </Key>
+          <Property Name="idCommercialplan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="idPlantype" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="creationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PlanType" Relationship="Self.FK_CommercialPlan_PlanType" FromRole="CommercialPlan" ToRole="PlanType" />
+          <NavigationProperty Name="CommercialPlanRange" Relationship="Self.FK_CommercialPlanRange_CommercialPlan" FromRole="CommercialPlan" ToRole="CommercialPlanRange" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_CommercialPlan" FromRole="CommercialPlan" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CommercialPlanRange">
+          <Key>
+            <PropertyRef Name="idPlanrange" />
+          </Key>
+          <Property Name="idPlanrange" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="startRange" Type="Int32" />
+          <Property Name="endRange" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="idCommercialplan" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="creationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CommercialPlan" Relationship="Self.FK_CommercialPlanRange_CommercialPlan" FromRole="CommercialPlanRange" ToRole="CommercialPlan" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+          </Key>
+          <Property Name="idCustomer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ruc" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="legalName" Type="String" MaxLength="64" FixedLength="true" Unicode="true" />
+          <Property Name="idCommercialplan" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="creationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CommercialPlan" Relationship="Self.FK_Customer_CommercialPlan" FromRole="Customer" ToRole="CommercialPlan" />
+          <NavigationProperty Name="ExecutionLog" Relationship="Self.FK_ExecutionLog_Customer" FromRole="Customer" ToRole="ExecutionLog" />
+        </EntityType>
+        <EntityType Name="ExecutionLog">
+          <Key>
+            <PropertyRef Name="idExecutionlog" />
+          </Key>
+          <Property Name="idExecutionlog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCustomer" Type="Int32" />
+          <Property Name="transactionsCount" Type="Int32" />
+          <Property Name="totalCalc" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="creationDate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_ExecutionLog_Customer" FromRole="ExecutionLog" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="PlanType">
+          <Key>
+            <PropertyRef Name="idPlantype" />
+          </Key>
+          <Property Name="idPlantype" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="requireRange" Type="Boolean" />
+          <Property Name="isDynamic" Type="Boolean" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="creationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CommercialPlan" Relationship="Self.FK_CommercialPlan_PlanType" FromRole="PlanType" ToRole="CommercialPlan" />
+        </EntityType>
+        <Association Name="FK_CommercialPlan_PlanType">
+          <End Role="PlanType" Type="Self.PlanType" Multiplicity="0..1" />
+          <End Role="CommercialPlan" Type="Self.CommercialPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanType">
+              <PropertyRef Name="idPlantype" />
+            </Principal>
+            <Dependent Role="CommercialPlan">
+              <PropertyRef Name="idPlantype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommercialPlanRange_CommercialPlan">
+          <End Role="CommercialPlan" Type="Self.CommercialPlan" Multiplicity="0..1" />
+          <End Role="CommercialPlanRange" Type="Self.CommercialPlanRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommercialPlan">
+              <PropertyRef Name="idCommercialplan" />
+            </Principal>
+            <Dependent Role="CommercialPlanRange">
+              <PropertyRef Name="idCommercialplan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CommercialPlan">
+          <End Role="CommercialPlan" Type="Self.CommercialPlan" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommercialPlan">
+              <PropertyRef Name="idCommercialplan" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="idCommercialplan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExecutionLog_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="ExecutionLog" Type="Self.ExecutionLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="idCustomer" />
+            </Principal>
+            <Dependent Role="ExecutionLog">
+              <PropertyRef Name="idCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FcalcDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CommercialPlan" EntityType="Self.CommercialPlan" />
+          <EntitySet Name="CommercialPlanRange" EntityType="Self.CommercialPlanRange" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="ExecutionLog" EntityType="Self.ExecutionLog" />
+          <EntitySet Name="PlanType" EntityType="Self.PlanType" />
+          <AssociationSet Name="FK_CommercialPlan_PlanType" Association="Self.FK_CommercialPlan_PlanType">
+            <End Role="PlanType" EntitySet="PlanType" />
+            <End Role="CommercialPlan" EntitySet="CommercialPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommercialPlanRange_CommercialPlan" Association="Self.FK_CommercialPlanRange_CommercialPlan">
+            <End Role="CommercialPlan" EntitySet="CommercialPlan" />
+            <End Role="CommercialPlanRange" EntitySet="CommercialPlanRange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CommercialPlan" Association="Self.FK_Customer_CommercialPlan">
+            <End Role="CommercialPlan" EntitySet="CommercialPlan" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExecutionLog_Customer" Association="Self.FK_ExecutionLog_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ExecutionLog" EntitySet="ExecutionLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FcalcDBModelStoreContainer" CdmEntityContainer="FcalcDBEntities1">
+          <EntitySetMapping Name="CommercialPlan">
+            <EntityTypeMapping TypeName="FcalcDBModel.CommercialPlan">
+              <MappingFragment StoreEntitySet="CommercialPlan">
+                <ScalarProperty Name="idCommercialplan" ColumnName="idCommercialplan" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idPlantype" ColumnName="idPlantype" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommercialPlanRange">
+            <EntityTypeMapping TypeName="FcalcDBModel.CommercialPlanRange">
+              <MappingFragment StoreEntitySet="CommercialPlanRange">
+                <ScalarProperty Name="idPlanrange" ColumnName="idPlanrange" />
+                <ScalarProperty Name="startRange" ColumnName="startRange" />
+                <ScalarProperty Name="endRange" ColumnName="endRange" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="idCommercialplan" ColumnName="idCommercialplan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="FcalcDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+                <ScalarProperty Name="ruc" ColumnName="ruc" />
+                <ScalarProperty Name="legalName" ColumnName="legalName" />
+                <ScalarProperty Name="idCommercialplan" ColumnName="idCommercialplan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExecutionLog">
+            <EntityTypeMapping TypeName="FcalcDBModel.ExecutionLog">
+              <MappingFragment StoreEntitySet="ExecutionLog">
+                <ScalarProperty Name="idExecutionlog" ColumnName="idExecutionlog" />
+                <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+                <ScalarProperty Name="transactionsCount" ColumnName="transactionsCount" />
+                <ScalarProperty Name="totalCalc" ColumnName="totalCalc" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanType">
+            <EntityTypeMapping TypeName="FcalcDBModel.PlanType">
+              <MappingFragment StoreEntitySet="PlanType">
+                <ScalarProperty Name="idPlantype" ColumnName="idPlantype" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="requireRange" ColumnName="requireRange" />
+                <ScalarProperty Name="isDynamic" ColumnName="isDynamic" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
