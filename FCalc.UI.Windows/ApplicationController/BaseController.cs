@@ -31,5 +31,29 @@ namespace FCalc.UI.windows.ApplicationController
 
             saveFunction(entity);
         }
+
+    }
+
+    public class PropertyCopier<TParent, TChild> where TParent : class
+                                            where TChild : class
+    {
+        public static TChild Copy(TParent parent, TChild child)
+        {
+            var parentProperties = parent.GetType().GetProperties();
+            var childProperties = child.GetType().GetProperties();
+
+            foreach (var parentProperty in parentProperties)
+            {
+                foreach (var childProperty in childProperties)
+                {
+                    if (parentProperty.Name == childProperty.Name && parentProperty.PropertyType == childProperty.PropertyType)
+                    {
+                        childProperty.SetValue(child, parentProperty.GetValue(parent));
+                        break;
+                    }
+                }
+            }
+            return child;
+        }
     }
 }

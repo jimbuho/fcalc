@@ -21,6 +21,11 @@ namespace FCalc.Application.Service
             return repository.GetAll();
         }
 
+        public IEnumerable<Customer> FindActiveCustomers()
+        {
+            return repository.FindActiveCustomers();
+        }
+
         public void InsertCustomer(Customer customer)
         {
             repository.Add(customer);

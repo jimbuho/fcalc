@@ -31,7 +31,9 @@ namespace FCalc.UI.Windows.Forms
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.crearNuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgCustomersList = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomersList)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -52,17 +54,30 @@ namespace FCalc.UI.Windows.Forms
             this.crearNuevoClienteToolStripMenuItem.Text = "Crear Nuevo Cliente";
             this.crearNuevoClienteToolStripMenuItem.Click += new System.EventHandler(this.crearNuevoClienteToolStripMenuItem_Click);
             // 
-            // FrmClientes
+            // dgCustomersList
+            // 
+            this.dgCustomersList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCustomersList.Location = new System.Drawing.Point(46, 78);
+            this.dgCustomersList.Name = "dgCustomersList";
+            this.dgCustomersList.RowHeadersWidth = 51;
+            this.dgCustomersList.RowTemplate.Height = 24;
+            this.dgCustomersList.Size = new System.Drawing.Size(674, 309);
+            this.dgCustomersList.TabIndex = 1;
+            // 
+            // FrmCustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgCustomersList);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FrmClientes";
+            this.Name = "FrmCustomerList";
             this.Text = "FrmClientes";
+            this.Load += new System.EventHandler(this.FrmCustomerList_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomersList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,5 +87,6 @@ namespace FCalc.UI.Windows.Forms
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem crearNuevoClienteToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dgCustomersList;
     }
 }

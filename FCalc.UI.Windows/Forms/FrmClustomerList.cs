@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ACMEBodegas.UI.Windows.ApplicationController;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,12 @@ namespace FCalc.UI.Windows.Forms
     public partial class FrmCustomerList : Form
     {
         FrmCustomer frmCustomer;
+        CustomerController controller;
 
         public FrmCustomerList()
         {
             InitializeComponent();
+            controller = new CustomerController();
         }
 
         private void crearNuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -25,6 +28,11 @@ namespace FCalc.UI.Windows.Forms
             frmCustomer = new FrmCustomer();
             frmCustomer.TopLevel = true;
             frmCustomer.Show();
+        }
+
+        private void FrmCustomerList_Load(object sender, EventArgs e)
+        {
+            dgCustomersList.DataSource = controller.FindActiveCustomers();
         }
     }
 }

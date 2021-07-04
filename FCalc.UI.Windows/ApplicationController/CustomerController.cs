@@ -36,9 +36,15 @@ namespace ACMEBodegas.UI.Windows.ApplicationController
             }
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public List<CustomerViewModel> FindActiveCustomers()
         {
-            return (IEnumerable<Customer>)service.GetCustomers();
+            IEnumerable<Customer> activeCustomers = service.FindActiveCustomers();
+            List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>(); 
+            foreach(Customer customer in activeCustomers)
+            {
+                customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(customer, new CustomerViewModel()));
+            }
+            return customerViewModelList;
         }
     }
 }
