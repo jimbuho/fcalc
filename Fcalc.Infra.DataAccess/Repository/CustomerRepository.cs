@@ -15,6 +15,7 @@ namespace FCalc.DataAccess.Repository
         {
             try
             {
+               
                 using (FcalcDBEntities1 context = new FcalcDBEntities1())
                 {
                     var query = from c in context.Customer 
