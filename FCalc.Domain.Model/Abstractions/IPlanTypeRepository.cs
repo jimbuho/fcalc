@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FCalc.Domain.Model.Abstractions
 {
-    public interface IPlanTypeRepository:IBaseRepository<PlanType>
+    public interface IPlanTypeRepository : IBaseRepository<PlanType>
     {
         IEnumerable<PlanType> FindActivePlanType();
     }
