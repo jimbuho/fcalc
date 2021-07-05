@@ -2,13 +2,13 @@
 using FCalc.Application.Service;
 using FCalc.Domain.Model.Entities;
 using FCalc.UI.windows.ApplicationController;
-using FCalc.UI.Windows.ModelView;
+using FCalc.UI.Windows.ViewModel;
 using System;
 using System.Collections.Generic;
 
-namespace ACMEBodegas.UI.Windows.ApplicationController
+namespace FCalc.UI.Windows.ApplicationController
 {
-    public class CustomerController:BaseController<Customer>
+    public class CustomerController : BaseController<Customer>
     {
 
         CustomerService service;
@@ -20,12 +20,9 @@ namespace ACMEBodegas.UI.Windows.ApplicationController
 
         public bool CustomerInsert(CustomerViewModel customerViewModel)
         {
-            Customer customer = new Customer();
-
             try
             {
-                customer.legalName = customerViewModel.legalName;
-                customer.ruc = customerViewModel.ruc;
+                Customer customer = PropertyCopier<CustomerViewModel, Customer>.Copy(customerViewModel, new Customer());
                 this.Save(customer, service.InsertCustomer);
                 return true;
             }
@@ -39,8 +36,8 @@ namespace ACMEBodegas.UI.Windows.ApplicationController
         public List<CustomerViewModel> FindActiveCustomers()
         {
             IEnumerable<Customer> activeCustomers = service.FindActiveCustomers();
-            List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>(); 
-            foreach(Customer customer in activeCustomers)
+            List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>();
+            foreach (Customer customer in activeCustomers)
             {
                 customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(customer, new CustomerViewModel()));
             }

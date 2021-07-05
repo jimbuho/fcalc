@@ -7,11 +7,11 @@ using FCalc.Domain.Model.Entities;
 
 namespace FCalc.Application.Service
 {
-    public class CommercialPlanRange
+    public class CommercialPlanRangeService
     {
         readonly ICommercialPlanRangeRepository repository;
 
-        public CommercialPlanRange()
+        public CommercialPlanRangeService()
         {
             repository = new CommercialPlanRangeRepository();
         }

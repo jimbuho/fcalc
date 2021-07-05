@@ -71,8 +71,9 @@
     <Compile Include="Repository\CommercialPlanRepository.cs" />
     <Compile Include="Repository\CommercialPlanRangeRepository.cs" />
     <Compile Include="Repository\ExecutionLogRepository.cs" />
-    <Compile Include="Repository\PlanTypeRepository.cs" />
+    <Compile Include="PlanTypeRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\PlanTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

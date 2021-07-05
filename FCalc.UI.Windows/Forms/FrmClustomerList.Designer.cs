@@ -32,6 +32,7 @@ namespace FCalc.UI.Windows.Forms
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.crearNuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgCustomersList = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomersList)).BeginInit();
             this.SuspendLayout();
@@ -57,18 +58,29 @@ namespace FCalc.UI.Windows.Forms
             // dgCustomersList
             // 
             this.dgCustomersList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomersList.Location = new System.Drawing.Point(46, 78);
+            this.dgCustomersList.Location = new System.Drawing.Point(12, 92);
             this.dgCustomersList.Name = "dgCustomersList";
             this.dgCustomersList.RowHeadersWidth = 51;
             this.dgCustomersList.RowTemplate.Height = 24;
-            this.dgCustomersList.Size = new System.Drawing.Size(674, 309);
+            this.dgCustomersList.Size = new System.Drawing.Size(776, 346);
             this.dgCustomersList.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 44);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 42);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Refrescar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FrmCustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.dgCustomersList);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -88,5 +100,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem crearNuevoClienteToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgCustomersList;
+        private System.Windows.Forms.Button button2;
     }
 }

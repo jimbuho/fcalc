@@ -9,15 +9,16 @@ using System.Collections.Generic;
 
 namespace FCalc.DataAccess.Repository
 {
-    public class CommercialPlanRepository : BaseRepository<CommercialPlan>, ICommercialPlanRepository
+    public class ExecutionLogRepository : BaseRepository<ExecutionLog>, IExecutionLogRepository
     {
-        public IEnumerable<CommercialPlan> FindActiveCommercialPlan()
+        public IEnumerable<ExecutionLog> FindActiveExecutionLog()
         {
             try
             {
+
                 using (FcalcDBEntities1 context = new FcalcDBEntities1())
                 {
-                    var query = from c in context.CommercialPlan
+                    var query = from c in context.ExecutionLog
                                 where c.status == "1"
                                 select c;
 

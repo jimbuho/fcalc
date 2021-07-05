@@ -1,5 +1,5 @@
-﻿using ACMEBodegas.UI.Windows.ApplicationController;
-using FCalc.UI.Windows.ModelView;
+﻿using FCalc.UI.Windows.ApplicationController;
+using FCalc.UI.Windows.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +15,12 @@ namespace UI.windows.Forms
     public partial class FrmCustomer : Form
     {
         private CustomerController customerController;
+        private CommercialPlanController commercialPlanController;
         public FrmCustomer()
         {
             InitializeComponent();
             customerController = new CustomerController();
+            commercialPlanController = new CommercialPlanController();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -26,13 +28,29 @@ namespace UI.windows.Forms
             CustomerViewModel customerModelView = new CustomerViewModel();
             customerModelView.legalName = txtLegalName.Text;
             customerModelView.ruc = txtRUC.Text;
-            if(customerController.CustomerInsert(customerModelView))
+            ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommecialPlan.SelectedItem;
+            customerModelView.idCommercialplan = commercialPlanItem.Value;
+            if (customerController.CustomerInsert(customerModelView))
             {
-                lblResult.Text = "Cliente guardado con exito";
+                MessageBox.Show("Cliente guardado con exito");
+                this.Close();
             }
             else
             {
-                lblResult.Text = "Cliente no pudo ser guardado";
+
+                MessageBox.Show("Cliente no pudo ser guardado");
+            }
+        }
+
+        private void FrmCustomer_Load(object sender, EventArgs e)
+        {
+            List<CommercialPlanViewModel> commercialPlans = commercialPlanController.FindActiveCommercialPlan();
+            foreach (CommercialPlanViewModel commercialPlan in commercialPlans)
+            {
+                ComboboxItem item = new ComboboxItem();
+                item.Text = $"{commercialPlan.name}";
+                item.Value = commercialPlan.idCommercialplan;
+                cmbCommecialPlan.Items.Add(item);
             }
         }
     }

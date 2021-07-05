@@ -9,7 +9,7 @@ namespace FCalc.Application.Service
 {
     public class CustomerService
     {
-        readonly ICostumerRepository repository;
+        readonly ICustomerRepository repository;
 
         public CustomerService()
         {

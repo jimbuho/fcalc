@@ -1,5 +1,4 @@
-﻿
-using Fcalc.Infra.DataAccess;
+﻿using Fcalc.Infra.DataAccess;
 using FCalc.Domain.Model.Abstractions;
 using FCalc.Domain.Model.Entities;
 using FCalc.Infra.DataAccess.Repository;
@@ -9,15 +8,16 @@ using System.Collections.Generic;
 
 namespace FCalc.DataAccess.Repository
 {
-    public class CommercialPlanRepository : BaseRepository<CommercialPlan>, ICommercialPlanRepository
+    public class CommercialPlanRangeRepository : BaseRepository<CommercialPlanRange>, ICommercialPlanRangeRepository
     {
-        public IEnumerable<CommercialPlan> FindActiveCommercialPlan()
+        IEnumerable<CommercialPlanRange> ICommercialPlanRangeRepository.FindActiveCommercialPlanRange()
         {
             try
             {
+
                 using (FcalcDBEntities1 context = new FcalcDBEntities1())
                 {
-                    var query = from c in context.CommercialPlan
+                    var query = from c in context.CommercialPlanRange
                                 where c.status == "1"
                                 select c;
 

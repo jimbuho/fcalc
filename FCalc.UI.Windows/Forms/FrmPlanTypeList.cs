@@ -8,29 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UI.windows.Forms;
 
 namespace FCalc.UI.Windows.Forms
 {
-    public partial class FrmCustomerList : Form
+    public partial class FrmPlanTypeList : Form
     {
-        FrmCustomer frmCustomer;
-        CustomerController controller;
-
-        public FrmCustomerList()
+        PlanTypeController controller;
+        FrmPlanType frmPlanType;
+        public FrmPlanTypeList()
         {
             InitializeComponent();
-            controller = new CustomerController();
+            controller = new PlanTypeController();
         }
 
-        private void crearNuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            frmCustomer = new FrmCustomer();
-            frmCustomer.TopLevel = true;
-            frmCustomer.Show();
+            frmPlanType = new FrmPlanType();
+            frmPlanType.TopLevel = true;
+            frmPlanType.Show();
         }
 
-        private void FrmCustomerList_Load(object sender, EventArgs e)
+        private void FrmPlanTypeList_Load(object sender, EventArgs e)
         {
             doMainQuery();
         }
@@ -39,10 +37,10 @@ namespace FCalc.UI.Windows.Forms
         {
             doMainQuery();
         }
-        
+
         private void doMainQuery()
         {
-            dgCustomersList.DataSource = controller.FindActiveCustomers();
+            grdPlanTypes.DataSource = controller.FindActivePlanType();
         }
     }
 }

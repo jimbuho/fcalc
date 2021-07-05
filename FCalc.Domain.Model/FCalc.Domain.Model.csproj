@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\IBaseRepository.cs" />
+    <Compile Include="Abstractions\ICommercialPlanRangeRepository.cs" />
+    <Compile Include="Abstractions\ICommercialPlanRepository.cs" />
     <Compile Include="Abstractions\ICustomerRepository.cs" />
+    <Compile Include="Abstractions\IExecutionLogRepository.cs" />
+    <Compile Include="Abstractions\IPlanTypeRepository.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\CommercialPlan.cs">
       <DependentUpon>Model1.tt</DependentUpon>

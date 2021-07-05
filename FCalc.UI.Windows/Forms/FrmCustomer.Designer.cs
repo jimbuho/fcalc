@@ -35,6 +35,8 @@ namespace UI.windows.Forms
             this.txtLegalName = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
+            this.cmbCommecialPlan = new System.Windows.Forms.ComboBox();
+            this.Plan = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +51,7 @@ namespace UI.windows.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 83);
+            this.label2.Location = new System.Drawing.Point(48, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 17);
             this.label2.TabIndex = 1;
@@ -64,7 +66,7 @@ namespace UI.windows.Forms
             // 
             // txtLegalName
             // 
-            this.txtLegalName.Location = new System.Drawing.Point(169, 83);
+            this.txtLegalName.Location = new System.Drawing.Point(169, 47);
             this.txtLegalName.Name = "txtLegalName";
             this.txtLegalName.Size = new System.Drawing.Size(542, 22);
             this.txtLegalName.TabIndex = 3;
@@ -88,11 +90,30 @@ namespace UI.windows.Forms
             this.lblResult.TabIndex = 5;
             this.lblResult.Text = "Ingrese los datos del cliente";
             // 
+            // cmbCommecialPlan
+            // 
+            this.cmbCommecialPlan.FormattingEnabled = true;
+            this.cmbCommecialPlan.Location = new System.Drawing.Point(169, 87);
+            this.cmbCommecialPlan.Name = "cmbCommecialPlan";
+            this.cmbCommecialPlan.Size = new System.Drawing.Size(195, 24);
+            this.cmbCommecialPlan.TabIndex = 6;
+            // 
+            // Plan
+            // 
+            this.Plan.AutoSize = true;
+            this.Plan.Location = new System.Drawing.Point(48, 93);
+            this.Plan.Name = "Plan";
+            this.Plan.Size = new System.Drawing.Size(102, 17);
+            this.Plan.TabIndex = 7;
+            this.Plan.Text = "Plan Comercial";
+            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 251);
+            this.Controls.Add(this.Plan);
+            this.Controls.Add(this.cmbCommecialPlan);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtLegalName);
@@ -101,6 +122,7 @@ namespace UI.windows.Forms
             this.Controls.Add(this.label1);
             this.Name = "FrmCustomer";
             this.Text = "FrmCustomer";
+            this.Load += new System.EventHandler(this.FrmCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +136,7 @@ namespace UI.windows.Forms
         private System.Windows.Forms.TextBox txtLegalName;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.ComboBox cmbCommecialPlan;
+        private System.Windows.Forms.Label Plan;
     }
 }

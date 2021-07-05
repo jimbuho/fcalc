@@ -57,6 +57,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -72,12 +73,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationController\BaseController.cs" />
+    <Compile Include="ApplicationController\ComboboxItem.cs" />
+    <Compile Include="ApplicationController\ExecutionLogController.cs" />
+    <Compile Include="ApplicationController\PlanTypeController.cs" />
+    <Compile Include="ApplicationController\CommercialPlanRangeController.cs" />
+    <Compile Include="ApplicationController\CommercialPlanController.cs" />
     <Compile Include="ApplicationController\CustomerController.cs" />
     <Compile Include="Forms\FrmClustomerList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmClustomerList.Designer.cs">
       <DependentUpon>FrmClustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlan.Designer.cs">
+      <DependentUpon>FrmCommercialPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlanList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlanList.Designer.cs">
+      <DependentUpon>FrmCommercialPlanList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlanRange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlanRange.Designer.cs">
+      <DependentUpon>FrmCommercialPlanRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlanRangeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCommercialPlanRangeList.Designer.cs">
+      <DependentUpon>FrmCommercialPlanRangeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmExecutionLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmExecutionLog.Designer.cs">
+      <DependentUpon>FrmExecutionLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMenu.cs">
       <SubType>Form</SubType>
@@ -91,17 +127,54 @@
     <Compile Include="Forms\FrmCustomer.Designer.cs">
       <DependentUpon>FrmCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmPlanType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPlanType.Designer.cs">
+      <DependentUpon>FrmPlanType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPlanTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPlanTypeList.Designer.cs">
+      <DependentUpon>FrmPlanTypeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CommercialPlanRangeViewModel.cs" />
+    <Compile Include="ViewModel\CommercialPlanViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\ExecutionLogViewModel.cs" />
+    <Compile Include="ViewModel\PlanTypeViewModel.cs" />
     <EmbeddedResource Include="Forms\FrmClustomerList.resx">
       <DependentUpon>FrmClustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCommercialPlan.resx">
+      <DependentUpon>FrmCommercialPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCommercialPlanList.resx">
+      <DependentUpon>FrmCommercialPlanList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCommercialPlanRange.resx">
+      <DependentUpon>FrmCommercialPlanRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCommercialPlanRangeList.resx">
+      <DependentUpon>FrmCommercialPlanRangeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmCustomer.resx">
       <DependentUpon>FrmCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmExecutionLog.resx">
+      <DependentUpon>FrmExecutionLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPlanType.resx">
+      <DependentUpon>FrmPlanType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPlanTypeList.resx">
+      <DependentUpon>FrmPlanTypeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
