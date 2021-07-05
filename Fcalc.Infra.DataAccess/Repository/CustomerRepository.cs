@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace FCalc.DataAccess.Repository
 {
-    public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
+    public class CustomerRepository : BaseRepository<Customer>, IPlanTypeRepository
     {
         public IEnumerable<Customer> FindActiveCustomers()
         {
