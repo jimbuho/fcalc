@@ -44,5 +44,10 @@ namespace FCalc.UI.Windows.Forms
         {
             dgCustomersList.DataSource = controller.FindActiveCustomers();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dgCustomersList.DataSource = controller.FindActiveCustomersByRUC(txtRucSearch.Text);
+        }
     }
 }

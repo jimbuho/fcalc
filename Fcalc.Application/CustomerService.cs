@@ -25,6 +25,10 @@ namespace FCalc.Application.Service
         {
             return repository.FindActiveCustomers();
         }
+        public IEnumerable<Customer> FindActiveCustomersByRUC(string RUC)
+        {
+            return repository.FindActiveCustomersByRUC(RUC);
+        }
 
         public void InsertCustomer(Customer customer)
         {

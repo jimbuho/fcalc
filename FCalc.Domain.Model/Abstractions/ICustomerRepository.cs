@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace FCalc.Domain.Model.Abstractions
 {
-    public interface IPlanTypeRepository:IBaseRepository<Customer>
+    public interface ICustomerRepository:IBaseRepository<Customer>
     {
         IEnumerable<Customer> FindActiveCustomers();
-      
+        IEnumerable<Customer> FindActiveCustomersByRUC(string RUC);
     }
 }

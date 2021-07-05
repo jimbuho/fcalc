@@ -44,9 +44,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CommercialPlanService.cs" />
     <Compile Include="CommercialPlanRangeService.cs" />
-    <Compile Include="ExecutionLogServices.cs" />
-    <Compile Include="ICostumerRepository.cs" />
-    <Compile Include="PlanTypeServices.cs" />
+    <Compile Include="ExecutionLogService.cs" />
+    <Compile Include="PlanTypeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerService.cs" />
   </ItemGroup>

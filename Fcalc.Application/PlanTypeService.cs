@@ -35,6 +35,5 @@ namespace FCalc.Application.Service
         {
             repository.Modify(planType);
         }
-
     }
 }

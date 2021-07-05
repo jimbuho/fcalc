@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace FCalc.DataAccess.Repository
 {
-    public class CustomerRepository : BaseRepository<Customer>, IPlanTypeRepository
+    public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
         public IEnumerable<Customer> FindActiveCustomers()
         {
@@ -20,6 +20,27 @@ namespace FCalc.DataAccess.Repository
                 {
                     var query = from c in context.Customer 
                                 where c.status == "1" 
+                                select c;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("No se puede procesar consulta", e);
+            }
+        }
+
+        public IEnumerable<Customer> FindActiveCustomersByRUC(string RUC)
+        {
+            try
+            {
+
+                using (FcalcDBEntities1 context = new FcalcDBEntities1())
+                {
+                    var query = from c in context.Customer
+                                where c.status == "1" 
+                                & c.ruc == RUC
                                 select c;
 
                     return query.ToList();

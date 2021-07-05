@@ -43,5 +43,16 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return customerViewModelList;
         }
+
+        public List<CustomerViewModel> FindActiveCustomersByRUC(string RUC)
+        {
+            IEnumerable<Customer> activeCustomers = service.FindActiveCustomersByRUC(RUC);
+            List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>();
+            foreach (Customer customer in activeCustomers)
+            {
+                customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(customer, new CustomerViewModel()));
+            }
+            return customerViewModelList;
+        }
     }
 }
