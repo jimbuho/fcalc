@@ -9,7 +9,6 @@ namespace FCalc.Domain.Model.Abstractions
     public interface IBaseRepository<TEntity> where TEntity : class
     {
         void Add(TEntity entity);
-        void Delete(int id);
         void Modify(TEntity entity);
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int id);

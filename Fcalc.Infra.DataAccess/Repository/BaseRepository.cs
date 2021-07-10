@@ -24,21 +24,16 @@ namespace FCalc.Infra.DataAccess.Repository
             {
                 foreach (DbEntityValidationResult eve in e.EntityValidationErrors)
                 {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                    Console.WriteLine("{ADD} Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
                         eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (DbValidationError ve in eve.ValidationErrors)
                     {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                        Console.WriteLine("{ADD} - Property: \"{0}\", Error: \"{1}\"",
                             ve.PropertyName, ve.ErrorMessage);
                     }
                 }
                 throw;
             }
-        }
-
-        void IBaseRepository<TEntity>.Delete(int id)
-        {
-            throw new NotImplementedException();
         }
 
         void IDisposable.Dispose()
@@ -69,7 +64,28 @@ namespace FCalc.Infra.DataAccess.Repository
 
         void IBaseRepository<TEntity>.Modify(TEntity entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new FcalcDBEntities1())
+                {
+                    context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (DbEntityValidationResult eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("{MODIFY} Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (DbValidationError ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("{MODIFY} - Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
     }
 }

@@ -8,5 +8,6 @@ namespace FCalc.Domain.Model.Abstractions
     {
         IEnumerable<Customer> FindActiveCustomers();
         IEnumerable<Customer> FindActiveCustomersByRUC(string RUC);
+
     }
 }

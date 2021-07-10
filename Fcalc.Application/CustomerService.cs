@@ -40,5 +40,12 @@ namespace FCalc.Application.Service
             repository.Modify(customer);
         }
 
+        public void DeleteCustomer(int itemId)
+        {
+            Customer item = repository.GetById(itemId);
+            item.status = "0";
+            repository.Modify(item);
+        }
+
     }
 }

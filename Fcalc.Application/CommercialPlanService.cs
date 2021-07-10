@@ -36,5 +36,12 @@ namespace FCalc.Application.Service
             repository.Modify(commercialPlan);
         }
 
+        public void DeleteCommercialPlan(int itemId)
+        {
+            CommercialPlan item = repository.GetById(itemId);
+            item.status = "0";
+            repository.Modify(item);
+        }
+
     }
 }

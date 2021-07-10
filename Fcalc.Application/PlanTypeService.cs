@@ -21,6 +21,11 @@ namespace FCalc.Application.Service
             return repository.GetAll();
         }
 
+        public PlanType GetPlanById(int id)
+        {
+            return repository.GetById(id);
+        }
+
         public IEnumerable<PlanType> FindActivePlanType()
         {
             return repository.FindActivePlanType();
@@ -34,6 +39,15 @@ namespace FCalc.Application.Service
         public void ModifyPlanType(PlanType planType)
         {
             repository.Modify(planType);
+        }
+
+        public void DeletePlanType(int itemId)
+        {
+            // Consulta el registro de la base de datos por su id, le cambia el estado a 0
+            // y con ello el registro se muestra como eliminado
+            PlanType item = repository.GetById(itemId);
+            item.status = "0";
+            repository.Modify(item);
         }
     }
 }

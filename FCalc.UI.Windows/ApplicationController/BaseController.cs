@@ -19,6 +19,7 @@ namespace FCalc.UI.windows.ApplicationController
         }
 
         public delegate void functionDelegateType(TEntity x);
+        public delegate TEntity functionGetEntity(int x);
 
         public void Save(TEntity entity, functionDelegateType saveFunction)
         {
@@ -31,7 +32,7 @@ namespace FCalc.UI.windows.ApplicationController
 
             saveFunction(entity);
         }
-
+        
     }
 
     public class PropertyCopier<TParent, TChild> where TParent : class
@@ -51,6 +52,35 @@ namespace FCalc.UI.windows.ApplicationController
                         childProperty.SetValue(child, parentProperty.GetValue(parent));
                         break;
                     }
+                }
+            }
+            return child;
+        }
+
+        public static TChild CopyToModify(TParent parent, TChild child)
+        {
+            var parentProperties = parent.GetType().GetProperties();
+            var childProperties = child.GetType().GetProperties();
+
+            foreach (var parentProperty in parentProperties)
+            {
+                if (parentProperty.Name != "creationDate" && parentProperty.Name != "status")
+                {
+                    foreach (var childProperty in childProperties)
+                    {
+                        
+                        if (parentProperty.Name == childProperty.Name && parentProperty.PropertyType == childProperty.PropertyType)
+                        {
+                            var value = parentProperty.GetValue(parent);
+                            Console.WriteLine("Modificando valor de " + parentProperty.Name+ " a " +value);
+                            childProperty.SetValue(child, value);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Valor de "+ parentProperty.Name+" no modificado");
                 }
             }
             return child;

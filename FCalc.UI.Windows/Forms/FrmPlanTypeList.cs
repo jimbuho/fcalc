@@ -1,4 +1,5 @@
 ﻿using FCalc.UI.Windows.ApplicationController;
+using FCalc.UI.Windows.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace FCalc.UI.Windows.Forms
     {
         PlanTypeController controller;
         FrmPlanType frmPlanType;
+        PlanTypeViewModel selectedItem;
         public FrmPlanTypeList()
         {
             InitializeComponent();
@@ -41,6 +43,113 @@ namespace FCalc.UI.Windows.Forms
         private void doMainQuery()
         {
             grdPlanTypes.DataSource = controller.FindActivePlanType();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            /*
+             * 
+             * En este metodo tomamos todas las filas seleccionadas por el usuario y
+             * extramos de cada fila el ID (columna 0) para proceder a eliminar (status=0)
+             * el registro si el usuario previamente acepta dicha eliminacion:
+             * 
+             */ 
+            Int32 selectedRowCount = grdPlanTypes.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+                DialogResult dialogResult = MessageBox.Show("Confirma eliminar los registro seleccionados?", 
+                    "Eliminar Registros", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < selectedRowCount; i++)
+                    {
+                        Int32 id = Convert.ToInt32(grdPlanTypes.Rows[grdPlanTypes.SelectedRows[i].Index].Cells[0].Value);
+                        controller.PlanTypeDelete(id);
+                        sb.Append("Item #" + id+" ");
+                    }
+
+                    MessageBox.Show(sb.ToString(), "Fueron eliminados");
+                    doMainQuery();
+                }                
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar registros antes de continuar");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            /*
+             * Si hay un registro seleccionado entonces lo mandamos a actualizar, al terminar
+             * conexito el guardado recargamos el GridControl.
+             */
+            if(selectedItem != null && selectedItem.name != null)
+            {
+                // Aqui copiamos todo los valores cambiados del formulario hacia el objeto antes de 
+                // enviarlo a cambiar en la base de datos
+                selectedItem.name = txtName.Text;
+                selectedItem.isDynamic = chkIsDynamic.Checked;
+                selectedItem.requireRange= chkRequireRange.Checked;
+
+                if (controller.PlanTypeModify(selectedItem))
+                {
+                    MessageBox.Show("Registro Modificado con exito");
+                    doMainQuery();
+                    // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
+                    selectedItem = null;
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error en la modificacion");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar el registro a modificar");
+            }
+        }
+
+        private void grdPlanTypes_CellClick(Object sender, DataGridViewCellEventArgs e)
+        {
+            // Ante este evento detectamos click sobre la celda
+            detectClickOnGrid();
+        }
+
+        private void grdPlanTypes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ante este evento detectamos click sobre el contenido de la celda
+            detectClickOnGrid();
+        }
+
+        private void detectClickOnGrid()
+        {
+            /*
+             * 
+             * Aqui copiamos el registro de la fila seleccionada por el usuario en el GridControl
+             * hacia cada campo del objeto selectedItem (que es del tipo ViewModel correspondiente
+             * a este modulo, ejemplo: PlayTypViewModel). Con esto tenemos listos el objeto a ser
+             * enviado a modificar hacia la base de datos cuando el usuario pulse el boton "Modificar"
+             * 
+             */
+            DataGridViewRow row = grdPlanTypes.Rows[grdPlanTypes.CurrentCell.RowIndex];
+
+            selectedItem = new PlanTypeViewModel();
+            selectedItem.idPlantype = Convert.ToInt32(row.Cells[0].Value);
+            selectedItem.name = Convert.ToString(row.Cells[1].Value);
+            selectedItem.requireRange = Convert.ToBoolean(row.Cells[2].Value);
+            selectedItem.isDynamic = Convert.ToBoolean(row.Cells[3].Value);
+
+            /*
+             * Mostramos al usuario los datos del registro seleccionado, notar que
+             * debemos transformar los valores al tipo de datos que acepta cada componente
+             */
+            txtName.Text = selectedItem.name;
+            chkIsDynamic.Checked = selectedItem.isDynamic.Value;
+            chkRequireRange.Checked = selectedItem.requireRange.Value;
+            lblId.Text = Convert.ToString(selectedItem.idPlantype);
         }
     }
 }

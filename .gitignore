@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Customize
+FCalc.UI.Windows/App.config
+Fcalc.Infra.DataAccess/App.config
