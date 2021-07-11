@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.windows.Forms;
 
 namespace FCalc.UI.Windows.Forms
 {
@@ -14,6 +15,13 @@ namespace FCalc.UI.Windows.Forms
     {
         private int childFormNumber = 0;
         private FrmPlanTypeList frmPlanTypeList;
+        private FrmCommercialPlanList frmCommercialPlanList;
+        private FrmCustomerList frmCustomerList;
+        private FrmCommercialPlanRangeList frmCommercialPlanRangeList;
+        private FrmPlanType frmPlanType;
+        private FrmCommercialPlan frmCommercialPlan;
+        private FrmCustomer frmCustomer;
+        private FrmCommercialPlanRange frmCommercialPlanRange;
 
         public MDIMain()
         {
@@ -99,6 +107,54 @@ namespace FCalc.UI.Windows.Forms
             frmPlanTypeList = new FrmPlanTypeList();
             frmPlanTypeList.MdiParent = this;
             frmPlanTypeList.Show();
+        }
+
+        private void vERTODOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCommercialPlanList = new FrmCommercialPlanList();
+            frmCommercialPlanList.MdiParent = this;
+            frmCommercialPlanList.Show();
+        }
+
+        private void verTodosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmCustomerList = new FrmCustomerList();
+            frmCustomerList.MdiParent = this;
+            frmCustomerList.Show();
+        }
+
+        private void verTodosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmCommercialPlanRangeList = new FrmCommercialPlanRangeList();
+            frmCommercialPlanRangeList.MdiParent = this;
+            frmCommercialPlanRangeList.Show();
+        }
+
+        private void crearNuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPlanType = new FrmPlanType();
+            frmPlanType.MdiParent = this;
+            frmPlanType.Show();
+        }
+
+        private void crearNuevoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmCommercialPlan = new FrmCommercialPlan();
+            frmCommercialPlan.MdiParent = this;
+            frmCommercialPlan.Show();
+        }
+        private void crearNuevoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmCommercialPlanRange = new FrmCommercialPlanRange();
+            frmCommercialPlanRange.MdiParent = this;
+            frmCommercialPlanRange.Show();
+        }
+
+        private void crearNuevoToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            frmCustomer = new FrmCustomer();
+            frmCustomer.MdiParent = this;
+            frmCustomer.Show();
         }
     }
 }

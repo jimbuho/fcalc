@@ -34,10 +34,23 @@ namespace FCalc.UI.Windows.Forms
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historyToolMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planesComercialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vERTODOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearNuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearNuevoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rangosDePlanesComercialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verTodosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearNuevoToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,13 +64,6 @@ namespace FCalc.UI.Windows.Forms
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tiposDePlanesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.planesComercialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rangosDePlanesComercialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyToolMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.crearNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -98,6 +104,12 @@ namespace FCalc.UI.Windows.Forms
             this.newToolStripMenuItem.Text = "&Nuevo Cálculo";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
+            // historyToolMenuItem
+            // 
+            this.historyToolMenuItem.Name = "historyToolMenuItem";
+            this.historyToolMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.historyToolMenuItem.Text = "Historico";
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -128,6 +140,98 @@ namespace FCalc.UI.Windows.Forms
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
             this.optionsToolStripMenuItem.Text = "&Opciones";
             // 
+            // tiposDePlanesToolStripMenuItem
+            // 
+            this.tiposDePlanesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodosToolStripMenuItem,
+            this.crearNuevoToolStripMenuItem});
+            this.tiposDePlanesToolStripMenuItem.Name = "tiposDePlanesToolStripMenuItem";
+            this.tiposDePlanesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.tiposDePlanesToolStripMenuItem.Text = "Tipos de Planes";
+            // 
+            // verTodosToolStripMenuItem
+            // 
+            this.verTodosToolStripMenuItem.Name = "verTodosToolStripMenuItem";
+            this.verTodosToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.verTodosToolStripMenuItem.Text = "Ver todos";
+            this.verTodosToolStripMenuItem.Click += new System.EventHandler(this.verTodosToolStripMenuItem_Click);
+            // 
+            // crearNuevoToolStripMenuItem
+            // 
+            this.crearNuevoToolStripMenuItem.Name = "crearNuevoToolStripMenuItem";
+            this.crearNuevoToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.crearNuevoToolStripMenuItem.Text = "Crear Nuevo";
+            this.crearNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem_Click);
+            // 
+            // planesComercialesToolStripMenuItem
+            // 
+            this.planesComercialesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vERTODOToolStripMenuItem,
+            this.crearNuevoToolStripMenuItem1});
+            this.planesComercialesToolStripMenuItem.Name = "planesComercialesToolStripMenuItem";
+            this.planesComercialesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.planesComercialesToolStripMenuItem.Text = "Planes Comerciales";
+            // 
+            // vERTODOToolStripMenuItem
+            // 
+            this.vERTODOToolStripMenuItem.Name = "vERTODOToolStripMenuItem";
+            this.vERTODOToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.vERTODOToolStripMenuItem.Text = "Ver Todos";
+            this.vERTODOToolStripMenuItem.Click += new System.EventHandler(this.vERTODOToolStripMenuItem_Click);
+            // 
+            // crearNuevoToolStripMenuItem1
+            // 
+            this.crearNuevoToolStripMenuItem1.Name = "crearNuevoToolStripMenuItem1";
+            this.crearNuevoToolStripMenuItem1.Size = new System.Drawing.Size(174, 26);
+            this.crearNuevoToolStripMenuItem1.Text = "Crear Nuevo";
+            this.crearNuevoToolStripMenuItem1.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem1_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodosToolStripMenuItem1,
+            this.crearNuevoToolStripMenuItem2});
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // verTodosToolStripMenuItem1
+            // 
+            this.verTodosToolStripMenuItem1.Name = "verTodosToolStripMenuItem1";
+            this.verTodosToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.verTodosToolStripMenuItem1.Text = "Ver Todos";
+            this.verTodosToolStripMenuItem1.Click += new System.EventHandler(this.verTodosToolStripMenuItem1_Click);
+            // 
+            // crearNuevoToolStripMenuItem2
+            // 
+            this.crearNuevoToolStripMenuItem2.Name = "crearNuevoToolStripMenuItem2";
+            this.crearNuevoToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.crearNuevoToolStripMenuItem2.Text = "Crear Nuevo";
+            this.crearNuevoToolStripMenuItem2.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem2_Click_1);
+            // 
+            // rangosDePlanesComercialesToolStripMenuItem
+            // 
+            this.rangosDePlanesComercialesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verTodosToolStripMenuItem2,
+            this.crearNuevoToolStripMenuItem3});
+            this.rangosDePlanesComercialesToolStripMenuItem.Name = "rangosDePlanesComercialesToolStripMenuItem";
+            this.rangosDePlanesComercialesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.rangosDePlanesComercialesToolStripMenuItem.Text = "Rangos de Planes Comerciales";
+            // 
+            // verTodosToolStripMenuItem2
+            // 
+            this.verTodosToolStripMenuItem2.Name = "verTodosToolStripMenuItem2";
+            this.verTodosToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.verTodosToolStripMenuItem2.Text = "Ver Todos";
+            this.verTodosToolStripMenuItem2.Click += new System.EventHandler(this.verTodosToolStripMenuItem2_Click);
+            // 
+            // crearNuevoToolStripMenuItem3
+            // 
+            this.crearNuevoToolStripMenuItem3.Name = "crearNuevoToolStripMenuItem3";
+            this.crearNuevoToolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
+            this.crearNuevoToolStripMenuItem3.Text = "Crear Nuevo";
+            this.crearNuevoToolStripMenuItem3.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem3_Click);
+            // 
             // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -144,7 +248,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.contentsToolStripMenuItem.Text = "&Contenido";
             // 
             // indexToolStripMenuItem
@@ -152,7 +256,7 @@ namespace FCalc.UI.Windows.Forms
             this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
             this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.indexToolStripMenuItem.Text = "&Índice";
             // 
             // searchToolStripMenuItem
@@ -160,18 +264,18 @@ namespace FCalc.UI.Windows.Forms
             this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
             this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.searchToolStripMenuItem.Text = "&Buscar";
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(215, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.aboutToolStripMenuItem.Text = "&Acerca de... ...";
             // 
             // toolStrip
@@ -230,52 +334,6 @@ namespace FCalc.UI.Windows.Forms
             this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 20);
             this.toolStripStatusLabel.Text = "Estado";
             // 
-            // tiposDePlanesToolStripMenuItem
-            // 
-            this.tiposDePlanesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verTodosToolStripMenuItem,
-            this.crearNuevoToolStripMenuItem});
-            this.tiposDePlanesToolStripMenuItem.Name = "tiposDePlanesToolStripMenuItem";
-            this.tiposDePlanesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.tiposDePlanesToolStripMenuItem.Text = "Tipos de Planes";
-            // 
-            // planesComercialesToolStripMenuItem
-            // 
-            this.planesComercialesToolStripMenuItem.Name = "planesComercialesToolStripMenuItem";
-            this.planesComercialesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.planesComercialesToolStripMenuItem.Text = "Planes Comerciales";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            // 
-            // rangosDePlanesComercialesToolStripMenuItem
-            // 
-            this.rangosDePlanesComercialesToolStripMenuItem.Name = "rangosDePlanesComercialesToolStripMenuItem";
-            this.rangosDePlanesComercialesToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.rangosDePlanesComercialesToolStripMenuItem.Text = "Rangos de Planes Comerciales";
-            // 
-            // historyToolMenuItem
-            // 
-            this.historyToolMenuItem.Name = "historyToolMenuItem";
-            this.historyToolMenuItem.Size = new System.Drawing.Size(241, 26);
-            this.historyToolMenuItem.Text = "Historico";
-            // 
-            // verTodosToolStripMenuItem
-            // 
-            this.verTodosToolStripMenuItem.Name = "verTodosToolStripMenuItem";
-            this.verTodosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.verTodosToolStripMenuItem.Text = "Ver todos";
-            this.verTodosToolStripMenuItem.Click += new System.EventHandler(this.verTodosToolStripMenuItem_Click);
-            // 
-            // crearNuevoToolStripMenuItem
-            // 
-            this.crearNuevoToolStripMenuItem.Name = "crearNuevoToolStripMenuItem";
-            this.crearNuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.crearNuevoToolStripMenuItem.Text = "Crear Nuevo";
-            // 
             // MDIMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -286,7 +344,7 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDIMain";
             this.Text = "MDIMain";
             this.menuStrip.ResumeLayout(false);
@@ -329,6 +387,12 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.ToolStripMenuItem rangosDePlanesComercialesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verTodosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearNuevoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vERTODOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearNuevoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem verTodosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem crearNuevoToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem verTodosToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem crearNuevoToolStripMenuItem3;
     }
 }
 
