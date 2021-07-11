@@ -17,7 +17,7 @@ namespace FCalc.UI.Windows
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            System.Windows.Forms.Application.Run(new FrmMenu());
+            System.Windows.Forms.Application.Run(new MDIMain());
         }
     }
 }
