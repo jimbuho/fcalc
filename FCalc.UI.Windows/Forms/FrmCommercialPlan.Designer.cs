@@ -70,7 +70,6 @@ namespace FCalc.UI.Windows.Forms
             this.label1.Size = new System.Drawing.Size(113, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Nombre del Plan";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 

@@ -20,6 +20,10 @@ namespace FCalc.Application.Service
         {
             return repository.GetAll();
         }
+        public Customer GetCustomerById(int id)
+        {
+            return repository.GetById(id);
+        }
 
         public IEnumerable<Customer> FindActiveCustomers()
         {

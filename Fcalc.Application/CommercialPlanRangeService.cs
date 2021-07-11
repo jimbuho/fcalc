@@ -20,7 +20,10 @@ namespace FCalc.Application.Service
         {
             return repository.GetAll();
         }
-
+        public CommercialPlanRange GetCommercialPlanRangeById(int id)
+        {
+            return repository.GetById(id);
+        }
         public IEnumerable<CommercialPlanRange> FindActiveCommercialPlanRange()
         {
             return repository.FindActiveCommercialPlanRange();

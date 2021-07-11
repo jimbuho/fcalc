@@ -42,5 +42,44 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return customerViewModelList;
         }
+        public bool CommercialPlanModify(CommercialPlanViewModel commercialPlanViewModel)
+        {
+            try
+            {
+                // Obtiene el registro que esta guardado en la base de datos dado el id
+                CommercialPlan commercialPlan = service.GetCommercialPlanById(commercialPlanViewModel.idCommercialplan);
+                // Copia los valores del plan que viene desde la pantalla (planTypeViewModel) y
+                // los pasa al registro consultado de la base de datos
+                // Nota: Aqui, a diferencia de lo usado en el metodo Insert, se usa CopyToModify
+                commercialPlan = PropertyCopier<CommercialPlanViewModel, CommercialPlan>.CopyToModify(commercialPlanViewModel, commercialPlan);
+                // Guarda el registro final modificado en la base de datos
+                service.ModifyCommercialPlan(commercialPlan);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write("Error al actualizar", e);
+                return false;
+            }
+        }
+
+        public bool CustomerDelete(int id)
+        {
+            try
+            {
+                service.DeleteCommercialPlan(id);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write("Error al eliminar", e);
+                return false;
+            }
+        }
+
+        public CommercialPlan GetById(int id)
+        {
+            return service.GetCommercialPlanById(id);
+        }
     }
 }

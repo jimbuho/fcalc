@@ -25,11 +25,6 @@ namespace FCalc.UI.Windows.Forms
             planTypeController = new PlanTypeController();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmCommercialPlan_Load(object sender, EventArgs e)
         {
             LoadPlanTypes();

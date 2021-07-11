@@ -1,14 +1,7 @@
-﻿using FCalc.UI.Windows.ApplicationController;
-using FCalc.UI.Windows.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using FCalc.UI.Windows.ApplicationController;
+using FCalc.UI.Windows.ViewModel;
 
 namespace FCalc.UI.Windows.Forms
 {
@@ -53,13 +46,13 @@ namespace FCalc.UI.Windows.Forms
              * extramos de cada fila el ID (columna 0) para proceder a eliminar (status=0)
              * el registro si el usuario previamente acepta dicha eliminacion:
              * 
-             */ 
+             */
             Int32 selectedRowCount = grdPlanTypes.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selectedRowCount > 0)
             {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-                DialogResult dialogResult = MessageBox.Show("Confirma eliminar los registro seleccionados?", 
+                DialogResult dialogResult = MessageBox.Show("Confirma eliminar los registro seleccionados?",
                     "Eliminar Registros", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -67,12 +60,12 @@ namespace FCalc.UI.Windows.Forms
                     {
                         Int32 id = Convert.ToInt32(grdPlanTypes.Rows[grdPlanTypes.SelectedRows[i].Index].Cells[0].Value);
                         controller.PlanTypeDelete(id);
-                        sb.Append("Item #" + id+" ");
+                        sb.Append("Item #" + id + " ");
                     }
 
                     MessageBox.Show(sb.ToString(), "Fueron eliminados");
                     doMainQuery();
-                }                
+                }
             }
             else
             {
@@ -86,13 +79,13 @@ namespace FCalc.UI.Windows.Forms
              * Si hay un registro seleccionado entonces lo mandamos a actualizar, al terminar
              * conexito el guardado recargamos el GridControl.
              */
-            if(selectedItem != null && selectedItem.name != null)
+            if (selectedItem != null && selectedItem.name != null)
             {
                 // Aqui copiamos todo los valores cambiados del formulario hacia el objeto antes de 
                 // enviarlo a cambiar en la base de datos
                 selectedItem.name = txtName.Text;
                 selectedItem.isDynamic = chkIsDynamic.Checked;
-                selectedItem.requireRange= chkRequireRange.Checked;
+                selectedItem.requireRange = chkRequireRange.Checked;
 
                 if (controller.PlanTypeModify(selectedItem))
                 {

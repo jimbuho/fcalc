@@ -54,5 +54,39 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return customerViewModelList;
         }
+        public bool CustomerModify(CustomerViewModel customerViewModel)
+        {
+            try
+            {
+                // Obtiene el registro que esta guardado en la base de datos dado el id
+                Customer customer = service.GetCustomerById(customerViewModel.idCustomer);
+                // Copia los valores del plan que viene desde la pantalla (planTypeViewModel) y
+                // los pasa al registro consultado de la base de datos
+                // Nota: Aqui, a diferencia de lo usado en el metodo Insert, se usa CopyToModify
+                customer = PropertyCopier<CustomerViewModel, Customer>.CopyToModify(customerViewModel, customer);
+                // Guarda el registro final modificado en la base de datos
+                service.ModifyCustomer(customer);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write("Error al actualizar", e);
+                return false;
+            }
+        }
+
+        public bool CustomerDelete(int id)
+        {
+            try
+            {
+                service.DeleteCustomer(id);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write("Error al eliminar", e);
+                return false;
+            }
+        }
     }
 }

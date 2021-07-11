@@ -86,6 +86,11 @@ namespace FCalc.Infra.DataAccess.Repository
                 }
                 throw;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: "+e);
+                throw;
+            }
         }
     }
 }
