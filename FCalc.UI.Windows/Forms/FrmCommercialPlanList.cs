@@ -67,7 +67,8 @@ namespace FCalc.UI.Windows.Forms
             if (selectedItem != null && selectedItem.name != null)
             {
                 selectedItem.name = txtName.Text;
-                selectedItem.idPlantype =Convert.ToInt32(txtPrice.Text);
+                selectedItem.price = Convert.ToInt32(txtPrice.Text);
+                
                 // Se toma el objeto seleccionado y luego se obtien el id (value)
                 ComboboxItem commercialPlanItem = (ComboboxItem)cmbPlanType.SelectedItem;
                 selectedItem.idPlantype = commercialPlanItem.Value;

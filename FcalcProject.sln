@@ -10,6 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Dominio", "3.Dominio", "{CEAD2B3F-BECD-48F8-A7E3-DE2502320A56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Infraestructura", "4.Infraestructura", "{B83D4486-33D8-4A48-8870-D7EB52B854FF}"
+	ProjectSection(SolutionItems) = preProject
+		FCalc.UI.Windows\Program.cs = FCalc.UI.Windows\Program.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCalc.Infra.DataAccess", "Fcalc.Infra.DataAccess\FCalc.Infra.DataAccess.csproj", "{62D4705D-5FC7-4E5C-AFF9-4990D612B916}"
 EndProject
