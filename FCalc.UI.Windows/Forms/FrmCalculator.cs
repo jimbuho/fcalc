@@ -45,7 +45,9 @@ namespace FCalc.UI.Windows.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(controller.CalculateAllItems());
+            button2.Enabled = false;
+            controller.CalculateAllItems(grdResults, lblMessages);
+            button2.Enabled = true;
         }
     }
 }

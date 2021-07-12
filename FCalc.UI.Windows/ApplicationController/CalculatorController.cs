@@ -70,11 +70,9 @@ namespace FCalc.UI.Windows.ApplicationController
                     }
                 }
 
-
                 // ADD ROWS TO THE GRID USING EXCEL DATA.
                 for (iRow = 2; iCol <= xlWorkSheet.Rows.Count; iRow++)
                 {
-                    Console.Write("-> PROCESANDO", xlWorkSheet.Cells[iRow, 1]);
                     lblMessages.Text = "Leyendo celdas [" + iRow + ",1]:" + xlWorkSheet.Cells[iRow, 1].value + " y [" + iRow + ",1]:" + xlWorkSheet.Cells[iRow, 2].value;
 
                     var column1 = xlWorkSheet.Cells[iRow, 1].value;
@@ -117,15 +115,31 @@ namespace FCalc.UI.Windows.ApplicationController
             }
         }
 
-        public string CalculateAllItems()
+        public void CalculateAllItems(DataGridView grdResult, Label lblMessages)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach(CalcProcess cp in data)
+            lblMessages.Text = "Calculando...";
+            grdResult.Rows.Clear();
+            grdResult.Columns.Clear();
+
+            DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+            col.HeaderText = "RUC";
+            grdResult.Columns.Add(col);
+            col = new DataGridViewTextBoxColumn();
+            col.HeaderText = "Total";
+            grdResult.Columns.Add(col);
+
+            foreach (CalcProcess cp in data)
             {
                 var cpNew = DoCalcProcessItem(cp);
-                sb.Append("RUC: " + cpNew.ruc + " Total:" + cpNew.total + ", ");
+
+                string[] row = new string[] {
+                        Convert.ToString(cpNew.ruc),
+                        Convert.ToString(cpNew.total)
+                    };
+
+                grdResult.Rows.Add(row);
             }
-            return sb.ToString();
+            lblMessages.Text = "Proceso de calculo finalizado";
         }
 
         private CalcProcess DoCalcProcessItem(CalcProcess item)
@@ -133,12 +147,22 @@ namespace FCalc.UI.Windows.ApplicationController
             List<CustomerViewModel> customerList = customerController.FindActiveCustomersByRUC(item.ruc);
             if (customerList.Count > 0)
             {
-                CustomerViewModel customer = (CustomerViewModel)customerList.Take(0);
+                CustomerViewModel customer = customerList[0];
                 CommercialPlan commercialPlan = commercialPlanController.GetById(Convert.ToInt32(customer.idCommercialplan));
+                
                 if (commercialPlan != null)
                 {
+                    //Console.WriteLine("Comercial Plan " + commercialPlan.idPlantype);
                     item.total = Convert.ToDecimal(item.counter * commercialPlan.price);
                 }
+                else
+                {
+                    Console.WriteLine("Comercial Plan NO Encontrado: "+customer.idCommercialplan);
+                }
+            }
+            else
+            {
+                Console.WriteLine("RUC NO encontrado" + item.ruc);
             }
             return item;
         }
