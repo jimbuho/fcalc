@@ -32,6 +32,7 @@ namespace FCalc.UI.Windows.Forms
             this.grdExecutionLog = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.grdExecutionLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@ namespace FCalc.UI.Windows.Forms
             this.button1.TabIndex = 1;
             this.button1.Text = "Exportar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -64,11 +66,20 @@ namespace FCalc.UI.Windows.Forms
             this.label1.Text = "Historico de Ejecución";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(235, 31);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
             // FrmExecutionLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 437);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdExecutionLog);
@@ -86,5 +97,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.DataGridView grdExecutionLog;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

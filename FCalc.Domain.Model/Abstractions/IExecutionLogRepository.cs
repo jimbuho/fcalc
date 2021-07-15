@@ -7,5 +7,6 @@ namespace FCalc.Domain.Model.Abstractions
     public interface IExecutionLogRepository : IBaseRepository<ExecutionLog>
     {
         IEnumerable<ExecutionLog> FindActiveExecutionLog();
+        IEnumerable<ExecutionLog> FindExecutionLogByDate(string date);
     }
 }

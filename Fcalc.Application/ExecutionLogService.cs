@@ -26,6 +26,11 @@ namespace FCalc.Application.Service
             return repository.FindActiveExecutionLog();
         }
 
+        public IEnumerable<ExecutionLog> FindExecutionLogByDate(string date)
+        {
+            return repository.FindExecutionLogByDate(date);
+        }
+
         public void InsertExecutionLog(ExecutionLog executionLog)
         {
             repository.Add(executionLog);

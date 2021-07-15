@@ -44,5 +44,17 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return executionLogViewModelList;
         }
+
+        public List<ExecutionLogViewModel> FindActiveExecutionLogsByDate(string date)
+        {
+            IEnumerable<ExecutionLog> activeExecutionLogs = service.FindExecutionLogByDate(date);
+
+            List<ExecutionLogViewModel> executionLogViewModelList = new List<ExecutionLogViewModel>();
+            foreach (ExecutionLog executionLog in activeExecutionLogs)
+            {
+                executionLogViewModelList.Add(PropertyCopier<ExecutionLog, ExecutionLogViewModel>.Copy(executionLog, new ExecutionLogViewModel()));
+            }
+            return executionLogViewModelList;
+        }
     }
 }

@@ -109,6 +109,7 @@ namespace FCalc.UI.Windows.Forms
             this.historyToolMenuItem.Name = "historyToolMenuItem";
             this.historyToolMenuItem.Size = new System.Drawing.Size(241, 26);
             this.historyToolMenuItem.Text = "Historico";
+            this.historyToolMenuItem.Click += new System.EventHandler(this.historyToolMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -198,14 +199,14 @@ namespace FCalc.UI.Windows.Forms
             // verTodosToolStripMenuItem1
             // 
             this.verTodosToolStripMenuItem1.Name = "verTodosToolStripMenuItem1";
-            this.verTodosToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.verTodosToolStripMenuItem1.Size = new System.Drawing.Size(174, 26);
             this.verTodosToolStripMenuItem1.Text = "Ver Todos";
             this.verTodosToolStripMenuItem1.Click += new System.EventHandler(this.verTodosToolStripMenuItem1_Click);
             // 
             // crearNuevoToolStripMenuItem2
             // 
             this.crearNuevoToolStripMenuItem2.Name = "crearNuevoToolStripMenuItem2";
-            this.crearNuevoToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.crearNuevoToolStripMenuItem2.Size = new System.Drawing.Size(174, 26);
             this.crearNuevoToolStripMenuItem2.Text = "Crear Nuevo";
             this.crearNuevoToolStripMenuItem2.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem2_Click_1);
             // 
@@ -221,14 +222,14 @@ namespace FCalc.UI.Windows.Forms
             // verTodosToolStripMenuItem2
             // 
             this.verTodosToolStripMenuItem2.Name = "verTodosToolStripMenuItem2";
-            this.verTodosToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.verTodosToolStripMenuItem2.Size = new System.Drawing.Size(174, 26);
             this.verTodosToolStripMenuItem2.Text = "Ver Todos";
             this.verTodosToolStripMenuItem2.Click += new System.EventHandler(this.verTodosToolStripMenuItem2_Click);
             // 
             // crearNuevoToolStripMenuItem3
             // 
             this.crearNuevoToolStripMenuItem3.Name = "crearNuevoToolStripMenuItem3";
-            this.crearNuevoToolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
+            this.crearNuevoToolStripMenuItem3.Size = new System.Drawing.Size(174, 26);
             this.crearNuevoToolStripMenuItem3.Text = "Crear Nuevo";
             this.crearNuevoToolStripMenuItem3.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem3_Click);
             // 

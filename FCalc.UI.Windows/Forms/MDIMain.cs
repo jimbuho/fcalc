@@ -13,7 +13,7 @@ namespace FCalc.UI.Windows.Forms
 {
     public partial class MDIMain : Form
     {
-        private int childFormNumber = 0;
+        
         private FrmPlanTypeList frmPlanTypeList;
         private FrmCommercialPlanList frmCommercialPlanList;
         private FrmCustomerList frmCustomerList;
@@ -22,6 +22,7 @@ namespace FCalc.UI.Windows.Forms
         private FrmCommercialPlan frmCommercialPlan;
         private FrmCustomer frmCustomer;
         private FrmCommercialPlanRange frmCommercialPlanRange;
+        private FrmExecutionLog frmExecutionLog;
 
         public MDIMain()
         {
@@ -155,6 +156,13 @@ namespace FCalc.UI.Windows.Forms
             frmCustomer = new FrmCustomer();
             frmCustomer.MdiParent = this;
             frmCustomer.Show();
+        }
+
+        private void historyToolMenuItem_Click(object sender, EventArgs e)
+        {
+            frmExecutionLog = new FrmExecutionLog();
+            frmExecutionLog.MdiParent = this;
+            frmExecutionLog.Show();
         }
     }
 }
