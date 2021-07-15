@@ -14,6 +14,8 @@ namespace FCalc.UI.Windows.ApplicationController
     {
         CustomerController customerController;
         CommercialPlanController commercialPlanController;
+        PlanTypeController planTypeController;
+        CommercialPlanRangeController planRangeController;
 
         // CREATE EXCEL OBJECTS.
         Excel.Application xlApp = new Excel.Application();
@@ -26,6 +28,8 @@ namespace FCalc.UI.Windows.ApplicationController
         {
             customerController = new CustomerController();
             commercialPlanController = new CommercialPlanController();
+            planTypeController = new PlanTypeController();
+            planRangeController = new CommercialPlanRangeController();
         }
 
         public void Excel2Grid(DataGridView grdPreview, Label lblMessages, string sFile)
@@ -153,7 +157,7 @@ namespace FCalc.UI.Windows.ApplicationController
                 if (commercialPlan != null)
                 {
                     //Console.WriteLine("Comercial Plan " + commercialPlan.idPlantype);
-                    item.total = Convert.ToDecimal(item.counter * commercialPlan.price);
+                    item.total = CalcByPlanType(commercialPlan, item);
                 }
                 else
                 {
@@ -166,5 +170,85 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return item;
         }
+
+        /**
+         * 
+         * Realiza el calculo del item dada la configuracion del plan comercial
+         * 
+         */
+        private decimal CalcByPlanType(CommercialPlan commercialPlan, CalcProcess item)
+        {
+            PlanType planType = planTypeController.GetPlanTypeById(Convert.ToInt32(commercialPlan.idPlantype));
+            decimal total = 0;
+
+            if(planType.requireRange.Value)
+            {
+                CommercialPlanRangeViewModel planRange = foundPlanRange(commercialPlan, item.counter);
+
+                if (planRange != null)
+                {
+                    if (planType.isDynamic.Value) {
+                        total = Convert.ToDecimal(planRange.price * item.counter);
+                    }
+                    else
+                    {
+                        total = Convert.ToDecimal(planRange.price);
+                    }
+                }
+                else
+                {
+                    if (planType.isDynamic.Value)
+                    {
+                        total = Convert.ToDecimal(commercialPlan.price * item.counter);
+                    }
+                    else
+                    {
+                        total = Convert.ToDecimal(commercialPlan.price);
+                    }
+                }
+
+            }
+            else { 
+                if (planType.isDynamic.Value)
+                {
+                    total = Convert.ToDecimal(commercialPlan.price * item.counter);
+                }
+                else
+                {
+                    total = Convert.ToDecimal(commercialPlan.price);
+                }
+            }
+
+            return total;
+        }
+
+        private CommercialPlanRangeViewModel foundPlanRange(CommercialPlan commercialPlan, int counter)
+        {
+            CommercialPlanRangeViewModel foundedPlanRange = null;
+            List<CommercialPlanRangeViewModel> planRanges = planRangeController.GetCommercialPlanRangeByCommecialPlan(commercialPlan);
+
+            foreach (CommercialPlanRangeViewModel planRange in planRanges) {
+                int start = 0;
+                if (planRange.startRange != null)
+                {
+                    start = Convert.ToInt32(planRange.startRange);
+                }
+                int end = 10000000;
+
+                if (planRange.endRange != null)
+                {
+                    end = Convert.ToInt32(planRange.endRange);
+                }
+
+                if (start <= counter && end >= counter) {
+                    foundedPlanRange = planRange;
+                    break;
+                }
+
+            }
+
+            return foundedPlanRange;
+        }
+
     }
 }

@@ -11,10 +11,12 @@ namespace FCalc.UI.Windows.ApplicationController
     public class CommercialPlanController:BaseController<CommercialPlan>
     {
         CommercialPlanService service;
+        PlanTypeController planTypeController;
 
         public CommercialPlanController()
         {
             service = new CommercialPlanService();
+            planTypeController = new PlanTypeController();
         }
 
         public bool CommercialPlanInsert(CommercialPlanViewModel commercialPlanViewModel)
@@ -38,7 +40,14 @@ namespace FCalc.UI.Windows.ApplicationController
             List<CommercialPlanViewModel> customerViewModelList = new List<CommercialPlanViewModel>(); 
             foreach(CommercialPlan item in activeCommercialPlans)
             {
-                customerViewModelList.Add(PropertyCopier<CommercialPlan, CommercialPlanViewModel>.Copy(item, new CommercialPlanViewModel()));
+                CommercialPlanViewModel comPlanView = new CommercialPlanViewModel();
+                // Copio todos los campos que se llaman igual
+                comPlanView = PropertyCopier<CommercialPlan, CommercialPlanViewModel>.Copy(item, comPlanView);
+                // Consulto el nombre del plan y lo lleno en el campo nuevo
+                PlanType planType = planTypeController.GetPlanTypeById(Convert.ToInt32(item.idPlantype));
+                comPlanView.plantype = planType.name;
+                // Agregar el registro procesado a la lista
+                customerViewModelList.Add(comPlanView);
             }
             return customerViewModelList;
         }

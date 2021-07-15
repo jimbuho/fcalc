@@ -29,6 +29,16 @@ namespace FCalc.Application.Service
             return repository.FindActiveCommercialPlanRange();
         }
 
+        public IEnumerable<CommercialPlanRange> GetCommercialPlanRangeByCommecialPlan(CommercialPlan commercialPlan)
+        {
+            return repository.GetCommercialPlanRangeByCommecialPlan(commercialPlan);
+        }
+
+        public IEnumerable<CommercialPlanRange> GetCommercialPlanRangeByCommecialPlan(int commercialPlanId)
+        {
+            return repository.GetCommercialPlanRangeByCommecialPlan(commercialPlanId);
+        }
+
         public void InsertCommercialPlanRange(CommercialPlanRange commercialPlanRange)
         {
             repository.Add(commercialPlanRange);

@@ -79,5 +79,10 @@ namespace FCalc.UI.Windows.ApplicationController
                 return false;
             }
         }
+
+        public PlanType GetPlanTypeById(int id)
+        {
+            return service.GetPlanById(id);
+        }
     }
 }

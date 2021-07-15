@@ -42,6 +42,29 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return customerViewModelList;
         }
+
+        public List<CommercialPlanRangeViewModel> GetCommercialPlanRangeByCommecialPlan(CommercialPlan commercialPlan)
+        {
+            IEnumerable<CommercialPlanRange> activeCommercialPlanRanges = service.GetCommercialPlanRangeByCommecialPlan(commercialPlan);
+            List<CommercialPlanRangeViewModel> customerViewModelList = new List<CommercialPlanRangeViewModel>();
+            foreach (CommercialPlanRange item in activeCommercialPlanRanges)
+            {
+                customerViewModelList.Add(PropertyCopier<CommercialPlanRange, CommercialPlanRangeViewModel>.Copy(item, new CommercialPlanRangeViewModel()));
+            }
+            return customerViewModelList;
+        }
+
+        public List<CommercialPlanRangeViewModel> GetCommercialPlanRangeByCommecialPlan(int commercialPlanId)
+        {
+            IEnumerable<CommercialPlanRange> activeCommercialPlanRanges = service.GetCommercialPlanRangeByCommecialPlan(commercialPlanId);
+            List<CommercialPlanRangeViewModel> customerViewModelList = new List<CommercialPlanRangeViewModel>();
+            foreach (CommercialPlanRange item in activeCommercialPlanRanges)
+            {
+                customerViewModelList.Add(PropertyCopier<CommercialPlanRange, CommercialPlanRangeViewModel>.Copy(item, new CommercialPlanRangeViewModel()));
+            }
+            return customerViewModelList;
+        }
+
         public bool CommercialPlanRangeModify(CommercialPlanRangeViewModel commercialPlanRangeViewModel)
         {
             try

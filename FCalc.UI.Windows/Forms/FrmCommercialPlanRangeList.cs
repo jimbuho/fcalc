@@ -140,7 +140,7 @@ namespace FCalc.UI.Windows.Forms
             {
                 selectedItem.startRange =Convert.ToInt32(txtStartRange.Text);
                 selectedItem.endRange = Convert.ToInt32(txtEndRange.Text);
-                selectedItem.price = Convert.ToInt32(txtPrice.Text);
+                selectedItem.price = Convert.ToDecimal(txtPrice.Text);
                 // Se toma el objeto seleccionado y luego se obtien el id (value)
                 ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommercialPlan.SelectedItem;
                 selectedItem.idCommercialplan = commercialPlanItem.Value;

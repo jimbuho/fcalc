@@ -10,9 +10,12 @@ namespace FCalc.UI.Windows.ViewModel
     {
         public int idCommercialplan { get; set; }
         public string name { get; set; }
-        public Nullable<int> idPlantype { get; set; }
+        
+        public string plantype { get; set; }
         public Nullable<decimal> price { get; set; }
-        public string status { get; set; }
+        //public string status { get; set; }
         public Nullable<System.DateTime> creationDate { get; set; }
+
+        public Nullable<int> idPlantype { get; set; }
     }
 }

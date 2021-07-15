@@ -24,7 +24,7 @@ namespace FCalc.UI.Windows.Forms
 
         private void FrmCalculator_Load(object sender, EventArgs e)
         {
-
+            button2.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,6 +39,7 @@ namespace FCalc.UI.Windows.Forms
                 if (sFileName.Trim() != "")
                 {
                     controller.Excel2Grid(grdPreview, lblMessages, sFileName);
+                    button2.Enabled = true;
                 }
             }
         }

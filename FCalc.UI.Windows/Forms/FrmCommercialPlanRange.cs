@@ -25,21 +25,73 @@ namespace FCalc.UI.Windows.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // TODO Validar Tipos de datos: Validador.isNumber(txtStartRange.Text)
+
             CommercialPlanRangeViewModel commercialPlanRangeModelView = new CommercialPlanRangeViewModel();
-            commercialPlanRangeModelView.startRange = Int32.Parse(txtStartRange.Text);
-            commercialPlanRangeModelView.endRange = Int32.Parse(txtEndRange.Text);
+            commercialPlanRangeModelView.startRange = textToNumber(txtStartRange.Text, true);
+            commercialPlanRangeModelView.endRange = textToNumber(txtEndRange.Text, false);
             commercialPlanRangeModelView.price = Decimal.Parse(txtPrice.Text);
             ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommercialPlan.SelectedItem;
             commercialPlanRangeModelView.idCommercialplan = commercialPlanItem.Value;
-            if (controller.CommercialPlanRangeInsert(commercialPlanRangeModelView))
+
+            
+            // Obtener los rangos de planes comerciales que sean iguales al elegido por el usuario
+            List<CommercialPlanRangeViewModel> listaRangos = controller.GetCommercialPlanRangeByCommecialPlan(Convert.ToInt32(commercialPlanRangeModelView.idCommercialplan));
+
+            // Valido que no hayan rangos que incluyan o sean iguales al que esta ingresando el usuario
+            if (!validarExistenciaRangos(listaRangos, Convert.ToInt32(commercialPlanRangeModelView.startRange), 
+                Convert.ToInt32(commercialPlanRangeModelView.endRange)))
             {
-                MessageBox.Show("Rango de Plan Comercial guardado con exito");
-                this.Close();
+                MessageBox.Show("Ya hay un rango similar al elegido");
             }
             else
             {
 
-                MessageBox.Show("Rango de Plan Comercial no pudo ser guardado");
+                if (controller.CommercialPlanRangeInsert(commercialPlanRangeModelView))
+                {
+                    MessageBox.Show("Rango de Plan Comercial guardado con exito");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Rango de Plan Comercial no pudo ser guardado");
+                }
+            }
+        }
+
+        private Boolean validarExistenciaRangos(List<CommercialPlanRangeViewModel> listaRangos, int inicio, int fin)
+        {
+            /*
+             * TODO Controlar que el rango no sea igual o incluido en un rango existe
+             */
+            foreach(CommercialPlanRangeViewModel item in listaRangos)
+            {
+                if(item.startRange == inicio)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private Int32 textToNumber(string text, Boolean isInit)
+        {
+            if (text != "")
+            {
+                return Int32.Parse(text);
+            }
+            else
+            {
+                if (isInit)
+                {
+                    return Int32.Parse("0");
+                }
+                else
+                {
+                    return Int32.Parse("10000000");
+                }
             }
         }
 

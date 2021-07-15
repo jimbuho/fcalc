@@ -137,7 +137,7 @@ namespace FCalc.UI.Windows.Forms
             selectedItem = new CommercialPlanViewModel();
             selectedItem.idCommercialplan = Convert.ToInt32(row.Cells[0].Value);
             selectedItem.name = Convert.ToString(row.Cells[1].Value);
-            selectedItem.idPlantype = Convert.ToInt32(row.Cells[2].Value);
+            selectedItem.idPlantype = Convert.ToInt32(row.Cells[5].Value);
             selectedItem.price = Convert.ToInt32(row.Cells[3].Value);
 
             /*
