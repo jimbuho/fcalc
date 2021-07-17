@@ -15,16 +15,19 @@ namespace FCalc.UI.Windows.Forms
     public partial class FrmCalculator : Form
     {
         private CalculatorController controller;
+        private ExecutionLogController executionLogController;
 
         public FrmCalculator()
         {
             InitializeComponent();
             controller = new CalculatorController();
+            executionLogController = new ExecutionLogController();
         }
 
         private void FrmCalculator_Load(object sender, EventArgs e)
         {
             button2.Enabled = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,9 +49,22 @@ namespace FCalc.UI.Windows.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button2.Enabled = false;
-            controller.CalculateAllItems(grdResults, lblMessages);
-            button2.Enabled = true;
+            if (executionLogController.ThereAreExecutionLogsInThisMonth())
+            {
+                MessageBox.Show("Ya existe procesamiento en este mes. Si quiere reintentarlo, dirigirse a la opcion <Deshabilitar Procesamiento del mes> en Historios");
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Ha revisado todos los datos y confirma realizar el calculo de facturación de este mes?",
+                       "Procesar Calculo", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    button2.Enabled = false;
+                    controller.CalculateAllItems(grdResults, lblMessages);
+                    button2.Enabled = true;
+                }
+            }
         }
     }
 }

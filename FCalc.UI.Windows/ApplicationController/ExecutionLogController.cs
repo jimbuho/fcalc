@@ -56,5 +56,22 @@ namespace FCalc.UI.Windows.ApplicationController
             }
             return executionLogViewModelList;
         }
+
+        public void DisableExcecutionLogByDate(string date)
+        {
+            IEnumerable<ExecutionLog> activeExecutionLogs = service.FindExecutionLogByDate(date);
+
+            foreach (ExecutionLog executionLog in activeExecutionLogs)
+            {
+                service.DeleteExecutionLog(executionLog.idExecutionlog);
+            }            
+        }
+
+        public Boolean ThereAreExecutionLogsInThisMonth()
+        {
+            string date = DateTime.Now.ToString("yyyy-MM");
+            List<ExecutionLogViewModel> executionLogs = FindActiveExecutionLogsByDate(date);
+            return executionLogs.Count > 0;
+        }
     }
 }

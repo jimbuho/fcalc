@@ -16,6 +16,7 @@ namespace FCalc.UI.Windows.ApplicationController
         CommercialPlanController commercialPlanController;
         PlanTypeController planTypeController;
         CommercialPlanRangeController planRangeController;
+        ExecutionLogController logController;
 
         // CREATE EXCEL OBJECTS.
         Excel.Application xlApp = new Excel.Application();
@@ -30,6 +31,7 @@ namespace FCalc.UI.Windows.ApplicationController
             commercialPlanController = new CommercialPlanController();
             planTypeController = new PlanTypeController();
             planRangeController = new CommercialPlanRangeController();
+            logController = new ExecutionLogController();
         }
 
         public void Excel2Grid(DataGridView grdPreview, Label lblMessages, string sFile)
@@ -132,6 +134,8 @@ namespace FCalc.UI.Windows.ApplicationController
             col.HeaderText = "Total";
             grdResult.Columns.Add(col);
 
+            DateTime moment = DateTime.Now;
+
             foreach (CalcProcess cp in data)
             {
                 var cpNew = DoCalcProcessItem(cp);
@@ -142,8 +146,29 @@ namespace FCalc.UI.Windows.ApplicationController
                     };
 
                 grdResult.Rows.Add(row);
+
+                CreateExecutionLog(cp, moment);
+
             }
             lblMessages.Text = "Proceso de calculo finalizado";
+        }
+
+        private void CreateExecutionLog(CalcProcess cp, DateTime moment)
+        {
+            
+            List<CustomerViewModel> customers = customerController.FindActiveCustomersByRUC(cp.ruc);
+            if(customers.Count > 0)
+            {
+                CustomerViewModel customer = customers[0];
+
+                ExecutionLogViewModel executionLogVM = new ExecutionLogViewModel();
+                executionLogVM.idCustomer = customer.idCustomer;
+                executionLogVM.month = moment.Month;
+                executionLogVM.totalCalc = cp.total;
+                executionLogVM.transactionsCount = cp.counter;
+                logController.ExecutionLogInsert(executionLogVM);
+
+            }
         }
 
         private CalcProcess DoCalcProcessItem(CalcProcess item)

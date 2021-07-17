@@ -14,10 +14,12 @@ namespace FCalc.UI.Windows.Forms
     public partial class FrmExecutionLog : Form
     {
         private ExecutionLogController controller;
+        private string selectedDate;
         public FrmExecutionLog()
         {
             InitializeComponent();
             controller = new ExecutionLogController();
+            selectedDate = null;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -32,15 +34,21 @@ namespace FCalc.UI.Windows.Forms
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            string date = dateTimePicker1.Value.ToString("yyyy-MM");
-            grdExecutionLog.DataSource = controller.FindActiveExecutionLogsByDate(date);
+            selectedDate = dateTimePicker1.Value.ToString("yyyy-MM");
+            grdExecutionLog.DataSource = controller.FindActiveExecutionLogsByDate(selectedDate);
         }
 
         private void ExportGridToExcel()
         {
+            if (selectedDate == null)
+            {
+                MessageBox.Show("Debe seleccionar una fecha para exportar a Excel los registros de ese mes");
+                return;
+            }
+
             try
             {
-                String dateStr = dateTimePicker1.Value.ToString("yyyy-MM");
+                String dateStr = selectedDate;
                 Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
                 // creating new WorkBook within Excel application  
                 Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
@@ -87,6 +95,26 @@ namespace FCalc.UI.Windows.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             ExportGridToExcel();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(selectedDate != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Confirma deshabilitar los registros del mes "+selectedDate+"?",
+                    "Eliminar Registros", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    controller.DisableExcecutionLogByDate(selectedDate);
+                    grdExecutionLog.DataSource = controller.FindActiveExecutionLogsByDate(selectedDate);
+                    MessageBox.Show("Todos los registros del mes: " + selectedDate + " han sido deshabilitados con exito");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fecha para desahabilitar los registros de ese mes");
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ namespace FCalc.DataAccess.Repository
                 using (FcalcDBEntities1 context = new FcalcDBEntities1())
                 {
                     var query = from c in context.ExecutionLog
-                                where c.creationDate >= startDate && c.creationDate <= endDate
+                                where c.creationDate >= startDate && c.creationDate <= endDate && c.status == "1"
                                 select c;
 
                     return query.ToList();

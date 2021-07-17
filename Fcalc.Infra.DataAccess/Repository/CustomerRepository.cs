@@ -40,7 +40,7 @@ namespace FCalc.DataAccess.Repository
                 {
                     var query = from c in context.Customer
                                 where c.status == "1" 
-                                & c.ruc == RUC
+                                && c.ruc == RUC
                                 select c;
 
                     return query.ToList();

@@ -40,5 +40,11 @@ namespace FCalc.Application.Service
         {
             repository.Modify(executionLog);
         }
+        public void DeleteExecutionLog(int itemId)
+        {
+            ExecutionLog item = repository.GetById(itemId);
+            item.status = "0";
+            repository.Modify(item);
+        }
     }
 }
