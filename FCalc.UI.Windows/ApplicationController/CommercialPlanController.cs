@@ -44,8 +44,11 @@ namespace FCalc.UI.Windows.ApplicationController
                 // Copio todos los campos que se llaman igual
                 comPlanView = PropertyCopier<CommercialPlan, CommercialPlanViewModel>.Copy(item, comPlanView);
                 // Consulto el nombre del plan y lo lleno en el campo nuevo
-                PlanType planType = planTypeController.GetPlanTypeById(Convert.ToInt32(item.idPlantype));
+                if (item.idPlantype != null)
+                {
+                    PlanType planType = planTypeController.GetPlanTypeById(Convert.ToInt32(item.idPlantype));
                   comPlanView.planType = planType.name;
+                }
                 // Agregar el registro procesado a la lista
                 customerViewModelList.Add(comPlanView);
             }
