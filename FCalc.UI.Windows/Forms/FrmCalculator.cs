@@ -51,13 +51,13 @@ namespace FCalc.UI.Windows.Forms
         {
             if (executionLogController.ThereAreExecutionLogsInThisMonth())
             {
-                MessageBox.Show("Ya existe procesamiento en este mes. Si quiere reintentarlo, dirigirse a la opcion <Deshabilitar Procesamiento del mes> en Historios");
+                //MessageBox.Show("Ya existe procesamiento en este mes. Si quiere reintentarlo, dirigirse a la opcion <Deshabilitar Procesamiento del mes> en Historios");
             }
             else
             {
                 DialogResult dialogResult = MessageBox.Show("Ha revisado todos los datos y confirma realizar el calculo de facturación de este mes?",
                        "Procesar Calculo", MessageBoxButtons.YesNo);
-
+                 
                 if (dialogResult == DialogResult.Yes)
                 {
                     button2.Enabled = false;

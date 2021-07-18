@@ -80,6 +80,7 @@
     <Compile Include="ApplicationController\CommercialPlanRangeController.cs" />
     <Compile Include="ApplicationController\CommercialPlanController.cs" />
     <Compile Include="ApplicationController\CustomerController.cs" />
+    <Compile Include="ApplicationController\Validator.cs" />
     <Compile Include="Forms\FrmCalculator.cs">
       <SubType>Form</SubType>
     </Compile>

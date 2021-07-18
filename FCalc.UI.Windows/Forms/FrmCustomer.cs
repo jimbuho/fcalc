@@ -53,5 +53,10 @@ namespace UI.windows.Forms
                 cmbCommecialPlan.Items.Add(item);
             }
         }
+
+        private bool ValidarFormulario()
+        {
+            return true;
+        }
     }
 }
