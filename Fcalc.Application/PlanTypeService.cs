@@ -31,6 +31,11 @@ namespace FCalc.Application.Service
             return repository.FindActivePlanType();
         }
 
+        public IEnumerable<PlanType> FindActivePlanTypeByName(string name)
+        {
+            return repository.FindActivePlanTypeByName(name);
+        }
+
         public void InsertPlanType(PlanType planType)
         {
             repository.Add(planType);

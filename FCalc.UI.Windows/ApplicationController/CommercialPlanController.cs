@@ -90,5 +90,17 @@ namespace FCalc.UI.Windows.ApplicationController
         {
             return service.GetCommercialPlanById(id);
         }
+
+        public List<CommercialPlanViewModel> FindActiveCommercialPlanByName(string name)
+        {
+            IEnumerable<CommercialPlan> activeCommercialPlans = service.FindActiveCommercialPlan();
+            List<CommercialPlanViewModel> customerViewModelList = new List<CommercialPlanViewModel>();
+            foreach (CommercialPlan item in activeCommercialPlans)
+            {
+                // Copio todos los campos que se llaman igual
+                customerViewModelList.Add(PropertyCopier<CommercialPlan, CommercialPlanViewModel>.Copy(item, new CommercialPlanViewModel()));
+            }
+            return customerViewModelList;
+        }
     }
 }

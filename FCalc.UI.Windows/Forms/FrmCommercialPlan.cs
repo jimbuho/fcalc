@@ -44,22 +44,54 @@ namespace FCalc.UI.Windows.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CommercialPlanViewModel commercialPlanModelView = new CommercialPlanViewModel();
-            commercialPlanModelView.name = txtName.Text;
-            commercialPlanModelView.price = Decimal.Parse(txtPrice.Text);
-            ComboboxItem item = (ComboboxItem)cmbPlanType.SelectedItem;
-            commercialPlanModelView.idPlantype = item.Value;                
-                
-            if (controller.CommercialPlanInsert(commercialPlanModelView))
+            if (ValidarFormulario())
             {
-                MessageBox.Show("Plan comercial guardado con exito");
-                this.Close();
+                CommercialPlanViewModel commercialPlanModelView = new CommercialPlanViewModel();
+                commercialPlanModelView.name = txtName.Text;
+                commercialPlanModelView.price = Decimal.Parse(txtPrice.Text);
+                ComboboxItem item = (ComboboxItem)cmbPlanType.SelectedItem;
+                commercialPlanModelView.idPlantype = item.Value;
+
+                if (controller.CommercialPlanInsert(commercialPlanModelView))
+                {
+                    MessageBox.Show("Plan comercial guardado con exito");
+                    this.Close();
+                }
+                else
+                {
+
+                    MessageBox.Show("Plan comercial no pudo ser guardado");
+                }
+            }
+        }
+
+        private bool ValidarFormulario()
+        {
+            if (!Validator.ValidarCamposTexto(txtName, "Nombre del Plan", 3))
+            {
+                return false;
             }
             else
             {
-
-                MessageBox.Show("Plan comercial no pudo ser guardado");
+                List<CommercialPlanViewModel> plans = controller.FindActiveCommercialPlanByName(txtName.Text);
+                if(plans.Count > 0)
+                {
+                    MessageBox.Show("Ya existen planes comerciales con ese nombre");
+                    return false;
+                }
             }
+            
+            return true;
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validator.ValidateNumbers(sender, e);
         }
     }
 }

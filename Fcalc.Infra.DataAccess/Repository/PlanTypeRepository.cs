@@ -28,5 +28,24 @@ namespace Fcalc.Infra.DataAccess.Repository
                 throw new Exception("No se puede procesar consulta", e);
             }
         }
+
+        public IEnumerable<PlanType> FindActivePlanTypeByName(string name)
+        {
+            try
+            {
+                using (FcalcDBEntities1 context = new FcalcDBEntities1())
+                {
+                    var query = from c in context.PlanType
+                                where c.status == "1" && c.name == name
+                                select c;
+
+                    return query.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("No se puede procesar consulta", e);
+            }
+        }
     }
 }

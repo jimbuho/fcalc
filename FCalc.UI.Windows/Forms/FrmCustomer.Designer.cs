@@ -60,6 +60,7 @@ namespace UI.windows.Forms
             // txtRUC
             // 
             this.txtRUC.Location = new System.Drawing.Point(169, 13);
+            this.txtRUC.MaxLength = 13;
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.Size = new System.Drawing.Size(195, 22);
             this.txtRUC.TabIndex = 2;
@@ -67,6 +68,7 @@ namespace UI.windows.Forms
             // txtLegalName
             // 
             this.txtLegalName.Location = new System.Drawing.Point(169, 47);
+            this.txtLegalName.MaxLength = 64;
             this.txtLegalName.Name = "txtLegalName";
             this.txtLegalName.Size = new System.Drawing.Size(542, 22);
             this.txtLegalName.TabIndex = 3;

@@ -46,6 +46,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtStartRange.Name = "txtStartRange";
             this.txtStartRange.Size = new System.Drawing.Size(123, 22);
             this.txtStartRange.TabIndex = 0;
+            this.txtStartRange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // txtEndRange
             // 
@@ -53,6 +54,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtEndRange.Name = "txtEndRange";
             this.txtEndRange.Size = new System.Drawing.Size(123, 22);
             this.txtEndRange.TabIndex = 1;
+            this.txtEndRange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // txtPrice
             // 
@@ -60,6 +62,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(123, 22);
             this.txtPrice.TabIndex = 2;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // label1
             // 

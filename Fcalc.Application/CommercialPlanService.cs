@@ -29,6 +29,11 @@ namespace FCalc.Application.Service
             return repository.FindActiveCommercialPlan();
         }
 
+        public IEnumerable<CommercialPlan> FindActiveCommercialPlanBYName(string name)
+        {
+            return repository.FindActiveCommercialPlanBYName(name);
+        }
+
         public void InsertCommercialPlan(CommercialPlan commercialPlan)
         {
             repository.Add(commercialPlan);

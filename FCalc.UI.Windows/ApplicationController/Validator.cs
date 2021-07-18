@@ -149,20 +149,9 @@ namespace FCalc.UI.Windows.ApplicationController
             }
         }
 
-        public static void validaLetras(object sender, KeyPressEventArgs e)
+        public static void ValidateNumbers(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
-            {
-                MessageBox.Show("No se admite números", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
-
-            }
-        }
-
-        public static void validarNumeros(object sender, KeyPressEventArgs e)
-        {
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !Char.IsPunctuation(e.KeyChar))
             {
                 MessageBox.Show("No se admite letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
@@ -170,25 +159,16 @@ namespace FCalc.UI.Windows.ApplicationController
             }
         }
 
-        public void validarPunto(object sender, KeyPressEventArgs e)
+        public static bool ValidarCamposTexto(TextBox tb, String name, int min)
         {
-            if (Char.IsPunctuation(e.KeyChar))
-            {
-                
-                MessageBox.Show("No se admite coma en este campo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
-            }
-        }
-
-        public static bool ValidarCampos(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
             if (tb.Text == "")
             {
-                e.Cancel = true;
                 tb.Select(0, tb.Text.Length);
-                MessageBox.Show("Campo en blanco");
+                MessageBox.Show(name + ": Campo en blanco");
+            }
+            else if(tb.Text.Length <= min)
+            {
+                MessageBox.Show(name + ": Debe ingresar al menos " + min+" caracteres");
             }
             return true;
         }

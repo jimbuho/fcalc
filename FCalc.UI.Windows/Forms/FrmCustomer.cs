@@ -25,20 +25,23 @@ namespace UI.windows.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CustomerViewModel customerModelView = new CustomerViewModel();
-            customerModelView.legalName = txtLegalName.Text;
-            customerModelView.ruc = txtRUC.Text;
-            ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommecialPlan.SelectedItem;
-            customerModelView.idCommercialplan = commercialPlanItem.Value;
-            if (customerController.CustomerInsert(customerModelView))
+            if (ValidarFormulario())
             {
-                MessageBox.Show("Cliente guardado con exito");
-                this.Close();
-            }
-            else
-            {
+                CustomerViewModel customerModelView = new CustomerViewModel();
+                customerModelView.legalName = txtLegalName.Text;
+                customerModelView.ruc = txtRUC.Text;
+                ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommecialPlan.SelectedItem;
+                customerModelView.idCommercialplan = commercialPlanItem.Value;
+                if (customerController.CustomerInsert(customerModelView))
+                {
+                    MessageBox.Show("Cliente guardado con exito");
+                    this.Close();
+                }
+                else
+                {
 
-                MessageBox.Show("Cliente no pudo ser guardado");
+                    MessageBox.Show("Cliente no pudo ser guardado");
+                }
             }
         }
 
@@ -56,6 +59,24 @@ namespace UI.windows.Forms
 
         private bool ValidarFormulario()
         {
+            if(!Validator.ValidarCamposTexto(txtLegalName, "Razon Social", 5))
+            {
+                return false;
+            }
+            if(!Validator.VerificaRuc(txtRUC.Text))
+            {
+                MessageBox.Show("Debe ingresar un RUC valido");
+                return false;
+            }
+            else
+            {
+                List<CustomerViewModel> customers = customerController.FindActiveCustomersByRUC(txtRUC.Text);
+                if (customers.Count > 0)
+                {
+                    MessageBox.Show("Ya existe un cliente con ese RUC");
+                    return false;
+                }
+            }
             return true;
         }
     }

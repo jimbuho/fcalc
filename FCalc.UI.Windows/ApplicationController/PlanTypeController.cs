@@ -84,5 +84,18 @@ namespace FCalc.UI.Windows.ApplicationController
         {
             return service.GetPlanById(id);
         }
+
+        public List<PlanTypeViewModel> FindActivePlanTypeByName(string name)
+        {
+            IEnumerable<PlanType> activePlanTypes = service.FindActivePlanTypeByName(name);
+            List<PlanTypeViewModel> customerViewModelList = new List<PlanTypeViewModel>();
+            foreach (PlanType item in activePlanTypes)
+            {
+                // Permite una copia rapida de los campos entre el tipo PlanType y PlanTypeViewModel
+                customerViewModelList.Add(PropertyCopier<PlanType, PlanTypeViewModel>.Copy(item, new PlanTypeViewModel()));
+            }
+            return customerViewModelList;
+        }
+
     }
 }
