@@ -30,6 +30,12 @@ namespace FCalc.UI.Windows.Forms
         private void FrmExecutionLog_Load(object sender, EventArgs e)
         {
             grdExecutionLog.DataSource = controller.FindActiveExecutionLogs();
+            grdExecutionLog.Columns[0].HeaderText = "ID REGISTRO";
+            grdExecutionLog.Columns[1].HeaderText = "ID CIENTE";
+            grdExecutionLog.Columns[2].HeaderText = "RECUENTO TRANSACCIONES";
+            grdExecutionLog.Columns[3].HeaderText = "TOTAL CALCULO";
+            grdExecutionLog.Columns[4].HeaderText = "MES";
+            grdExecutionLog.Columns[5].HeaderText = "FECHA CREACIÓN";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
