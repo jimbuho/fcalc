@@ -12,10 +12,12 @@ namespace FCalc.UI.Windows.ApplicationController
     {
 
         CustomerService service;
+        CommercialPlanController commercialPlanController;
 
         public CustomerController()
         {
             service = new CustomerService();
+            commercialPlanController = new CommercialPlanController();
         }
 
         public bool CustomerInsert(CustomerViewModel customerViewModel)
@@ -37,20 +39,34 @@ namespace FCalc.UI.Windows.ApplicationController
         {
             IEnumerable<Customer> activeCustomers = service.FindActiveCustomers();
             List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>();
-            foreach (Customer customer in activeCustomers)
+            foreach (Customer item in activeCustomers)
             {
-                customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(customer, new CustomerViewModel()));
+                CustomerViewModel comPlanView = new CustomerViewModel();
+                // Copio todos los campos que se llaman igual
+               comPlanView = PropertyCopier<Customer, CustomerViewModel>.Copy(item, comPlanView);
+                // Consulto el nombre del plan y lo lleno en el campo nuevo
+                CommercialPlan planType = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
+                comPlanView.plantype = planType.name;
+                // Agregar el registro procesado a la lista
+               customerViewModelList.Add(comPlanView);
             }
             return customerViewModelList;
         }
+
+        private PlanType GetCustomerById(int id)
+        {
+            return service.GetPlanById(id);
+        }
+    
 
         public List<CustomerViewModel> FindActiveCustomersByRUC(string RUC)
         {
             IEnumerable<Customer> activeCustomers = service.FindActiveCustomersByRUC(RUC);
             List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>();
-            foreach (Customer customer in activeCustomers)
+            foreach (Customer item in activeCustomers)
             {
-                customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(customer, new CustomerViewModel()));
+             customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(item, new CustomerViewModel()));
+                
             }
             return customerViewModelList;
         }
@@ -88,5 +104,6 @@ namespace FCalc.UI.Windows.ApplicationController
                 return false;
             }
         }
+        
     }
 }

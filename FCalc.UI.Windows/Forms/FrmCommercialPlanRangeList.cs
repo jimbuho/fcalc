@@ -46,6 +46,13 @@ namespace FCalc.UI.Windows.Forms
         private void doQuery()
         {
             grdCommercialPlanRange.DataSource = controller.FindActiveCommercialPlanRange();
+            grdCommercialPlanRange.Columns[0].HeaderText = "ID";
+            grdCommercialPlanRange.Columns[1].HeaderText = "INICIO RANGO";
+            grdCommercialPlanRange.Columns[2].HeaderText = "FIN RANGO";
+            grdCommercialPlanRange.Columns[3].HeaderText = "PRECIO";
+            grdCommercialPlanRange.Columns[4].HeaderText = "TIPO PLAN";
+            grdCommercialPlanRange.Columns[5].HeaderText = "FECHA CREACÓN";
+            grdCommercialPlanRange.Columns[6].HeaderText = "ID PLAN";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -107,7 +114,7 @@ namespace FCalc.UI.Windows.Forms
             selectedItem.startRange = Convert.ToInt32(row.Cells[1].Value);
             selectedItem.endRange = Convert.ToInt32(row.Cells[2].Value);
             selectedItem.price = Convert.ToInt32(row.Cells[3].Value);
-            selectedItem.idCommercialplan= Convert.ToInt32(row.Cells[4].Value);
+            selectedItem.idCommercialplan= Convert.ToInt32(row.Cells[6].Value);
             /*
              * Mostramos al usuario los datos del registro seleccionado, notar que
              * debemos transformar los valores al tipo de datos que acepta cada componente
@@ -161,8 +168,6 @@ namespace FCalc.UI.Windows.Forms
             {
                 MessageBox.Show("Debe seleccionar el registro a modificar");
             }
-        }
-
-       
+        }   
     }
 }

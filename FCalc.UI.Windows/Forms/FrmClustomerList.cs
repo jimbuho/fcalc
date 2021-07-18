@@ -1,15 +1,8 @@
-﻿using FCalc.Domain.Model.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using FCalc.UI.Windows.ApplicationController;
 using FCalc.UI.Windows.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using UI.windows.Forms;
 
 namespace FCalc.UI.Windows.Forms
@@ -53,15 +46,22 @@ namespace FCalc.UI.Windows.Forms
         {
             doMainQuery();
         }
-        
+
         private void doMainQuery()
         {
             dgCustomersList.DataSource = controller.FindActiveCustomers();
+            dgCustomersList.Columns[0].HeaderText = "ID";
+            dgCustomersList.Columns[1].HeaderText = "RUC";
+            dgCustomersList.Columns[2].HeaderText = "NOMBRE";
+            dgCustomersList.Columns[3].HeaderText = "PLAN";
+            dgCustomersList.Columns[4].HeaderText = "FECHA CREACIÓN";
+            dgCustomersList.Columns[5].HeaderText = "ID PLAN";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             dgCustomersList.DataSource = controller.FindActiveCustomersByRUC(txtRucSearch.Text);
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -101,12 +101,12 @@ namespace FCalc.UI.Windows.Forms
         private void dgCustomersList_CellClick(Object sender, DataGridViewCellEventArgs e)
         {
             // Ante este evento detectamos click sobre la celda
-          detectClickOnGrid();
+            detectClickOnGrid();
         }
         private void dgCustomersList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-             detectClickOnGrid();
-            
+            detectClickOnGrid();
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace FCalc.UI.Windows.Forms
             selectedItem.idCustomer = Convert.ToInt32(row.Cells[0].Value);
             selectedItem.ruc = Convert.ToString(row.Cells[1].Value);
             selectedItem.legalName = Convert.ToString(row.Cells[2].Value);
-            selectedItem.idCommercialplan = Convert.ToInt32(row.Cells[3].Value);
+            selectedItem.idCommercialplan = Convert.ToInt32(row.Cells[5].Value);
 
             /*
              * Mostramos al usuario los datos del registro seleccionado, notar que
@@ -169,10 +169,10 @@ namespace FCalc.UI.Windows.Forms
             txtLegalName.Text = selectedItem.legalName;
 
             int i = 0;
-            foreach(var itemPlan in cmbCommecialPlan.Items)
+            foreach (var itemPlan in cmbCommecialPlan.Items)
             {
                 ComboboxItem cbItem = (ComboboxItem)itemPlan;
-                if(cbItem.Value == selectedItem.idCommercialplan)
+                if (cbItem.Value == selectedItem.idCommercialplan)
                 {
                     cmbCommecialPlan.SelectedIndex = i;
                 }

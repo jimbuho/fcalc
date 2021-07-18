@@ -12,7 +12,7 @@ namespace FCalc.UI.Windows.ViewModel
         public string name { get; set; }
         public Nullable<bool> requireRange { get; set; }
         public Nullable<bool> isDynamic { get; set; }
-        public string status { get; set; }
+       // public string status { get; set; }
         public Nullable<System.DateTime> creationDate { get; set; }
     }
 }

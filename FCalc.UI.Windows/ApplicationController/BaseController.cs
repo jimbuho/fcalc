@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using FCalc.UI.Windows.ViewModel;
+using FCalc.Domain.Model.Entities;
 
 namespace FCalc.UI.windows.ApplicationController
 {
@@ -56,6 +58,7 @@ namespace FCalc.UI.windows.ApplicationController
             }
             return child;
         }
+
 
         public static TChild CopyToModify(TParent parent, TChild child)
         {

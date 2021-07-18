@@ -46,7 +46,7 @@ namespace FCalc.UI.Windows.Forms
             this.grdPreview.Name = "grdPreview";
             this.grdPreview.RowHeadersWidth = 51;
             this.grdPreview.RowTemplate.Height = 24;
-            this.grdPreview.Size = new System.Drawing.Size(415, 565);
+            this.grdPreview.Size = new System.Drawing.Size(415, 523);
             this.grdPreview.TabIndex = 0;
             // 
             // ofdFileFinder
@@ -90,19 +90,22 @@ namespace FCalc.UI.Windows.Forms
             this.grdResults.Name = "grdResults";
             this.grdResults.RowHeadersWidth = 51;
             this.grdResults.RowTemplate.Height = 24;
-            this.grdResults.Size = new System.Drawing.Size(411, 565);
+            this.grdResults.Size = new System.Drawing.Size(411, 523);
             this.grdResults.TabIndex = 4;
             // 
             // FrmCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 646);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(971, 596);
             this.Controls.Add(this.grdResults);
             this.Controls.Add(this.lblMessages);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdPreview);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCalculator";
             this.Text = "FrmCalculator";
             this.Load += new System.EventHandler(this.FrmCalculator_Load);

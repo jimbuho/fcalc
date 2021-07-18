@@ -1,9 +1,5 @@
-﻿using FCalc.UI.Windows.Forms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System;
+using FCalc.UI.Windows.Forms;
 
 namespace FCalc.UI.Windows
 {

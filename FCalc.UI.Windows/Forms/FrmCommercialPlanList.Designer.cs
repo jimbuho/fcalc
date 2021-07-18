@@ -45,19 +45,20 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdCommercialPlanList
             // 
+            this.grdCommercialPlanList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdCommercialPlanList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCommercialPlanList.Location = new System.Drawing.Point(22, 76);
             this.grdCommercialPlanList.Name = "grdCommercialPlanList";
             this.grdCommercialPlanList.RowHeadersWidth = 51;
             this.grdCommercialPlanList.RowTemplate.Height = 24;
-            this.grdCommercialPlanList.Size = new System.Drawing.Size(766, 362);
+            this.grdCommercialPlanList.Size = new System.Drawing.Size(876, 363);
             this.grdCommercialPlanList.TabIndex = 0;
             this.grdCommercialPlanList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommercialPlanList_CellClick);
             this.grdCommercialPlanList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommercialPlanList_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(669, 28);
+            this.button1.Location = new System.Drawing.Point(779, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 42);
             this.button1.TabIndex = 1;
@@ -126,7 +127,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(562, 457);
+            this.button3.Location = new System.Drawing.Point(658, 457);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 41);
             this.button3.TabIndex = 13;
@@ -136,7 +137,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(685, 456);
+            this.btnDelete.Location = new System.Drawing.Point(779, 457);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 41);
             this.btnDelete.TabIndex = 14;
@@ -148,7 +149,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 595);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(926, 604);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
@@ -160,6 +162,8 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdCommercialPlanList);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanList";
             this.Text = "FrmCommercialPlanList";
             this.Load += new System.EventHandler(this.FrmCommercialPlanList_Load);

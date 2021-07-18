@@ -37,6 +37,7 @@ namespace FCalc.UI.Windows.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cmbCommercialPlan = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtStartRange
@@ -63,7 +64,7 @@ namespace FCalc.UI.Windows.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 41);
+            this.label1.Location = new System.Drawing.Point(37, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 3;
@@ -72,7 +73,7 @@ namespace FCalc.UI.Windows.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 81);
+            this.label2.Location = new System.Drawing.Point(37, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 17);
             this.label2.TabIndex = 4;
@@ -81,7 +82,7 @@ namespace FCalc.UI.Windows.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 120);
+            this.label3.Location = new System.Drawing.Point(37, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 17);
             this.label3.TabIndex = 5;
@@ -105,11 +106,22 @@ namespace FCalc.UI.Windows.Forms
             this.cmbCommercialPlan.Size = new System.Drawing.Size(228, 24);
             this.cmbCommercialPlan.TabIndex = 7;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 163);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Tipo Plan";
+            // 
             // FrmCommercialPlanRange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(474, 241);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbCommercialPlan);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -118,6 +130,8 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtEndRange);
             this.Controls.Add(this.txtStartRange);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanRange";
             this.Text = "FrmCommercialPlanRange";
             this.Load += new System.EventHandler(this.FrmCommercialPlanRange_Load);
@@ -136,5 +150,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbCommercialPlan;
+        private System.Windows.Forms.Label label4;
     }
 }

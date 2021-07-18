@@ -11,8 +11,10 @@ namespace FCalc.UI.Windows.ViewModel
         public int idCustomer { get; set; }
         public string ruc { get; set; }
         public string legalName { get; set; }
-        public Nullable<int> idCommercialplan { get; set; }
-        public string status { get; set; }
+        public string plantype { get; set; }
+        //public string status { get; set; }
+        
         public Nullable<System.DateTime> creationDate { get; set; }
+        public Nullable<int> idCommercialplan { get; set; }
     }
 }

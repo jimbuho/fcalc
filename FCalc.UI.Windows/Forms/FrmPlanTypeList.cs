@@ -36,6 +36,11 @@ namespace FCalc.UI.Windows.Forms
         private void doMainQuery()
         {
             grdPlanTypes.DataSource = controller.FindActivePlanType();
+            grdPlanTypes.Columns[0].HeaderText = "ID";
+            grdPlanTypes.Columns[1].HeaderText = "NOMBRE";
+            grdPlanTypes.Columns[2].HeaderText = "RANGO";
+            grdPlanTypes.Columns[3].HeaderText = "DINAMICO";
+            grdPlanTypes.Columns[4].HeaderText = "FECHA CREACIÓN";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

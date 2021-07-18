@@ -11,10 +11,12 @@ namespace FCalc.UI.Windows.ApplicationController
     public class CommercialPlanRangeController:BaseController<CommercialPlanRange>
     {
         CommercialPlanRangeService service;
+        CommercialPlanController commercialPlanController;
 
         public CommercialPlanRangeController()
         {
             service = new CommercialPlanRangeService();
+            commercialPlanController = new CommercialPlanController();
         }
 
         public bool CommercialPlanRangeInsert(CommercialPlanRangeViewModel commercialPlanRangeViewModel)
@@ -38,7 +40,14 @@ namespace FCalc.UI.Windows.ApplicationController
             List<CommercialPlanRangeViewModel> customerViewModelList = new List<CommercialPlanRangeViewModel>(); 
             foreach(CommercialPlanRange item in activeCommercialPlanRanges)
             {
-                customerViewModelList.Add(PropertyCopier<CommercialPlanRange, CommercialPlanRangeViewModel>.Copy(item, new CommercialPlanRangeViewModel()));
+                CommercialPlanRangeViewModel comPlanView = new CommercialPlanRangeViewModel();
+                // Copio todos los campos que se llaman igual
+                comPlanView = PropertyCopier<CommercialPlanRange, CommercialPlanRangeViewModel>.Copy(item,comPlanView);
+                // Consulto el nombre del plan y lo lleno en el campo nuevo
+                CommercialPlan planType = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
+                comPlanView.planType1 = planType.name;
+                // Agregar el registro procesado a la lista
+                customerViewModelList.Add(comPlanView);
             }
             return customerViewModelList;
         }

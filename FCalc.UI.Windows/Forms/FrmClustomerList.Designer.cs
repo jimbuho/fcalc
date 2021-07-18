@@ -196,6 +196,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(810, 574);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnDelete);
@@ -213,6 +214,8 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.dgCustomersList);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCustomerList";
             this.Text = "FrmClientes";
             this.Load += new System.EventHandler(this.FrmCustomerList_Load);

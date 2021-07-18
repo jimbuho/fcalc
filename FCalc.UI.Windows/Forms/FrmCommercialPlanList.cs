@@ -56,6 +56,12 @@ namespace FCalc.UI.Windows.Forms
         private void doMainQuery()
         {
             grdCommercialPlanList.DataSource = controller.FindActiveCommercialPlan();
+            grdCommercialPlanList.Columns[0].HeaderText = "ID";
+            grdCommercialPlanList.Columns[1].HeaderText = "NOMBRE";
+            grdCommercialPlanList.Columns[2].HeaderText = "TIPO PLAN";
+            grdCommercialPlanList.Columns[3].HeaderText = "PRECIO";
+            grdCommercialPlanList.Columns[4].HeaderText = "FECHA CREACIÓN";
+            grdCommercialPlanList.Columns[5].HeaderText = "ID TIPO PLAN";
         }
 
         private void button3_Click(object sender, EventArgs e)

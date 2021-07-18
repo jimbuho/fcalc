@@ -89,12 +89,15 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(752, 437);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdExecutionLog);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmExecutionLog";
             this.Text = "FrmExecutionLog";
             this.Load += new System.EventHandler(this.FrmExecutionLog_Load);

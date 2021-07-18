@@ -52,14 +52,14 @@ namespace FCalc.UI.Windows.Forms
             this.grdCommercialPlanRange.Name = "grdCommercialPlanRange";
             this.grdCommercialPlanRange.RowHeadersWidth = 51;
             this.grdCommercialPlanRange.RowTemplate.Height = 24;
-            this.grdCommercialPlanRange.Size = new System.Drawing.Size(630, 253);
+            this.grdCommercialPlanRange.Size = new System.Drawing.Size(715, 253);
             this.grdCommercialPlanRange.TabIndex = 0;
             this.grdCommercialPlanRange.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommercialPlanRange_CellClick);
             this.grdCommercialPlanRange.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommercialPlanRange_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(513, 13);
+            this.button1.Location = new System.Drawing.Point(598, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 39);
             this.button1.TabIndex = 1;
@@ -135,7 +135,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(517, 351);
+            this.btnDelete.Location = new System.Drawing.Point(624, 334);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 41);
             this.btnDelete.TabIndex = 16;
@@ -145,7 +145,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(394, 352);
+            this.button3.Location = new System.Drawing.Point(501, 335);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 41);
             this.button3.TabIndex = 15;
@@ -166,7 +166,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 498);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(739, 498);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.button3);
@@ -180,6 +181,8 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdCommercialPlanRange);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanRangeList";
             this.Text = "FrmCommercialPlanRangeList";
             this.Load += new System.EventHandler(this.FrmCommercialPlanRangeList_Load);

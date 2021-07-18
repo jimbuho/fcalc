@@ -101,6 +101,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(660, 245);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbPlanType);
@@ -109,6 +110,8 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCommercialPlan";
             this.Text = "FrmCommercialPlan";
             this.Load += new System.EventHandler(this.FrmCommercialPlan_Load);

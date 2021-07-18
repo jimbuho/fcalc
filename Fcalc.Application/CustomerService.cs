@@ -14,6 +14,7 @@ namespace FCalc.Application.Service
         public CustomerService()
         {
             repository = new CustomerRepository();
+            
         }
 
         public IEnumerable<Customer> GetCustomers()
@@ -51,5 +52,9 @@ namespace FCalc.Application.Service
             repository.Modify(item);
         }
 
+        public PlanType GetPlanById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

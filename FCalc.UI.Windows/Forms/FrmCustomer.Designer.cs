@@ -111,6 +111,7 @@ namespace UI.windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(754, 251);
             this.Controls.Add(this.Plan);
             this.Controls.Add(this.cmbCommecialPlan);
@@ -120,6 +121,8 @@ namespace UI.windows.Forms
             this.Controls.Add(this.txtRUC);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmCustomer";
             this.Text = "FrmCustomer";
             this.Load += new System.EventHandler(this.FrmCustomer_Load);
