@@ -38,7 +38,7 @@ namespace FCalc.DataAccess.Repository
                 using (FcalcDBEntities1 context = new FcalcDBEntities1())
                 {
                     var query = from c in context.CommercialPlanRange
-                                where c.idCommercialplan == commercialPlan.idCommercialplan
+                                where c.idCommercialplan == commercialPlan.idCommercialplan && c.status == "1"
                                 select c;
 
                     return query.ToList();
@@ -58,7 +58,7 @@ namespace FCalc.DataAccess.Repository
                 using (FcalcDBEntities1 context = new FcalcDBEntities1())
                 {
                     var query = from c in context.CommercialPlanRange
-                                where c.idCommercialplan == commercialPlanId
+                                where c.idCommercialplan == commercialPlanId && c.status == "1"
                                 select c;
 
                     return query.ToList();

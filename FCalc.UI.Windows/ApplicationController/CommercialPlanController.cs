@@ -96,7 +96,7 @@ namespace FCalc.UI.Windows.ApplicationController
 
         public List<CommercialPlanViewModel> FindActiveCommercialPlanByName(string name)
         {
-            IEnumerable<CommercialPlan> activeCommercialPlans = service.FindActiveCommercialPlan();
+            IEnumerable<CommercialPlan> activeCommercialPlans = service.FindActiveCommercialPlanBYName(name);
             List<CommercialPlanViewModel> customerViewModelList = new List<CommercialPlanViewModel>();
             foreach (CommercialPlan item in activeCommercialPlans)
             {

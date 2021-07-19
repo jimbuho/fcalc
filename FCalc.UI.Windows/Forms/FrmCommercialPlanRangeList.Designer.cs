@@ -42,6 +42,7 @@ namespace FCalc.UI.Windows.Forms
             this.btnDelete = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbFiltroTipoPlan = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdCommercialPlanRange)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +119,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(123, 22);
             this.txtPrice.TabIndex = 10;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // txtEndRange
             // 
@@ -125,6 +127,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtEndRange.Name = "txtEndRange";
             this.txtEndRange.Size = new System.Drawing.Size(123, 22);
             this.txtEndRange.TabIndex = 9;
+            this.txtEndRange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // txtStartRange
             // 
@@ -132,6 +135,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtStartRange.Name = "txtStartRange";
             this.txtStartRange.Size = new System.Drawing.Size(123, 22);
             this.txtStartRange.TabIndex = 8;
+            this.txtStartRange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // btnDelete
             // 
@@ -162,12 +166,22 @@ namespace FCalc.UI.Windows.Forms
             this.label4.TabIndex = 17;
             this.label4.Text = "Tipo de plan";
             // 
+            // cmbFiltroTipoPlan
+            // 
+            this.cmbFiltroTipoPlan.FormattingEnabled = true;
+            this.cmbFiltroTipoPlan.Location = new System.Drawing.Point(262, 20);
+            this.cmbFiltroTipoPlan.Name = "cmbFiltroTipoPlan";
+            this.cmbFiltroTipoPlan.Size = new System.Drawing.Size(228, 24);
+            this.cmbFiltroTipoPlan.TabIndex = 18;
+            this.cmbFiltroTipoPlan.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroTipoPlan_SelectedIndexChanged);
+            // 
             // FrmCommercialPlanRangeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(739, 498);
+            this.Controls.Add(this.cmbFiltroTipoPlan);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.button3);
@@ -207,5 +221,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbFiltroTipoPlan;
     }
 }

@@ -54,6 +54,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtEndRange.Name = "txtEndRange";
             this.txtEndRange.Size = new System.Drawing.Size(123, 22);
             this.txtEndRange.TabIndex = 1;
+            this.txtEndRange.TextChanged += new System.EventHandler(this.txtEndRange_TextChanged);
             this.txtEndRange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtField_KeyPress);
             // 
             // txtPrice

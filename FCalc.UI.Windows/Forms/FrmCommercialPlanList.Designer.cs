@@ -117,10 +117,12 @@ namespace FCalc.UI.Windows.Forms
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(144, 22);
             this.txtPrice.TabIndex = 8;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(142, 457);
+            this.txtName.MaxLength = 16;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(337, 22);
             this.txtName.TabIndex = 7;

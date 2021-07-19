@@ -69,7 +69,6 @@ namespace FCalc.UI.Windows.ApplicationController
             foreach (Customer item in activeCustomers)
             {
              customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(item, new CustomerViewModel()));
-                
             }
             return customerViewModelList;
         }

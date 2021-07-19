@@ -76,11 +76,25 @@ namespace FCalc.UI.Windows.Forms
                 List<CommercialPlanViewModel> plans = controller.FindActiveCommercialPlanByName(txtName.Text);
                 if(plans.Count > 0)
                 {
-                    MessageBox.Show("Ya existen planes comerciales con ese nombre");
+                    MessageBox.Show("Ya existen planes comerciales con ese nombre: ");
+                    /*foreach(CommercialPlanViewModel plan in plans) {
+                        MessageBox.Show(plan.idCommercialplan+": "+plan.name);
+                    }*/
+                    
                     return false;
                 }
             }
-            
+            if (!Validator.ValidarCamposTexto(txtPrice, "Precio del Plan", 3))
+            {
+                return false;
+            }
+
+            if (cmbPlanType.SelectedItem == null)
+            {
+                MessageBox.Show("Debe elegir un tipo de plan");
+                return false;
+            }
+
             return true;
         }
 

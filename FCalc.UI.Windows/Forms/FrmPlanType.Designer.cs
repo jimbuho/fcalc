@@ -39,6 +39,7 @@ namespace FCalc.UI.Windows.Forms
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(215, 29);
+            this.txtName.MaxLength = 16;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(205, 22);
             this.txtName.TabIndex = 0;

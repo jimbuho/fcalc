@@ -164,5 +164,10 @@ namespace FCalc.UI.Windows.Forms
             frmExecutionLog.MdiParent = this;
             frmExecutionLog.Show();
         }
+
+        private void MDIMain_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

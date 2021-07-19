@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FCalc.UI.Windows.ApplicationController;
 using FCalc.UI.Windows.ViewModel;
@@ -86,22 +87,25 @@ namespace FCalc.UI.Windows.Forms
              */
             if (selectedItem != null && selectedItem.name != null)
             {
-                // Aqui copiamos todo los valores cambiados del formulario hacia el objeto antes de 
-                // enviarlo a cambiar en la base de datos
-                selectedItem.name = txtName.Text;
-                selectedItem.isDynamic = chkIsDynamic.Checked;
-                selectedItem.requireRange = chkRequireRange.Checked;
+                if (ValidarFormulario())
+                {
+                    // Aqui copiamos todo los valores cambiados del formulario hacia el objeto antes de 
+                    // enviarlo a cambiar en la base de datos
+                    selectedItem.name = txtName.Text;
+                    selectedItem.isDynamic = chkIsDynamic.Checked;
+                    selectedItem.requireRange = chkRequireRange.Checked;
 
-                if (controller.PlanTypeModify(selectedItem))
-                {
-                    MessageBox.Show("Registro Modificado con exito");
-                    doMainQuery();
-                    // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
-                    selectedItem = null;
-                }
-                else
-                {
-                    MessageBox.Show("Ha ocurrido un error en la modificacion");
+                    if (controller.PlanTypeModify(selectedItem))
+                    {
+                        MessageBox.Show("Registro Modificado con exito");
+                        doMainQuery();
+                        // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
+                        selectedItem = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error en la modificacion");
+                    }
                 }
             }
             else
@@ -148,6 +152,25 @@ namespace FCalc.UI.Windows.Forms
             chkIsDynamic.Checked = selectedItem.isDynamic.Value;
             chkRequireRange.Checked = selectedItem.requireRange.Value;
             lblId.Text = Convert.ToString(selectedItem.idPlantype);
+        }
+
+        private bool ValidarFormulario()
+        {
+            if (!Validator.ValidarCamposTexto(txtName, "Nombre del Tipo de Plan", 3))
+            {
+                return false;
+            }
+            else
+            {
+                List<PlanTypeViewModel> plans = controller.FindActivePlanTypeByName(txtName.Text);
+                if (plans.Count > 0)
+                {
+                    MessageBox.Show("Ya existen tipos de plan con ese nombre");
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

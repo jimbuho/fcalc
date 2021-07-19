@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FCalc.UI.Windows.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -165,13 +166,49 @@ namespace FCalc.UI.Windows.ApplicationController
             {
                 tb.Select(0, tb.Text.Length);
                 MessageBox.Show(name + ": Campo en blanco");
+                return false;
             }
-            else if(tb.Text.Length <= min)
+            else if(tb.Text.Length < min)
             {
                 MessageBox.Show(name + ": Debe ingresar al menos " + min+" caracteres");
+                return false;
             }
             return true;
         }
+
+        public static bool validarExistenciaRangos(List<CommercialPlanRangeViewModel> listaRangos, int inicio, int fin, int commercialPlanRangeId)
+        {
+            if (inicio >= fin)
+            {
+                return false;
+            }
+
+            int min = -1;
+            int max = -1;
+
+            foreach (CommercialPlanRangeViewModel item in listaRangos)
+            {
+                if (commercialPlanRangeId != item.idPlanrange || commercialPlanRangeId < 0)
+                {
+                    if (item.startRange < min || min < 0)
+                    {
+                        min = (int)item.startRange;
+                    }
+                    if (item.endRange > max || max < 0)
+                    {
+                        max = (int)item.endRange;
+                    }
+                }
+            }
+
+            if (inicio > max)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
     }
 }

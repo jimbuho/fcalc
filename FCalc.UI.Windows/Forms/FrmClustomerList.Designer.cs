@@ -95,6 +95,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtRucSearch.Name = "txtRucSearch";
             this.txtRucSearch.Size = new System.Drawing.Size(147, 22);
             this.txtRucSearch.TabIndex = 5;
+            this.txtRucSearch.TextChanged += new System.EventHandler(this.txtRucSearch_TextChanged);
             // 
             // label1
             // 
@@ -135,6 +136,7 @@ namespace FCalc.UI.Windows.Forms
             // txtLegalName
             // 
             this.txtLegalName.Location = new System.Drawing.Point(136, 487);
+            this.txtLegalName.MaxLength = 64;
             this.txtLegalName.Name = "txtLegalName";
             this.txtLegalName.Size = new System.Drawing.Size(542, 22);
             this.txtLegalName.TabIndex = 11;
@@ -142,6 +144,7 @@ namespace FCalc.UI.Windows.Forms
             // txtRUC
             // 
             this.txtRUC.Location = new System.Drawing.Point(136, 453);
+            this.txtRUC.MaxLength = 13;
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.Size = new System.Drawing.Size(195, 22);
             this.txtRUC.TabIndex = 10;

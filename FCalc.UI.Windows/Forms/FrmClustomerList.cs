@@ -72,24 +72,27 @@ namespace FCalc.UI.Windows.Forms
              */
             if (selectedItem != null && selectedItem.ruc != null)
             {
-                // Aqui copiamos todo los valores cambiados del formulario hacia el objeto antes de 
-                // enviarlo a cambiar en la base de datos
-                selectedItem.ruc = txtRUC.Text;
-                selectedItem.legalName = txtLegalName.Text;
-                // Se toma el objeto seleccionado y luego se obtien el id (value)
-                ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommecialPlan.SelectedItem;
-                selectedItem.idCommercialplan = commercialPlanItem.Value;
+                if (ValidarFormulario())
+                {
+                    // Aqui copiamos todo los valores cambiados del formulario hacia el objeto antes de 
+                    // enviarlo a cambiar en la base de datos
+                    selectedItem.ruc = txtRUC.Text;
+                    selectedItem.legalName = txtLegalName.Text;
+                    // Se toma el objeto seleccionado y luego se obtien el id (value)
+                    ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommecialPlan.SelectedItem;
+                    selectedItem.idCommercialplan = commercialPlanItem.Value;
 
-                if (controller.CustomerModify(selectedItem))
-                {
-                    MessageBox.Show("Registro Modificado con exito");
-                    doMainQuery();
-                    // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
-                    selectedItem = null;
-                }
-                else
-                {
-                    MessageBox.Show("Ha ocurrido un error en la modificación");
+                    if (controller.CustomerModify(selectedItem))
+                    {
+                        MessageBox.Show("Registro Modificado con exito");
+                        doMainQuery();
+                        // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
+                        selectedItem = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error en la modificación");
+                    }
                 }
             }
             else
@@ -179,6 +182,39 @@ namespace FCalc.UI.Windows.Forms
                 i++;
             }
 
+        }
+
+        private void txtRucSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgCustomersList.DataSource = controller.FindActiveCustomersByRUC(txtRucSearch.Text);
+        }
+
+        private bool ValidarFormulario()
+        {
+            if (!Validator.ValidarCamposTexto(txtLegalName, "Razon Social", 5))
+            {
+                return false;
+            }
+            if(cmbCommecialPlan.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un plan comercial");
+                return false;
+            }
+            if (!Validator.VerificaRuc(txtRUC.Text))
+            {
+                MessageBox.Show("Debe ingresar un RUC valido");
+                return false;
+            }
+            else
+            {
+                List<CustomerViewModel> customers = controller.FindActiveCustomersByRUC(txtRUC.Text);
+                if (customers.Count > 0)
+                {
+                    MessageBox.Show("Ya existe un cliente con ese RUC");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

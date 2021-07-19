@@ -63,7 +63,12 @@ namespace UI.windows.Forms
             {
                 return false;
             }
-            if(!Validator.VerificaRuc(txtRUC.Text))
+            if (cmbCommecialPlan.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar un plan comercial");
+                return false;
+            }
+            if (!Validator.VerificaRuc(txtRUC.Text))
             {
                 MessageBox.Show("Debe ingresar un RUC valido");
                 return false;

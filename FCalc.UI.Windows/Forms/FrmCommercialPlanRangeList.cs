@@ -1,4 +1,5 @@
-﻿using FCalc.UI.Windows.ApplicationController;
+﻿using FCalc.Domain.Model.Entities;
+using FCalc.UI.Windows.ApplicationController;
 using FCalc.UI.Windows.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -25,27 +26,36 @@ namespace FCalc.UI.Windows.Forms
             InitializeComponent();
             controller = new CommercialPlanRangeController();
             commercialPlanController = new CommercialPlanController();
-
-
         }
 
         private void FrmCommercialPlanRangeList_Load(object sender, EventArgs e)
         {
             doQuery();
+            LoadPlanType(cmbCommercialPlan);
+            LoadPlanType(cmbFiltroTipoPlan);
+            UpdateGrid();
+        }
+
+        public void LoadPlanType(ComboBox combo)
+        {
             List<CommercialPlanViewModel> commercialPlans = commercialPlanController.FindActiveCommercialPlan();
             foreach (CommercialPlanViewModel commercialPlan in commercialPlans)
             {
                 ComboboxItem item = new ComboboxItem();
                 item.Text = $"{commercialPlan.name}";
                 item.Value = commercialPlan.idCommercialplan;
-                cmbCommercialPlan.Items.Add(item);
+                combo.Items.Add(item);
             }
-
         }
 
         private void doQuery()
         {
             grdCommercialPlanRange.DataSource = controller.FindActiveCommercialPlanRange();
+            cmbFiltroTipoPlan.SelectedItem = null;
+        }
+
+        private void UpdateGrid()
+        {
             grdCommercialPlanRange.Columns[0].HeaderText = "ID";
             grdCommercialPlanRange.Columns[1].HeaderText = "INICIO RANGO";
             grdCommercialPlanRange.Columns[2].HeaderText = "FIN RANGO";
@@ -57,7 +67,14 @@ namespace FCalc.UI.Windows.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            doQuery();
+            if (cmbFiltroTipoPlan.SelectedItem != null)
+            {
+                updateBySelectedPlan();
+            }
+            else
+            {
+                doQuery();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,35 +156,96 @@ namespace FCalc.UI.Windows.Forms
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            /*
-            * Si hay un registro seleccionado entonces lo mandamos a actualizar, al terminar
-            * conexito el guardado recargamos el GridControl.
-            */
             if (selectedItem != null && selectedItem.startRange != null)
             {
-                selectedItem.startRange =Convert.ToInt32(txtStartRange.Text);
-                selectedItem.endRange = Convert.ToInt32(txtEndRange.Text);
-                selectedItem.price = Convert.ToDecimal(txtPrice.Text);
-                // Se toma el objeto seleccionado y luego se obtien el id (value)
-                ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommercialPlan.SelectedItem;
-                selectedItem.idCommercialplan = commercialPlanItem.Value;
+                if (ValidarFormulario())
+                {
+                    selectedItem.startRange = Convert.ToInt32(txtStartRange.Text);
+                    selectedItem.endRange = Convert.ToInt32(txtEndRange.Text);
+                    selectedItem.price = Convert.ToDecimal(txtPrice.Text);
+                    // Se toma el objeto seleccionado y luego se obtien el id (value)
+                    ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommercialPlan.SelectedItem;
+                    selectedItem.idCommercialplan = commercialPlanItem.Value;
 
-                if (controller.CommercialPlanRangeModify(selectedItem))
-                {
-                    MessageBox.Show("Registro Modificado con exito");
-                    doQuery();
-                    // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
-                    selectedItem = null;
-                }
-                else
-                {
-                    MessageBox.Show("Ha ocurrido un error en la modificacion");
+                    // Obtener los rangos de planes comerciales que sean iguales al elegido por el usuario
+                    List<CommercialPlanRangeViewModel> listaRangos = controller.GetCommercialPlanRangeByCommecialPlan(Convert.ToInt32(selectedItem.idCommercialplan));
+
+                    if (!Validator.validarExistenciaRangos(listaRangos, Convert.ToInt32(selectedItem.startRange),
+                        Convert.ToInt32(selectedItem.endRange), (int)selectedItem.idPlanrange))
+                    {
+                        MessageBox.Show("Ingrese un rango correcto");
+                    }
+                    else
+                    {
+                        /*
+                        * Si hay un registro seleccionado entonces lo mandamos a actualizar, al terminar
+                        * conexito el guardado recargamos el GridControl.
+                        */
+
+                        if (controller.CommercialPlanRangeModify(selectedItem))
+                        {
+                            MessageBox.Show("Registro Modificado con exito");
+                            doQuery();
+                            // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
+                            selectedItem = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error en la modificacion");
+                        }
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Debe seleccionar el registro a modificar");
             }
-        }   
+        }
+
+        private void cmbFiltroTipoPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFiltroTipoPlan.SelectedItem != null)
+            {
+                updateBySelectedPlan();
+            }
+        }
+
+        private void updateBySelectedPlan()
+        {
+            ComboboxItem commercialPlanItem = (ComboboxItem)cmbFiltroTipoPlan.SelectedItem;
+            CommercialPlan plan = commercialPlanController.GetById(commercialPlanItem.Value);
+            List<CommercialPlanRangeViewModel> planRange = controller.GetCommercialPlanRangeByCommecialPlan(plan);
+
+            grdCommercialPlanRange.DataSource = planRange;
+        }
+
+        private bool ValidarFormulario()
+        {
+            if (!Validator.ValidarCamposTexto(txtStartRange, "Inicio de Rango", 1))
+            {
+                return false;
+            }
+            if (!Validator.ValidarCamposTexto(txtEndRange, "Fin de Rango", 1))
+            {
+                return false;
+            }
+            if (!Validator.ValidarCamposTexto(txtPrice, "Precio", 1))
+            {
+                return false;
+            }
+            if (cmbCommercialPlan.SelectedItem == null)
+            {
+                MessageBox.Show("Debe elegir el Plan Comercial relacionado a este rango");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private void txtField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validator.ValidateNumbers(sender, e);
+        }
     }
 }

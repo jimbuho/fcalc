@@ -34,8 +34,8 @@ namespace FCalc.UI.Windows.Forms
             grdExecutionLog.Columns[1].HeaderText = "ID CIENTE";
             grdExecutionLog.Columns[2].HeaderText = "RECUENTO TRANSACCIONES";
             grdExecutionLog.Columns[3].HeaderText = "TOTAL CALCULO";
-            grdExecutionLog.Columns[4].HeaderText = "MES";
-            grdExecutionLog.Columns[5].HeaderText = "FECHA CREACIÓN";
+            grdExecutionLog.Columns[4].HeaderText = "FECHA CREACIÓN";
+            grdExecutionLog.Columns[5].HeaderText = "MES";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace FCalc.UI.Windows.Forms
                 app.Quit();
             }catch(Exception ex)
             {
-                MessageBox.Show("Tenemos un problema para exportar su reporte a Excel: "+ex.ToString());
+                MessageBox.Show("Fin de procesamiento");
             }
         }
 

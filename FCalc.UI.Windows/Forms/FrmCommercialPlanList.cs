@@ -72,23 +72,25 @@ namespace FCalc.UI.Windows.Forms
              */
             if (selectedItem != null && selectedItem.name != null)
             {
-                selectedItem.name = txtName.Text;
-                selectedItem.price = Convert.ToInt32(txtPrice.Text);
-                
-                // Se toma el objeto seleccionado y luego se obtien el id (value)
-                ComboboxItem commercialPlanItem = (ComboboxItem)cmbPlanType.SelectedItem;
-                selectedItem.idPlantype = commercialPlanItem.Value;
+                if (ValidarFormulario())
+                {
+                    selectedItem.name = txtName.Text;
+                    selectedItem.price = Convert.ToInt32(txtPrice.Text);
+                    // Se toma el objeto seleccionado y luego se obtien el id (value)
+                    ComboboxItem commercialPlanItem = (ComboboxItem)cmbPlanType.SelectedItem;
+                    selectedItem.idPlantype = commercialPlanItem.Value;
 
-                if (controller.CommercialPlanModify(selectedItem))
-                {
-                    MessageBox.Show("Registro Modificado con exito");
-                    doMainQuery();
-                    // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
-                    selectedItem = null;
-                }
-                else
-                {
-                    MessageBox.Show("Ha ocurrido un error en la modificacion");
+                    if (controller.CommercialPlanModify(selectedItem))
+                    {
+                        MessageBox.Show("Registro Modificado con exito");
+                        doMainQuery();
+                        // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
+                        selectedItem = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error en la modificacion");
+                    }
                 }
             }
             else
@@ -163,5 +165,44 @@ namespace FCalc.UI.Windows.Forms
                 i++;
             }
         }
+
+        private bool ValidarFormulario()
+        {
+            if (!Validator.ValidarCamposTexto(txtName, "Nombre del Plan", 3))
+            {
+                return false;
+            }
+            else
+            {
+                List<CommercialPlanViewModel> plans = controller.FindActiveCommercialPlanByName(txtName.Text);
+                if (plans.Count > 0)
+                {
+                    MessageBox.Show("Ya existen planes comerciales con ese nombre");
+                    return false;
+                }
+            }
+            if (!Validator.ValidarCamposTexto(txtPrice, "Precio del Plan", 3))
+            {
+                return false;
+            }
+
+            if (cmbPlanType.SelectedItem == null)
+            {
+                MessageBox.Show("Debe elegir un tipo de plan");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validator.ValidateNumbers(sender, e);
+        }
     }
-    }
+}

@@ -51,7 +51,7 @@ namespace FCalc.UI.Windows.Forms
         {
             if (executionLogController.ThereAreExecutionLogsInThisMonth())
             {
-                //MessageBox.Show("Ya existe procesamiento en este mes. Si quiere reintentarlo, dirigirse a la opcion <Deshabilitar Procesamiento del mes> en Historios");
+                MessageBox.Show("Ya existe procesamiento en este mes. Si quiere reintentarlo, dirigirse a la opcion <Deshabilitar Procesamiento del mes> en Historios");
             }
             else
             {

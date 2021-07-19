@@ -42,8 +42,8 @@ namespace FCalc.UI.Windows.Forms
                 List<CommercialPlanRangeViewModel> listaRangos = controller.GetCommercialPlanRangeByCommecialPlan(Convert.ToInt32(commercialPlanRangeModelView.idCommercialplan));
 
                 // Valido que no hayan rangos que incluyan o sean iguales al que esta ingresando el usuario
-                if (!validarExistenciaRangos(listaRangos, Convert.ToInt32(commercialPlanRangeModelView.startRange),
-                    Convert.ToInt32(commercialPlanRangeModelView.endRange)))
+                if (!Validator.validarExistenciaRangos(listaRangos, Convert.ToInt32(commercialPlanRangeModelView.startRange),
+                    Convert.ToInt32(commercialPlanRangeModelView.endRange), -1))
                 {
                     MessageBox.Show("Ingrese un rango correcto");
                 }
@@ -80,39 +80,21 @@ namespace FCalc.UI.Windows.Forms
             if(cmbCommercialPlan.SelectedItem == null)
             {
                 MessageBox.Show("Debe elegir el Plan Comercial relacionado a este rango");
+                return false;
             }
 
             return true;
         }
 
-        private Boolean validarExistenciaRangos(List<CommercialPlanRangeViewModel> listaRangos, int inicio, int fin)
+
+        private void txtField_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(inicio >= fin)
-            {
-                return false;
-            }
+            Validator.ValidateNumbers(sender, e);
+        }
 
-            int min = -1;
-            int max = -1;
+        private void txtEndRange_TextChanged(object sender, EventArgs e)
+        {
 
-            foreach(CommercialPlanRangeViewModel item in listaRangos)
-            {                
-                if(item.startRange < min || min < 0)
-                {
-                    min = (int)item.startRange;
-                }
-                else if (item.endRange > max || max < 0)
-                {
-                    max = (int)item.endRange;
-                }
-            }
-
-            if(inicio > max)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         private Int32 textToNumber(string text, Boolean isInit)
@@ -145,10 +127,6 @@ namespace FCalc.UI.Windows.Forms
                 cmbCommercialPlan.Items.Add(item);
             }
         }
-
-        private void txtField_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validator.ValidateNumbers(sender, e);
-        }
+                
     }
 }
