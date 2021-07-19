@@ -84,7 +84,7 @@ namespace FCalc.UI.Windows.Forms
                     return false;
                 }
             }
-            if (!Validator.ValidarCamposTexto(txtPrice, "Precio del Plan", 3))
+            if (!Validator.ValidarCamposTexto(txtPrice, "Precio del Plan", 1))
             {
                 return false;
             }
