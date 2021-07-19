@@ -12,10 +12,12 @@ namespace FCalc.UI.Windows.ApplicationController
     {
 
         ExecutionLogService service;
+        CustomerService customerService;
 
         public ExecutionLogController()
         {
             service = new ExecutionLogService();
+            customerService = new CustomerService();
         }
 
         public bool ExecutionLogInsert(ExecutionLogViewModel executionLogViewModel)
@@ -36,23 +38,26 @@ namespace FCalc.UI.Windows.ApplicationController
         public List<ExecutionLogViewModel> FindActiveExecutionLogs()
         {
             IEnumerable<ExecutionLog> activeExecutionLogs = service.FindActiveExecutionLog();
-
-            List<ExecutionLogViewModel> executionLogViewModelList = new List<ExecutionLogViewModel>(); 
-            foreach(ExecutionLog executionLog in activeExecutionLogs)
-            {
-                executionLogViewModelList.Add(PropertyCopier<ExecutionLog, ExecutionLogViewModel>.Copy(executionLog, new ExecutionLogViewModel()));
-            }
-            return executionLogViewModelList;
+            return BindItemsExecutionLog(activeExecutionLogs);
         }
 
         public List<ExecutionLogViewModel> FindActiveExecutionLogsByDate(string date)
         {
             IEnumerable<ExecutionLog> activeExecutionLogs = service.FindExecutionLogByDate(date);
+            return BindItemsExecutionLog(activeExecutionLogs);
+        }
 
+        private List<ExecutionLogViewModel> BindItemsExecutionLog(IEnumerable<ExecutionLog> activeExecutionLogs)
+        {
             List<ExecutionLogViewModel> executionLogViewModelList = new List<ExecutionLogViewModel>();
+            Customer customer = null;
             foreach (ExecutionLog executionLog in activeExecutionLogs)
             {
-                executionLogViewModelList.Add(PropertyCopier<ExecutionLog, ExecutionLogViewModel>.Copy(executionLog, new ExecutionLogViewModel()));
+                ExecutionLogViewModel exeLog = new ExecutionLogViewModel();
+                PropertyCopier<ExecutionLog, ExecutionLogViewModel>.Copy(executionLog, exeLog);
+                customer = customerService.GetCustomerById((int)executionLog.idCustomer);
+                exeLog.ruc = customer.ruc;
+                executionLogViewModelList.Add(exeLog);
             }
             return executionLogViewModelList;
         }
