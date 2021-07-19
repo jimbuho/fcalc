@@ -73,7 +73,7 @@ namespace FCalc.UI.Windows.Forms
             }
             else
             {
-                List<CommercialPlanViewModel> plans = controller.FindActiveCommercialPlanByName(txtName.Text);
+                List<CommercialPlanViewModel> plans = controller.FindActiveCommercialPlanByName(txtName.Text, -1);
                 if(plans.Count > 0)
                 {
                     MessageBox.Show("Ya existen planes comerciales con ese nombre: ");

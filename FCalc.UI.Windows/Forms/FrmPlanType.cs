@@ -51,7 +51,7 @@ namespace FCalc.UI.Windows.Forms
             }
             else
             {
-                List<PlanTypeViewModel> plans = controller.FindActivePlanTypeByName(txtName.Text);
+                List<PlanTypeViewModel> plans = controller.FindActivePlanTypeByName(txtName.Text, -1);
                 if (plans.Count > 0)
                 {
                     MessageBox.Show("Ya existen tipos de plan con ese nombre");

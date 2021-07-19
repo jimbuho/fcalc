@@ -94,14 +94,16 @@ namespace FCalc.UI.Windows.ApplicationController
             return service.GetCommercialPlanById(id);
         }
 
-        public List<CommercialPlanViewModel> FindActiveCommercialPlanByName(string name)
+        public List<CommercialPlanViewModel> FindActiveCommercialPlanByName(string name, int except)
         {
             IEnumerable<CommercialPlan> activeCommercialPlans = service.FindActiveCommercialPlanBYName(name);
             List<CommercialPlanViewModel> customerViewModelList = new List<CommercialPlanViewModel>();
             foreach (CommercialPlan item in activeCommercialPlans)
             {
-                // Copio todos los campos que se llaman igual
-                customerViewModelList.Add(PropertyCopier<CommercialPlan, CommercialPlanViewModel>.Copy(item, new CommercialPlanViewModel()));
+                if(item.idCommercialplan != except) { 
+                    // Copio todos los campos que se llaman igual
+                    customerViewModelList.Add(PropertyCopier<CommercialPlan, CommercialPlanViewModel>.Copy(item, new CommercialPlanViewModel()));
+                }
             }
             return customerViewModelList;
         }
