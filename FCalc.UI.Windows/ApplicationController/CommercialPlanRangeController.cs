@@ -46,8 +46,8 @@ namespace FCalc.UI.Windows.ApplicationController
                 // Consulto el nombre del plan y lo lleno en el campo nuevo
                 if (item.idCommercialplan != null)
                 {
-                    CommercialPlan planType = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
-                    comPlanView.planType1 = planType.name;
+                    CommercialPlan plan = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
+                    comPlanView.planType1 = plan.name;
                 }
                 // Agregar el registro procesado a la lista
                 customerViewModelList.Add(comPlanView);

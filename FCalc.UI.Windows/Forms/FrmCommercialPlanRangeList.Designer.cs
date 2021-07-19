@@ -81,7 +81,7 @@ namespace FCalc.UI.Windows.Forms
             // cmbCommercialPlan
             // 
             this.cmbCommercialPlan.FormattingEnabled = true;
-            this.cmbCommercialPlan.Location = new System.Drawing.Point(117, 454);
+            this.cmbCommercialPlan.Location = new System.Drawing.Point(86, 454);
             this.cmbCommercialPlan.Name = "cmbCommercialPlan";
             this.cmbCommercialPlan.Size = new System.Drawing.Size(228, 24);
             this.cmbCommercialPlan.TabIndex = 14;
@@ -123,6 +123,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // txtEndRange
             // 
+            this.txtEndRange.Enabled = false;
             this.txtEndRange.Location = new System.Drawing.Point(86, 371);
             this.txtEndRange.Name = "txtEndRange";
             this.txtEndRange.Size = new System.Drawing.Size(123, 22);
@@ -131,6 +132,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // txtStartRange
             // 
+            this.txtStartRange.Enabled = false;
             this.txtStartRange.Location = new System.Drawing.Point(86, 332);
             this.txtStartRange.Name = "txtStartRange";
             this.txtStartRange.Size = new System.Drawing.Size(123, 22);
@@ -162,9 +164,9 @@ namespace FCalc.UI.Windows.Forms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(24, 457);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 17);
+            this.label4.Size = new System.Drawing.Size(36, 17);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Tipo de plan";
+            this.label4.Text = "Plan";
             // 
             // cmbFiltroTipoPlan
             // 

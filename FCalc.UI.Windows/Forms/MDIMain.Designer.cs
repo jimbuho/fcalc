@@ -76,7 +76,7 @@ namespace FCalc.UI.Windows.Forms
             this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1038, 30);
+            this.menuStrip.Size = new System.Drawing.Size(1038, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -89,7 +89,7 @@ namespace FCalc.UI.Windows.Forms
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(73, 26);
+            this.fileMenu.Size = new System.Drawing.Size(73, 24);
             this.fileMenu.Text = "&Archivo";
             // 
             // newToolStripMenuItem
@@ -129,7 +129,7 @@ namespace FCalc.UI.Windows.Forms
             this.clientesToolStripMenuItem,
             this.rangosDePlanesComercialesToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(116, 26);
+            this.toolsMenu.Size = new System.Drawing.Size(116, 24);
             this.toolsMenu.Text = "&Configuración";
             // 
             // tiposDePlanesToolStripMenuItem
@@ -233,7 +233,7 @@ namespace FCalc.UI.Windows.Forms
             this.toolStripSeparator8,
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(65, 26);
+            this.helpMenu.Size = new System.Drawing.Size(65, 24);
             this.helpMenu.Text = "Ay&uda";
             // 
             // contentsToolStripMenuItem
@@ -276,9 +276,9 @@ namespace FCalc.UI.Windows.Forms
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
             this.toolStripSeparator1});
-            this.toolStrip.Location = new System.Drawing.Point(0, 30);
+            this.toolStrip.Location = new System.Drawing.Point(0, 28);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1038, 31);
+            this.toolStrip.Size = new System.Drawing.Size(1038, 27);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -288,14 +288,14 @@ namespace FCalc.UI.Windows.Forms
             this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
             this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(29, 28);
+            this.newToolStripButton.Size = new System.Drawing.Size(29, 24);
             this.newToolStripButton.Text = "Nuevo";
             this.newToolStripButton.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // statusStrip
             // 
@@ -329,7 +329,7 @@ namespace FCalc.UI.Windows.Forms
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDIMain";
-            this.Text = "MENU PRINCIPAL";
+            this.Text = "FCALC - INNOBEE";
             this.Load += new System.EventHandler(this.MDIMain_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

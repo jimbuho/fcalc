@@ -60,7 +60,7 @@ namespace FCalc.UI.Windows.Forms
             grdCommercialPlanRange.Columns[1].HeaderText = "INICIO RANGO";
             grdCommercialPlanRange.Columns[2].HeaderText = "FIN RANGO";
             grdCommercialPlanRange.Columns[3].HeaderText = "PRECIO";
-            grdCommercialPlanRange.Columns[4].HeaderText = "TIPO PLAN";
+            grdCommercialPlanRange.Columns[4].HeaderText = "PLAN";
             grdCommercialPlanRange.Columns[5].HeaderText = "FECHA CREACÓN";
             grdCommercialPlanRange.Columns[6].HeaderText = "ID PLAN";
         }
@@ -130,7 +130,7 @@ namespace FCalc.UI.Windows.Forms
             selectedItem.idPlanrange = Convert.ToInt32(row.Cells[0].Value);
             selectedItem.startRange = Convert.ToInt32(row.Cells[1].Value);
             selectedItem.endRange = Convert.ToInt32(row.Cells[2].Value);
-            selectedItem.price = Convert.ToInt32(row.Cells[3].Value);
+            selectedItem.price = Convert.ToDecimal(row.Cells[3].Value);
             selectedItem.idCommercialplan= Convert.ToInt32(row.Cells[6].Value);
             /*
              * Mostramos al usuario los datos del registro seleccionado, notar que
@@ -170,30 +170,22 @@ namespace FCalc.UI.Windows.Forms
                     // Obtener los rangos de planes comerciales que sean iguales al elegido por el usuario
                     List<CommercialPlanRangeViewModel> listaRangos = controller.GetCommercialPlanRangeByCommecialPlan(Convert.ToInt32(selectedItem.idCommercialplan));
 
-                    if (!Validator.validarExistenciaRangos(listaRangos, Convert.ToInt32(selectedItem.startRange),
-                        Convert.ToInt32(selectedItem.endRange), (int)selectedItem.idPlanrange))
+                    /*
+                    * Si hay un registro seleccionado entonces lo mandamos a actualizar, al terminar
+                    * conexito el guardado recargamos el GridControl.
+                    */
+
+                    if (controller.CommercialPlanRangeModify(selectedItem))
                     {
-                        MessageBox.Show("Ingrese un rango correcto");
+                        MessageBox.Show("Registro Modificado con exito");
+                        doQuery();
+                        // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
+                        selectedItem = null;
                     }
                     else
                     {
-                        /*
-                        * Si hay un registro seleccionado entonces lo mandamos a actualizar, al terminar
-                        * conexito el guardado recargamos el GridControl.
-                        */
-
-                        if (controller.CommercialPlanRangeModify(selectedItem))
-                        {
-                            MessageBox.Show("Registro Modificado con exito");
-                            doQuery();
-                            // Importante vaciar el registro actual para obligar al usuario a seleccionarlo
-                            selectedItem = null;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ha ocurrido un error en la modificacion");
-                        }
-                    }
+                        MessageBox.Show("Ha ocurrido un error en la modificacion");
+                    }                    
                 }
             }
             else

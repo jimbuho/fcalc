@@ -48,7 +48,7 @@ namespace FCalc.UI.Windows.Forms
             {
                 CommercialPlanViewModel commercialPlanModelView = new CommercialPlanViewModel();
                 commercialPlanModelView.name = txtName.Text;
-                commercialPlanModelView.price = Decimal.Parse(txtPrice.Text);
+                commercialPlanModelView.price = Convert.ToDecimal(txtPrice.Text);
                 ComboboxItem item = (ComboboxItem)cmbPlanType.SelectedItem;
                 commercialPlanModelView.idPlantype = item.Value;
 

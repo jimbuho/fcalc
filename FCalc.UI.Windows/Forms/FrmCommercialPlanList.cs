@@ -75,7 +75,7 @@ namespace FCalc.UI.Windows.Forms
                 if (ValidarFormulario())
                 {
                     selectedItem.name = txtName.Text;
-                    selectedItem.price = Convert.ToInt32(txtPrice.Text);
+                    selectedItem.price = Convert.ToDecimal(txtPrice.Text);
                     // Se toma el objeto seleccionado y luego se obtien el id (value)
                     ComboboxItem commercialPlanItem = (ComboboxItem)cmbPlanType.SelectedItem;
                     selectedItem.idPlantype = commercialPlanItem.Value;
@@ -146,7 +146,7 @@ namespace FCalc.UI.Windows.Forms
             selectedItem.idCommercialplan = Convert.ToInt32(row.Cells[0].Value);
             selectedItem.name = Convert.ToString(row.Cells[1].Value);
             selectedItem.idPlantype = Convert.ToInt32(row.Cells[5].Value);
-            selectedItem.price = Convert.ToInt32(row.Cells[3].Value);
+            selectedItem.price = Convert.ToDecimal(row.Cells[3].Value);
 
             /*
              * Mostramos al usuario los datos del registro seleccionado, notar que

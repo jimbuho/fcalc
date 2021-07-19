@@ -152,7 +152,7 @@ namespace FCalc.UI.Windows.ApplicationController
 
         public static void ValidateNumbers(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !Char.IsPunctuation(e.KeyChar))
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && e.KeyChar!=',')
             {
                 MessageBox.Show("No se admite letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
@@ -176,28 +176,20 @@ namespace FCalc.UI.Windows.ApplicationController
             return true;
         }
 
-        public static bool validarExistenciaRangos(List<CommercialPlanRangeViewModel> listaRangos, int inicio, int fin, int commercialPlanRangeId)
+        public static bool validarExistenciaRangos(List<CommercialPlanRangeViewModel> listaRangos, int inicio, int fin)
         {
             if (inicio >= fin)
             {
                 return false;
             }
-
-            int min = -1;
+            
             int max = -1;
 
             foreach (CommercialPlanRangeViewModel item in listaRangos)
             {
-                if (commercialPlanRangeId != item.idPlanrange || commercialPlanRangeId < 0)
+                if (item.endRange > max || max < 0)
                 {
-                    if (item.startRange < min || min < 0)
-                    {
-                        min = (int)item.startRange;
-                    }
-                    if (item.endRange > max || max < 0)
-                    {
-                        max = (int)item.endRange;
-                    }
+                    max = (int)item.endRange;
                 }
             }
 

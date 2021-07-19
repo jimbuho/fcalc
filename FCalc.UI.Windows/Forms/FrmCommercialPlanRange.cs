@@ -33,7 +33,7 @@ namespace FCalc.UI.Windows.Forms
                 CommercialPlanRangeViewModel commercialPlanRangeModelView = new CommercialPlanRangeViewModel();
                 commercialPlanRangeModelView.startRange = textToNumber(txtStartRange.Text, true);
                 commercialPlanRangeModelView.endRange = textToNumber(txtEndRange.Text, false);
-                commercialPlanRangeModelView.price = Decimal.Parse(txtPrice.Text);
+                commercialPlanRangeModelView.price = Convert.ToDecimal(txtPrice.Text);
                 ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommercialPlan.SelectedItem;
                 commercialPlanRangeModelView.idCommercialplan = commercialPlanItem.Value;
 
@@ -43,7 +43,7 @@ namespace FCalc.UI.Windows.Forms
 
                 // Valido que no hayan rangos que incluyan o sean iguales al que esta ingresando el usuario
                 if (!Validator.validarExistenciaRangos(listaRangos, Convert.ToInt32(commercialPlanRangeModelView.startRange),
-                    Convert.ToInt32(commercialPlanRangeModelView.endRange), -1))
+                    Convert.ToInt32(commercialPlanRangeModelView.endRange)))
                 {
                     MessageBox.Show("Ingrese un rango correcto");
                 }
