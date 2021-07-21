@@ -24,6 +24,7 @@ namespace FCalc.Domain.Model.Entities
         public string ruc { get; set; }
         public string legalName { get; set; }
         public Nullable<int> idCommercialplan { get; set; }
+        public Nullable<int> idPlantype { get; set; }
         public string status { get; set; }
         public Nullable<System.DateTime> creationDate { get; set; }
     

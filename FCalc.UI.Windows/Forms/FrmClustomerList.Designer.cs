@@ -56,7 +56,7 @@ namespace FCalc.UI.Windows.Forms
             this.crearNuevoClienteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(810, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1066, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -69,12 +69,16 @@ namespace FCalc.UI.Windows.Forms
             // 
             // dgCustomersList
             // 
+            this.dgCustomersList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgCustomersList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgCustomersList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgCustomersList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCustomersList.Location = new System.Drawing.Point(12, 92);
             this.dgCustomersList.Name = "dgCustomersList";
             this.dgCustomersList.RowHeadersWidth = 51;
             this.dgCustomersList.RowTemplate.Height = 24;
-            this.dgCustomersList.Size = new System.Drawing.Size(776, 346);
+            this.dgCustomersList.Size = new System.Drawing.Size(1054, 346);
             this.dgCustomersList.TabIndex = 1;
             this.dgCustomersList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomersList_CellClick);
             this.dgCustomersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomersList_CellContentClick);
@@ -169,7 +173,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(563, 521);
+            this.button3.Location = new System.Drawing.Point(701, 518);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 41);
             this.button3.TabIndex = 14;
@@ -179,7 +183,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(685, 521);
+            this.btnDelete.Location = new System.Drawing.Point(823, 518);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 41);
             this.btnDelete.TabIndex = 15;
@@ -199,8 +203,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(810, 574);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1066, 617);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.button3);
@@ -220,7 +224,8 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCustomerList";
-            this.Text = "FrmClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CLIENTES";
             this.Load += new System.EventHandler(this.FrmCustomerList_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

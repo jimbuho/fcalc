@@ -144,14 +144,14 @@ namespace FCalc.UI.Windows.Forms
             // verTodosToolStripMenuItem
             // 
             this.verTodosToolStripMenuItem.Name = "verTodosToolStripMenuItem";
-            this.verTodosToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.verTodosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.verTodosToolStripMenuItem.Text = "Ver todos";
             this.verTodosToolStripMenuItem.Click += new System.EventHandler(this.verTodosToolStripMenuItem_Click);
             // 
             // crearNuevoToolStripMenuItem
             // 
             this.crearNuevoToolStripMenuItem.Name = "crearNuevoToolStripMenuItem";
-            this.crearNuevoToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.crearNuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.crearNuevoToolStripMenuItem.Text = "Crear Nuevo";
             this.crearNuevoToolStripMenuItem.Click += new System.EventHandler(this.crearNuevoToolStripMenuItem_Click);
             // 

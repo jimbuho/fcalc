@@ -99,6 +99,7 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MENU PRINCIPAL";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

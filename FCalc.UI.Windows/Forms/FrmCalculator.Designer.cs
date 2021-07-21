@@ -41,6 +41,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdPreview
             // 
+            this.grdPreview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grdPreview.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdPreview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdPreview.Location = new System.Drawing.Point(12, 55);
             this.grdPreview.Name = "grdPreview";
@@ -85,6 +87,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdResults
             // 
+            this.grdResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grdResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdResults.Location = new System.Drawing.Point(545, 55);
             this.grdResults.Name = "grdResults";
@@ -97,7 +101,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(971, 596);
             this.Controls.Add(this.grdResults);
             this.Controls.Add(this.lblMessages);
@@ -107,7 +111,8 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCalculator";
-            this.Text = "FrmCalculator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CALCULADORA";
             this.Load += new System.EventHandler(this.FrmCalculator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdResults)).EndInit();

@@ -43,19 +43,21 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdPlanTypes
             // 
+            this.grdPlanTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grdPlanTypes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdPlanTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdPlanTypes.Location = new System.Drawing.Point(12, 63);
             this.grdPlanTypes.Name = "grdPlanTypes";
             this.grdPlanTypes.RowHeadersWidth = 51;
             this.grdPlanTypes.RowTemplate.Height = 24;
-            this.grdPlanTypes.Size = new System.Drawing.Size(823, 282);
+            this.grdPlanTypes.Size = new System.Drawing.Size(582, 282);
             this.grdPlanTypes.TabIndex = 0;
             this.grdPlanTypes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPlanTypes_CellClick);
             this.grdPlanTypes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPlanTypes_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(720, 12);
+            this.button1.Location = new System.Drawing.Point(478, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 44);
             this.button1.TabIndex = 1;
@@ -75,7 +77,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(595, 12);
+            this.btnDelete.Location = new System.Drawing.Point(353, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 41);
             this.btnDelete.TabIndex = 4;
@@ -113,7 +115,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(728, 350);
+            this.button3.Location = new System.Drawing.Point(486, 350);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 41);
             this.button3.TabIndex = 8;
@@ -133,8 +135,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(847, 453);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(600, 426);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.chkIsDynamic);
@@ -147,7 +149,8 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPlanTypeList";
-            this.Text = "FrmPlanTypeList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "LISTA TIPO DE PLAN";
             this.Load += new System.EventHandler(this.FrmPlanTypeList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanTypes)).EndInit();
             this.ResumeLayout(false);

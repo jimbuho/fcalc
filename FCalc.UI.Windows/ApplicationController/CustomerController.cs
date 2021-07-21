@@ -13,11 +13,13 @@ namespace FCalc.UI.Windows.ApplicationController
 
         CustomerService service;
         CommercialPlanController commercialPlanController;
+        PlanTypeController planTypeController;
 
         public CustomerController()
         {
             service = new CustomerService();
             commercialPlanController = new CommercialPlanController();
+            planTypeController = new PlanTypeController();
         }
 
         public bool CustomerInsert(CustomerViewModel customerViewModel)
@@ -49,9 +51,11 @@ namespace FCalc.UI.Windows.ApplicationController
                 {
                     CommercialPlan planType = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
                     comPlanView.plantype = planType.name;
+                   
                 }
+                
                 // Agregar el registro procesado a la lista
-               customerViewModelList.Add(comPlanView);
+                customerViewModelList.Add(comPlanView);
             }
             return customerViewModelList;
         }

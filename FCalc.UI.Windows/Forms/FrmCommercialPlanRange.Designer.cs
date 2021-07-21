@@ -123,7 +123,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(474, 241);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbCommercialPlan);
@@ -137,7 +137,8 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanRange";
-            this.Text = "FrmCommercialPlanRange";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "RANGO DE PLANES COMERCIALES";
             this.Load += new System.EventHandler(this.FrmCommercialPlanRange_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

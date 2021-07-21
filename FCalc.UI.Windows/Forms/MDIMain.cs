@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.windows.Forms;
 
@@ -13,7 +6,7 @@ namespace FCalc.UI.Windows.Forms
 {
     public partial class MDIMain : Form
     {
-        
+
         private FrmPlanTypeList frmPlanTypeList;
         private FrmCommercialPlanList frmCommercialPlanList;
         private FrmCustomerList frmCustomerList;
@@ -23,7 +16,6 @@ namespace FCalc.UI.Windows.Forms
         private FrmCustomer frmCustomer;
         private FrmCommercialPlanRange frmCommercialPlanRange;
         private FrmExecutionLog frmExecutionLog;
-
         public MDIMain()
         {
             InitializeComponent();
@@ -105,64 +97,93 @@ namespace FCalc.UI.Windows.Forms
 
         private void verTodosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPlanTypeList = new FrmPlanTypeList();
-            frmPlanTypeList.MdiParent = this;
-            frmPlanTypeList.Show();
-        }
 
+            if (frmPlanTypeList == null )
+            {
+                frmPlanTypeList = new FrmPlanTypeList();
+                frmPlanTypeList.MdiParent = this;
+                frmPlanTypeList.Show();
+            }
+            frmPlanTypeList.Show();
+
+        }
         private void vERTODOToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (frmCommercialPlanList == null)
+            {
             frmCommercialPlanList = new FrmCommercialPlanList();
             frmCommercialPlanList.MdiParent = this;
             frmCommercialPlanList.Show();
+            }
         }
 
         private void verTodosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (frmCustomerList == null)
+            {
             frmCustomerList = new FrmCustomerList();
             frmCustomerList.MdiParent = this;
             frmCustomerList.Show();
+            }
         }
 
         private void verTodosToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            frmCommercialPlanRangeList = new FrmCommercialPlanRangeList();
-            frmCommercialPlanRangeList.MdiParent = this;
-            frmCommercialPlanRangeList.Show();
+            if (frmCommercialPlanRangeList == null)
+            {
+                frmCommercialPlanRangeList = new FrmCommercialPlanRangeList();
+                frmCommercialPlanRangeList.MdiParent = this;
+                frmCommercialPlanRangeList.Show();
+            }
         }
 
         private void crearNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           if (frmPlanType == null)
+           {
             frmPlanType = new FrmPlanType();
             frmPlanType.MdiParent = this;
             frmPlanType.Show();
+           }
         }
 
         private void crearNuevoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+           if (frmCommercialPlan == null)
+           {
             frmCommercialPlan = new FrmCommercialPlan();
             frmCommercialPlan.MdiParent = this;
             frmCommercialPlan.Show();
+           }
         }
         private void crearNuevoToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            frmCommercialPlanRange = new FrmCommercialPlanRange();
-            frmCommercialPlanRange.MdiParent = this;
-            frmCommercialPlanRange.Show();
+             if (frmCommercialPlanRange == null)
+             {
+               frmCommercialPlanRange = new FrmCommercialPlanRange();
+               frmCommercialPlanRange.MdiParent = this;
+               frmCommercialPlanRange.Show();
+             }
         }
 
         private void crearNuevoToolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
-            frmCustomer = new FrmCustomer();
-            frmCustomer.MdiParent = this;
-            frmCustomer.Show();
+            if (frmCustomer == null)
+            {
+             frmCustomer = new FrmCustomer();
+             frmCustomer.MdiParent = this;
+             frmCustomer.Show();
+            }
         }
 
         private void historyToolMenuItem_Click(object sender, EventArgs e)
         {
+          if (frmExecutionLog == null)
+          {
             frmExecutionLog = new FrmExecutionLog();
             frmExecutionLog.MdiParent = this;
             frmExecutionLog.Show();
+          }
         }
 
         private void MDIMain_Load(object sender, EventArgs e)

@@ -113,7 +113,7 @@ namespace UI.windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(754, 251);
             this.Controls.Add(this.Plan);
             this.Controls.Add(this.cmbCommecialPlan);
@@ -126,7 +126,8 @@ namespace UI.windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCustomer";
-            this.Text = "FrmCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "NUEVO CLIENTE";
             this.Load += new System.EventHandler(this.FrmCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

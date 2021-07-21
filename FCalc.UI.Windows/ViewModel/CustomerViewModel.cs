@@ -13,8 +13,9 @@ namespace FCalc.UI.Windows.ViewModel
         public string legalName { get; set; }
         public string plantype { get; set; }
         //public string status { get; set; }
-        
+        public string name1 { get; set; }
         public Nullable<System.DateTime> creationDate { get; set; }
         public Nullable<int> idCommercialplan { get; set; }
+        
     }
 }

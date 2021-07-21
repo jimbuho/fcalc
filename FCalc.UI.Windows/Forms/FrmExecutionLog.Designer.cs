@@ -39,6 +39,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdExecutionLog
             // 
+            this.grdExecutionLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grdExecutionLog.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdExecutionLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdExecutionLog.Location = new System.Drawing.Point(12, 71);
             this.grdExecutionLog.Name = "grdExecutionLog";
@@ -89,7 +91,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(752, 437);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dateTimePicker1);
@@ -99,7 +101,8 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmExecutionLog";
-            this.Text = "FrmExecutionLog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "HISTORIAL";
             this.Load += new System.EventHandler(this.FrmExecutionLog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdExecutionLog)).EndInit();
             this.ResumeLayout(false);

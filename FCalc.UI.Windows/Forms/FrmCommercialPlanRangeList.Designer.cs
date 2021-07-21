@@ -48,6 +48,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdCommercialPlanRange
             // 
+            this.grdCommercialPlanRange.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grdCommercialPlanRange.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdCommercialPlanRange.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCommercialPlanRange.Location = new System.Drawing.Point(12, 58);
             this.grdCommercialPlanRange.Name = "grdCommercialPlanRange";
@@ -181,7 +183,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(739, 498);
             this.Controls.Add(this.cmbFiltroTipoPlan);
             this.Controls.Add(this.label4);
@@ -200,7 +202,8 @@ namespace FCalc.UI.Windows.Forms
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanRangeList";
-            this.Text = "FrmCommercialPlanRangeList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "LISTA DE RANGO PLANES COMERCIALES";
             this.Load += new System.EventHandler(this.FrmCommercialPlanRangeList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdCommercialPlanRange)).EndInit();
             this.ResumeLayout(false);

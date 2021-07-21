@@ -13,12 +13,14 @@ namespace FCalc.UI.Windows.Forms
         CustomerController controller;
         CommercialPlanController commercialPlanController;
         CustomerViewModel selectedItem;
+        PlanTypeViewModel value;
 
         public FrmCustomerList()
         {
             InitializeComponent();
             controller = new CustomerController();
             commercialPlanController = new CommercialPlanController();
+            value = new PlanTypeViewModel();
         }
 
         private void crearNuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,8 +56,9 @@ namespace FCalc.UI.Windows.Forms
             dgCustomersList.Columns[1].HeaderText = "RUC";
             dgCustomersList.Columns[2].HeaderText = "NOMBRE";
             dgCustomersList.Columns[3].HeaderText = "PLAN";
-            dgCustomersList.Columns[4].HeaderText = "FECHA CREACIÓN";
-            dgCustomersList.Columns[5].HeaderText = "ID PLAN";
+            dgCustomersList.Columns[4].HeaderText = "TIPO DE PLAN";
+            dgCustomersList.Columns[5].HeaderText = "FECHA CREACIÓN";
+            dgCustomersList.Columns[6].HeaderText = "ID PLAN";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -81,6 +84,7 @@ namespace FCalc.UI.Windows.Forms
                     // Se toma el objeto seleccionado y luego se obtien el id (value)
                     ComboboxItem commercialPlanItem = (ComboboxItem)cmbCommecialPlan.SelectedItem;
                     selectedItem.idCommercialplan = commercialPlanItem.Value;
+                   
 
                     if (controller.CustomerModify(selectedItem))
                     {
@@ -162,8 +166,7 @@ namespace FCalc.UI.Windows.Forms
             selectedItem.idCustomer = Convert.ToInt32(row.Cells[0].Value);
             selectedItem.ruc = Convert.ToString(row.Cells[1].Value);
             selectedItem.legalName = Convert.ToString(row.Cells[2].Value);
-            selectedItem.idCommercialplan = Convert.ToInt32(row.Cells[5].Value);
-
+            selectedItem.idCommercialplan = Convert.ToInt32(row.Cells[6].Value);
             /*
              * Mostramos al usuario los datos del registro seleccionado, notar que
              * debemos transformar los valores al tipo de datos que acepta cada componente

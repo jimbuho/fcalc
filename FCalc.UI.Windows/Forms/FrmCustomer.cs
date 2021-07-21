@@ -1,4 +1,5 @@
 ﻿using FCalc.UI.Windows.ApplicationController;
+using FCalc.UI.Windows.Forms;
 using FCalc.UI.Windows.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,17 @@ namespace UI.windows.Forms
 {
     public partial class FrmCustomer : Form
     {
+        FrmCustomerList frmCustomerList;
         private CustomerController customerController;
         private CommercialPlanController commercialPlanController;
+        CustomerController controller;
+
         public FrmCustomer()
         {
             InitializeComponent();
             customerController = new CustomerController();
             commercialPlanController = new CommercialPlanController();
+            frmCustomerList = new FrmCustomerList();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -36,6 +41,7 @@ namespace UI.windows.Forms
                 {
                     MessageBox.Show("Cliente guardado con exito");
                     this.Close();
+
                 }
                 else
                 {
@@ -44,8 +50,8 @@ namespace UI.windows.Forms
                 }
             }
         }
-
-        private void FrmCustomer_Load(object sender, EventArgs e)
+      
+            private void FrmCustomer_Load(object sender, EventArgs e)
         {
             List<CommercialPlanViewModel> commercialPlans = commercialPlanController.FindActiveCommercialPlan();
             foreach (CommercialPlanViewModel commercialPlan in commercialPlans)
