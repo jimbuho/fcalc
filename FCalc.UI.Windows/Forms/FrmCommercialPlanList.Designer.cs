@@ -45,6 +45,8 @@ namespace FCalc.UI.Windows.Forms
             // 
             // grdCommercialPlanList
             // 
+            this.grdCommercialPlanList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdCommercialPlanList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grdCommercialPlanList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdCommercialPlanList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
