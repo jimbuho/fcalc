@@ -98,13 +98,21 @@ namespace FCalc.UI.Windows.Forms
         private void verTodosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+          
             if (frmPlanTypeList == null )
             {
                 frmPlanTypeList = new FrmPlanTypeList();
                 frmPlanTypeList.MdiParent = this;
                 frmPlanTypeList.Show();
             }
-            frmPlanTypeList.Show();
+            else
+            {
+                if (frmPlanTypeList.IsHandleCreated)
+                    frmPlanTypeList.Activate();
+                else
+                frmPlanTypeList = new FrmPlanTypeList();
+                frmPlanTypeList.Show();
+            }
 
         }
         private void vERTODOToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,6 +122,14 @@ namespace FCalc.UI.Windows.Forms
             frmCommercialPlanList = new FrmCommercialPlanList();
             frmCommercialPlanList.MdiParent = this;
             frmCommercialPlanList.Show();
+            }
+            else
+            {
+                if (frmCommercialPlanList.IsHandleCreated)
+                    frmCommercialPlanList.Activate();
+                else
+                    frmCommercialPlanList = new FrmCommercialPlanList();
+                frmCommercialPlanList.Show();
             }
         }
 
@@ -125,6 +141,14 @@ namespace FCalc.UI.Windows.Forms
             frmCustomerList.MdiParent = this;
             frmCustomerList.Show();
             }
+            else
+            {
+                if (frmCustomerList.IsHandleCreated)
+                    frmCustomerList.Activate();
+                else
+                    frmCustomerList = new FrmCustomerList();
+                frmCustomerList.Show();
+            }
         }
 
         private void verTodosToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -133,6 +157,14 @@ namespace FCalc.UI.Windows.Forms
             {
                 frmCommercialPlanRangeList = new FrmCommercialPlanRangeList();
                 frmCommercialPlanRangeList.MdiParent = this;
+                frmCommercialPlanRangeList.Show();
+            }
+            else
+            {
+                if (frmCommercialPlanRangeList.IsHandleCreated)
+                    frmCommercialPlanRangeList.Activate();
+                else
+                    frmCommercialPlanRangeList = new FrmCommercialPlanRangeList();
                 frmCommercialPlanRangeList.Show();
             }
         }
@@ -145,6 +177,14 @@ namespace FCalc.UI.Windows.Forms
             frmPlanType.MdiParent = this;
             frmPlanType.Show();
            }
+            else
+            {
+                if (frmPlanType.IsHandleCreated)
+                    frmPlanType.Activate();
+                else
+                    frmPlanType = new FrmPlanType();
+                frmPlanType.Show();
+            }
         }
 
         private void crearNuevoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -155,6 +195,14 @@ namespace FCalc.UI.Windows.Forms
             frmCommercialPlan.MdiParent = this;
             frmCommercialPlan.Show();
            }
+            else
+            {
+                if (frmCommercialPlan.IsHandleCreated)
+                    frmCommercialPlan.Activate();
+                else
+                    frmCommercialPlan = new FrmCommercialPlan();
+                frmCommercialPlan.Show();
+            }
         }
         private void crearNuevoToolStripMenuItem3_Click(object sender, EventArgs e)
         {
@@ -164,6 +212,14 @@ namespace FCalc.UI.Windows.Forms
                frmCommercialPlanRange.MdiParent = this;
                frmCommercialPlanRange.Show();
              }
+            else
+            {
+                if (frmCommercialPlanRange.IsHandleCreated)
+                    frmCommercialPlanRange.Activate();
+                else
+                    frmCommercialPlanRange = new FrmCommercialPlanRange();
+                frmCommercialPlanRange.Show();
+            }
         }
 
         private void crearNuevoToolStripMenuItem2_Click_1(object sender, EventArgs e)
@@ -173,6 +229,14 @@ namespace FCalc.UI.Windows.Forms
              frmCustomer = new FrmCustomer();
              frmCustomer.MdiParent = this;
              frmCustomer.Show();
+            }
+            else
+            {
+                if (frmCustomer.IsHandleCreated)
+                    frmCustomer.Activate();
+                else
+                    frmCustomer = new FrmCustomer();
+                frmCustomer.Show();
             }
         }
 
@@ -184,6 +248,14 @@ namespace FCalc.UI.Windows.Forms
             frmExecutionLog.MdiParent = this;
             frmExecutionLog.Show();
           }
+            else
+            {
+                if (frmExecutionLog.IsHandleCreated)
+                    frmExecutionLog.Activate();
+                else
+                    frmExecutionLog = new FrmExecutionLog();
+                frmExecutionLog.Show();
+            }
         }
 
         private void MDIMain_Load(object sender, EventArgs e)
