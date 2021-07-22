@@ -55,11 +55,11 @@ namespace FCalc.UI.Windows.Forms
                         MessageBox.Show("Tipo de Plan guardado con exito");
                         // Refresca la consulta del formulario
                         MDIMain parent = this.MdiParent as MDIMain;
-                        if (parent != null && parent.frmCommercialPlanList != null)
+                        if (parent != null && parent.frmCommercialPlanRangeList != null)
                         {
                             // Recuerde este metodo "doMainQuery" debe ser publico y
                             // frmPlanTypeList debe tener la forma get-set
-                            parent.frmCommercialPlanList.doMainQuery();
+                            parent.frmCommercialPlanRangeList.UpdateGrid();
                         }
                         else
                         {

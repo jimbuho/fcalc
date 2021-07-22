@@ -156,8 +156,6 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdCommercialPlanList);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LISTA DE PLANES COMERCIALES";
