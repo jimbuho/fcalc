@@ -42,6 +42,7 @@ namespace FCalc.UI.Windows.Forms
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbFiltroTipoPlan = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdCommercialPlanRange)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,25 +57,26 @@ namespace FCalc.UI.Windows.Forms
             this.grdCommercialPlanRange.Name = "grdCommercialPlanRange";
             this.grdCommercialPlanRange.RowHeadersWidth = 51;
             this.grdCommercialPlanRange.RowTemplate.Height = 24;
-            this.grdCommercialPlanRange.Size = new System.Drawing.Size(715, 253);
+            this.grdCommercialPlanRange.Size = new System.Drawing.Size(929, 253);
             this.grdCommercialPlanRange.TabIndex = 0;
             this.grdCommercialPlanRange.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommercialPlanRange_CellClick);
             this.grdCommercialPlanRange.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommercialPlanRange_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(598, 12);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(812, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 39);
             this.button1.TabIndex = 1;
             this.button1.Text = "Nuevo Rango";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmbCommercialPlan
             // 
             this.cmbCommercialPlan.FormattingEnabled = true;
-            this.cmbCommercialPlan.Location = new System.Drawing.Point(86, 454);
+            this.cmbCommercialPlan.Location = new System.Drawing.Point(86, 410);
             this.cmbCommercialPlan.Name = "cmbCommercialPlan";
             this.cmbCommercialPlan.Size = new System.Drawing.Size(228, 24);
             this.cmbCommercialPlan.TabIndex = 14;
@@ -82,7 +84,7 @@ namespace FCalc.UI.Windows.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 414);
+            this.label3.Location = new System.Drawing.Point(21, 370);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 17);
             this.label3.TabIndex = 13;
@@ -91,7 +93,7 @@ namespace FCalc.UI.Windows.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 375);
+            this.label2.Location = new System.Drawing.Point(232, 332);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 17);
             this.label2.TabIndex = 12;
@@ -108,7 +110,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(86, 414);
+            this.txtPrice.Location = new System.Drawing.Point(86, 370);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(123, 22);
             this.txtPrice.TabIndex = 10;
@@ -117,7 +119,7 @@ namespace FCalc.UI.Windows.Forms
             // txtEndRange
             // 
             this.txtEndRange.Enabled = false;
-            this.txtEndRange.Location = new System.Drawing.Point(86, 371);
+            this.txtEndRange.Location = new System.Drawing.Point(265, 334);
             this.txtEndRange.Name = "txtEndRange";
             this.txtEndRange.Size = new System.Drawing.Size(123, 22);
             this.txtEndRange.TabIndex = 9;
@@ -155,7 +157,7 @@ namespace FCalc.UI.Windows.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 457);
+            this.label4.Location = new System.Drawing.Point(24, 410);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 17);
             this.label4.TabIndex = 17;
@@ -164,18 +166,28 @@ namespace FCalc.UI.Windows.Forms
             // cmbFiltroTipoPlan
             // 
             this.cmbFiltroTipoPlan.FormattingEnabled = true;
-            this.cmbFiltroTipoPlan.Location = new System.Drawing.Point(262, 20);
+            this.cmbFiltroTipoPlan.Location = new System.Drawing.Point(139, 12);
             this.cmbFiltroTipoPlan.Name = "cmbFiltroTipoPlan";
             this.cmbFiltroTipoPlan.Size = new System.Drawing.Size(228, 24);
             this.cmbFiltroTipoPlan.TabIndex = 18;
             this.cmbFiltroTipoPlan.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroTipoPlan_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 17);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Filtro por plan";
             // 
             // FrmCommercialPlanRangeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(739, 498);
+            this.ClientSize = new System.Drawing.Size(953, 449);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbFiltroTipoPlan);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnDelete);
@@ -214,5 +226,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbFiltroTipoPlan;
+        private System.Windows.Forms.Label label5;
     }
 }

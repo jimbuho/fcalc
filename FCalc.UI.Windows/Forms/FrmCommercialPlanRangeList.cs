@@ -48,7 +48,7 @@ namespace FCalc.UI.Windows.Forms
             }
         }
 
-        private void doQuery()
+        public void doQuery()
         {
             grdCommercialPlanRange.DataSource = controller.FindActiveCommercialPlanRange();
             cmbFiltroTipoPlan.SelectedItem = null;

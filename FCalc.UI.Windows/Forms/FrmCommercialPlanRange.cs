@@ -59,7 +59,7 @@ namespace FCalc.UI.Windows.Forms
                         {
                             // Recuerde este metodo "doMainQuery" debe ser publico y
                             // frmPlanTypeList debe tener la forma get-set
-                            parent.frmCommercialPlanRangeList.UpdateGrid();
+                            parent.frmCommercialPlanRangeList.doQuery();
                         }
                         else
                         {
