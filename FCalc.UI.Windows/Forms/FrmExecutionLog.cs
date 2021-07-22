@@ -109,7 +109,22 @@ namespace FCalc.UI.Windows.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (selectedDate != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Confirma deshabilitar los registros del mes " + selectedDate + "?",
+                    "Eliminar Registros", MessageBoxButtons.YesNo);
 
+                if (dialogResult == DialogResult.Yes)
+                {
+                    controller.DisableExcecutionLogByDate(selectedDate);
+                    grdExecutionLog.DataSource = controller.FindActiveExecutionLogsByDate(selectedDate);
+                    MessageBox.Show("Todos los registros del mes: " + selectedDate + " han sido deshabilitados con exito");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una fecha para desahabilitar los registros de ese mes");
+            }
         }
     }
 }
