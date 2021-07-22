@@ -209,7 +209,7 @@ namespace FCalc.UI.Windows.Forms
 
         private void txtRucSearch_TextChanged(object sender, EventArgs e)
         {
-            dgCustomersList.DataSource = controller.FindActiveCustomersByRUC(txtRucSearch.Text);
+            dgCustomersList.DataSource = controller.FindActiveCustomersByRUC(txtRucSearch.Text, -1);
         }
 
         private bool ValidarFormulario()
@@ -230,7 +230,7 @@ namespace FCalc.UI.Windows.Forms
             }
             else
             {
-                List<CustomerViewModel> customers = controller.FindActiveCustomersByRUC(txtRUC.Text);
+                List<CustomerViewModel> customers = controller.FindActiveCustomersByRUC(txtRUC.Text, selectedItem.idCustomer);
                 if (customers.Count > 0)
                 {
                     MessageBox.Show("Ya existe un cliente con ese RUC");

@@ -104,7 +104,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button1.Location = new System.Drawing.Point(323, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 32);
@@ -210,12 +210,13 @@ namespace FCalc.UI.Windows.Forms
             // 
             // btnNewClient
             // 
+            this.btnNewClient.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNewClient.Location = new System.Drawing.Point(940, 58);
             this.btnNewClient.Name = "btnNewClient";
             this.btnNewClient.Size = new System.Drawing.Size(113, 30);
             this.btnNewClient.TabIndex = 18;
             this.btnNewClient.Text = "Nuevo Cliente";
-            this.btnNewClient.UseVisualStyleBackColor = true;
+            this.btnNewClient.UseVisualStyleBackColor = false;
             this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
             // FrmCustomerList

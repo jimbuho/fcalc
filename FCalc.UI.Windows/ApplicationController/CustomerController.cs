@@ -67,13 +67,16 @@ namespace FCalc.UI.Windows.ApplicationController
         }
     
 
-        public List<CustomerViewModel> FindActiveCustomersByRUC(string RUC)
+        public List<CustomerViewModel> FindActiveCustomersByRUC(string RUC, int except)
         {
             IEnumerable<Customer> activeCustomers = service.FindActiveCustomersByRUC(RUC);
             List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>();
             foreach (Customer item in activeCustomers)
             {
-             customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(item, new CustomerViewModel()));
+                if (item.idCustomer != except)
+                {
+                    customerViewModelList.Add(PropertyCopier<Customer, CustomerViewModel>.Copy(item, new CustomerViewModel()));
+                }
             }
             return customerViewModelList;
         }

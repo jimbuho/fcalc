@@ -94,7 +94,7 @@ namespace UI.windows.Forms
             }
             else
             {
-                List<CustomerViewModel> customers = customerController.FindActiveCustomersByRUC(txtRUC.Text);
+                List<CustomerViewModel> customers = customerController.FindActiveCustomersByRUC(txtRUC.Text, -1);
                 if (customers.Count > 0)
                 {
                     MessageBox.Show("Ya existe un cliente con ese RUC");

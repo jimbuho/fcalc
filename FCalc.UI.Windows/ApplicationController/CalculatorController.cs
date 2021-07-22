@@ -156,7 +156,7 @@ namespace FCalc.UI.Windows.ApplicationController
         private void CreateExecutionLog(CalcProcess cp, DateTime moment)
         {
             
-            List<CustomerViewModel> customers = customerController.FindActiveCustomersByRUC(cp.ruc);
+            List<CustomerViewModel> customers = customerController.FindActiveCustomersByRUC(cp.ruc, -1);
             if(customers.Count > 0)
             {
                 CustomerViewModel customer = customers[0];
@@ -173,7 +173,7 @@ namespace FCalc.UI.Windows.ApplicationController
 
         private CalcProcess DoCalcProcessItem(CalcProcess item)
         {
-            List<CustomerViewModel> customerList = customerController.FindActiveCustomersByRUC(item.ruc);
+            List<CustomerViewModel> customerList = customerController.FindActiveCustomersByRUC(item.ruc, -1);
             if (customerList.Count > 0)
             {
                 CustomerViewModel customer = customerList[0];
