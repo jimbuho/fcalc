@@ -13,11 +13,15 @@ namespace FCalc.UI.Windows.ApplicationController
 
         ExecutionLogService service;
         CustomerService customerService;
+        PlanTypeController planTypeController;
+        CommercialPlanController commercialPlanController;
 
         public ExecutionLogController()
         {
             service = new ExecutionLogService();
             customerService = new CustomerService();
+            planTypeController = new PlanTypeController();
+            commercialPlanController = new CommercialPlanController();
         }
 
         public bool ExecutionLogInsert(ExecutionLogViewModel executionLogViewModel)
@@ -57,9 +61,22 @@ namespace FCalc.UI.Windows.ApplicationController
                 PropertyCopier<ExecutionLog, ExecutionLogViewModel>.Copy(executionLog, exeLog);
                 customer = customerService.GetCustomerById((int)executionLog.idCustomer);
                 exeLog.ruc = customer.ruc;
+                exeLog = BindExtraInfo(exeLog, customer);
                 executionLogViewModelList.Add(exeLog);
             }
             return executionLogViewModelList;
+        }
+
+        private ExecutionLogViewModel BindExtraInfo(ExecutionLogViewModel executionLogViewModel, Customer customer)
+        {
+            CommercialPlan commercialPlan = commercialPlanController.GetById(Convert.ToInt32(customer.idCommercialplan));
+            PlanType planType = planTypeController.GetPlanTypeById(Convert.ToInt32(commercialPlan.idPlantype));
+            executionLogViewModel.planType = planType.name;
+            executionLogViewModel.planName = commercialPlan.name;
+            executionLogViewModel.isDinamic = planType.isDynamic == true? "Si":"No";
+            executionLogViewModel.isRange = planType.requireRange == true? "Si" : "No";
+
+            return executionLogViewModel;
         }
 
         public void DisableExcecutionLogByDate(string date)

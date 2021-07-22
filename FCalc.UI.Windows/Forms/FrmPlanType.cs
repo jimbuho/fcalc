@@ -38,7 +38,7 @@ namespace FCalc.UI.Windows.Forms
                     if (parent!=null && parent.frmPlanTypeList != null)
                     {
                         // Recuerde este metodo "doMainQuery" debe ser publico y
-                        // frmPlanTypeList debe tener la forma get-set
+                        // frmPlanTypeList debe tener la forma get-setp
                         parent.frmPlanTypeList.doMainQuery();
                     }
                     else

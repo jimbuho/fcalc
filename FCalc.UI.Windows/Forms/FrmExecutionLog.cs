@@ -32,11 +32,14 @@ namespace FCalc.UI.Windows.Forms
             grdExecutionLog.DataSource = controller.FindActiveExecutionLogs();
             grdExecutionLog.Columns[0].HeaderText = "ID REGISTRO";
             grdExecutionLog.Columns[1].HeaderText = "RUC CIENTE";
-            grdExecutionLog.Columns[2].HeaderText = "RECUENTO TRANSACCIONES";
-            grdExecutionLog.Columns[3].HeaderText = "TOTAL CALCULO";
-            grdExecutionLog.Columns[4].HeaderText = "FECHA CREACIÓN";
-            grdExecutionLog.Columns[5].HeaderText = "MES";
-            grdExecutionLog.Columns[6].HeaderText = "ID CIENTE";
+            grdExecutionLog.Columns[2].HeaderText = "# TRANSACCIONES";
+            grdExecutionLog.Columns[3].HeaderText = "TOTAL CALCULADO";
+            grdExecutionLog.Columns[4].HeaderText = "PLAN";
+            grdExecutionLog.Columns[5].HeaderText = "TIPO PLAN";
+            grdExecutionLog.Columns[6].HeaderText = "ES DINAMICO";
+            grdExecutionLog.Columns[7].HeaderText = "REQUIERE RANGO";
+            grdExecutionLog.Columns[8].HeaderText = "FECHA CREACIÓN";
+            grdExecutionLog.Columns[9].HeaderText = "MES";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -106,22 +109,7 @@ namespace FCalc.UI.Windows.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(selectedDate != null)
-            {
-                DialogResult dialogResult = MessageBox.Show("Confirma deshabilitar los registros del mes "+selectedDate+"?",
-                    "Eliminar Registros", MessageBoxButtons.YesNo);
 
-                if (dialogResult == DialogResult.Yes)
-                {
-                    controller.DisableExcecutionLogByDate(selectedDate);
-                    grdExecutionLog.DataSource = controller.FindActiveExecutionLogsByDate(selectedDate);
-                    MessageBox.Show("Todos los registros del mes: " + selectedDate + " han sido deshabilitados con exito");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar una fecha para desahabilitar los registros de ese mes");
-            }
         }
     }
 }

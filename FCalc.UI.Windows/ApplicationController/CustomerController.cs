@@ -43,19 +43,20 @@ namespace FCalc.UI.Windows.ApplicationController
             List<CustomerViewModel> customerViewModelList = new List<CustomerViewModel>();
             foreach (Customer item in activeCustomers)
             {
-                CustomerViewModel comPlanView = new CustomerViewModel();
+                CustomerViewModel customerViewModel = new CustomerViewModel();
                 // Copio todos los campos que se llaman igual
-               comPlanView = PropertyCopier<Customer, CustomerViewModel>.Copy(item, comPlanView);
+                customerViewModel = PropertyCopier<Customer, CustomerViewModel>.Copy(item, customerViewModel);
                 // Consulto el nombre del plan y lo lleno en el campo nuevo
                 if (item.idCommercialplan != null)
                 {
-                    CommercialPlan planType = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
-                    comPlanView.plantype = planType.name;
-                   
+                    CommercialPlan plan = commercialPlanController.GetById(Convert.ToInt32(item.idCommercialplan));
+                    customerViewModel.planName = plan.name;
+                    PlanType planType = planTypeController.GetPlanTypeById(Convert.ToInt32(plan.idPlantype));
+                    customerViewModel.planType = planType.name;
                 }
                 
                 // Agregar el registro procesado a la lista
-                customerViewModelList.Add(comPlanView);
+                customerViewModelList.Add(customerViewModel);
             }
             return customerViewModelList;
         }
