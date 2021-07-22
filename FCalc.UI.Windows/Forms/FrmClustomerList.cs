@@ -9,7 +9,6 @@ namespace FCalc.UI.Windows.Forms
 {
     public partial class FrmCustomerList : Form
     {
-        FrmCustomer frmCustomer;
         CustomerController controller;
         CommercialPlanController commercialPlanController;
         CustomerViewModel selectedItem;
@@ -30,9 +29,6 @@ namespace FCalc.UI.Windows.Forms
 
         private void CrearNuevoCliente()
         {
-            frmCustomer = new FrmCustomer();
-            frmCustomer.TopLevel = true;
-            frmCustomer.Show();
             MDIMain parent = this.MdiParent as MDIMain;
             if (parent != null)
             {
