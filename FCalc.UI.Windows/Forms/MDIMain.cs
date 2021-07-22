@@ -8,9 +8,9 @@ namespace FCalc.UI.Windows.Forms
     {
 
         //private FrmPlanTypeList frmPlanTypeList;
-        private FrmCommercialPlanList frmCommercialPlanList;
-        private FrmCustomerList frmCustomerList;
-        private FrmCommercialPlanRangeList frmCommercialPlanRangeList;
+        //private FrmCommercialPlanList frmCommercialPlanList;
+       //private FrmCustomerList frmCustomerList;
+        //private FrmCommercialPlanRangeList frmCommercialPlanRangeList;
         private FrmPlanType frmPlanType;
         private FrmCommercialPlan frmCommercialPlan;
         private FrmCustomer frmCustomer;
@@ -18,6 +18,9 @@ namespace FCalc.UI.Windows.Forms
         private FrmExecutionLog frmExecutionLog;
 
         public FrmPlanTypeList frmPlanTypeList { get; set; }
+        public FrmCustomerList frmCustomerList { get; set; }
+        public FrmCommercialPlanList frmCommercialPlanList { get; set; }
+        public FrmCommercialPlanRangeList frmCommercialPlanRangeList { get; set; }
 
         public MDIMain()
         {
@@ -100,9 +103,11 @@ namespace FCalc.UI.Windows.Forms
 
         private void verTodosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-          
-            if (frmPlanTypeList == null )
+            OpenFormPlanTypeList();
+        }
+        public void OpenFormPlanTypeList()
+        {
+            if (frmPlanTypeList == null)
             {
                 frmPlanTypeList = new FrmPlanTypeList();
                 frmPlanTypeList.MdiParent = this;
@@ -113,18 +118,23 @@ namespace FCalc.UI.Windows.Forms
                 if (frmPlanTypeList.IsHandleCreated)
                     frmPlanTypeList.Activate();
                 else
-                frmPlanTypeList = new FrmPlanTypeList();
+                    frmPlanTypeList = new FrmPlanTypeList();
                 frmPlanTypeList.Show();
             }
 
         }
+
         private void vERTODOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFormCommercialPlanList();
+        }
+        public void OpenFormCommercialPlanList()
         {
             if (frmCommercialPlanList == null)
             {
-            frmCommercialPlanList = new FrmCommercialPlanList();
-            frmCommercialPlanList.MdiParent = this;
-            frmCommercialPlanList.Show();
+                frmCommercialPlanList = new FrmCommercialPlanList();
+                frmCommercialPlanList.MdiParent = this;
+                frmCommercialPlanList.Show();
             }
             else
             {
@@ -138,11 +148,15 @@ namespace FCalc.UI.Windows.Forms
 
         private void verTodosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            OpenFormCustomerList();
+        }
+        public void OpenFormCustomerList()
+        {
             if (frmCustomerList == null)
             {
-            frmCustomerList = new FrmCustomerList();
-            frmCustomerList.MdiParent = this;
-            frmCustomerList.Show();
+                frmCustomerList = new FrmCustomerList();
+                frmCustomerList.MdiParent = this;
+                frmCustomerList.Show();
             }
             else
             {
@@ -154,7 +168,13 @@ namespace FCalc.UI.Windows.Forms
             }
         }
 
+
+
         private void verTodosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            OpenFormCommercialPlanRangeList();
+        }
+        public void OpenFormCommercialPlanRangeList()
         {
             if (frmCommercialPlanRangeList == null)
             {
@@ -197,12 +217,16 @@ namespace FCalc.UI.Windows.Forms
 
         private void crearNuevoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           if (frmCommercialPlan == null)
-           {
-            frmCommercialPlan = new FrmCommercialPlan();
-            frmCommercialPlan.MdiParent = this;
-            frmCommercialPlan.Show();
-           }
+            OpenFormCommercialPlan();
+        }
+        public void OpenFormCommercialPlan()
+        {
+            if (frmCommercialPlan == null)
+            {
+                frmCommercialPlan = new FrmCommercialPlan();
+                frmCommercialPlan.MdiParent = this;
+                frmCommercialPlan.Show();
+            }
             else
             {
                 if (frmCommercialPlan.IsHandleCreated)
@@ -214,12 +238,16 @@ namespace FCalc.UI.Windows.Forms
         }
         private void crearNuevoToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-             if (frmCommercialPlanRange == null)
-             {
-               frmCommercialPlanRange = new FrmCommercialPlanRange();
-               frmCommercialPlanRange.MdiParent = this;
-               frmCommercialPlanRange.Show();
-             }
+            OpenFormCommercialPlanRange();
+        }
+        public void OpenFormCommercialPlanRange()
+        {
+            if (frmCommercialPlanRange == null)
+            {
+                frmCommercialPlanRange = new FrmCommercialPlanRange();
+                frmCommercialPlanRange.MdiParent = this;
+                frmCommercialPlanRange.Show();
+            }
             else
             {
                 if (frmCommercialPlanRange.IsHandleCreated)
@@ -232,11 +260,15 @@ namespace FCalc.UI.Windows.Forms
 
         private void crearNuevoToolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
+            OpenFormCustomer();
+        }
+        public void OpenFormCustomer()
+        {
             if (frmCustomer == null)
             {
-             frmCustomer = new FrmCustomer();
-             frmCustomer.MdiParent = this;
-             frmCustomer.Show();
+                frmCustomer = new FrmCustomer();
+                frmCustomer.MdiParent = this;
+                frmCustomer.Show();
             }
             else
             {
@@ -250,12 +282,16 @@ namespace FCalc.UI.Windows.Forms
 
         private void historyToolMenuItem_Click(object sender, EventArgs e)
         {
-          if (frmExecutionLog == null)
-          {
-            frmExecutionLog = new FrmExecutionLog();
-            frmExecutionLog.MdiParent = this;
-            frmExecutionLog.Show();
-          }
+            OpenFormExecutionLog();
+        }
+        public void OpenFormExecutionLog()
+        {
+            if (frmExecutionLog == null)
+            {
+                frmExecutionLog = new FrmExecutionLog();
+                frmExecutionLog.MdiParent = this;
+                frmExecutionLog.Show();
+            }
             else
             {
                 if (frmExecutionLog.IsHandleCreated)

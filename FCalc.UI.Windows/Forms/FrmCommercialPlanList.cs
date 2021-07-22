@@ -31,6 +31,17 @@ namespace FCalc.UI.Windows.Forms
             frmCommercialPlan = new FrmCommercialPlan();
             frmCommercialPlan.TopLevel = true;
             frmCommercialPlan.Show();
+            MDIMain parent = this.MdiParent as MDIMain;
+            if (parent != null)
+            {
+                // Recuerde crear este metodo en el formulario MDI Como publico
+                parent.OpenFormCommercialPlan();
+            }
+            else
+            {
+                MessageBox.Show("Parent Not exists");
+            }
+
         }
 
         private void FrmCommercialPlanList_Load(object sender, EventArgs e)
