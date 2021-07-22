@@ -12,11 +12,18 @@ namespace FCalc.UI.Windows.ViewModel
         public string ruc { get; set; }
         public Nullable<int> transactionsCount { get; set; }
         public Nullable<decimal> totalCalc { get; set; }
-        
+
+        public string planName { get; set; }
+        public string planType { get; set; }
+
+        public string isDinamic { get; set; }
+
+        public string isRange { get; set; }
+
         public Nullable<System.DateTime> creationDate { get; set; }
 
-        public Nullable<int> month { get; set; }
-
         public Nullable<int> idCustomer { get; set; }
+
+        public Nullable<int> month { get; set; }
     }
 }

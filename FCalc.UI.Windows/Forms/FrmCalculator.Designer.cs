@@ -48,7 +48,7 @@ namespace FCalc.UI.Windows.Forms
             this.grdPreview.Name = "grdPreview";
             this.grdPreview.RowHeadersWidth = 51;
             this.grdPreview.RowTemplate.Height = 24;
-            this.grdPreview.Size = new System.Drawing.Size(415, 523);
+            this.grdPreview.Size = new System.Drawing.Size(444, 636);
             this.grdPreview.TabIndex = 0;
             // 
             // ofdFileFinder
@@ -68,12 +68,14 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(433, 327);
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(516, 340);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 36);
+            this.button2.Size = new System.Drawing.Size(139, 77);
             this.button2.TabIndex = 2;
             this.button2.Text = "Calcular";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lblMessages
@@ -92,11 +94,11 @@ namespace FCalc.UI.Windows.Forms
             this.grdResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grdResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grdResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdResults.Location = new System.Drawing.Point(545, 55);
+            this.grdResults.Location = new System.Drawing.Point(717, 55);
             this.grdResults.Name = "grdResults";
             this.grdResults.RowHeadersWidth = 51;
             this.grdResults.RowTemplate.Height = 24;
-            this.grdResults.Size = new System.Drawing.Size(411, 523);
+            this.grdResults.Size = new System.Drawing.Size(465, 636);
             this.grdResults.TabIndex = 4;
             // 
             // FrmCalculator
@@ -104,7 +106,7 @@ namespace FCalc.UI.Windows.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(971, 596);
+            this.ClientSize = new System.Drawing.Size(1197, 696);
             this.Controls.Add(this.grdResults);
             this.Controls.Add(this.lblMessages);
             this.Controls.Add(this.button2);
@@ -114,7 +116,7 @@ namespace FCalc.UI.Windows.Forms
             this.MinimizeBox = false;
             this.Name = "FrmCalculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CALCULADORA";
+            this.Text = "CALCULADORA DE FACTURACION MENSUAL";
             this.Load += new System.EventHandler(this.FrmCalculator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdResults)).EndInit();
