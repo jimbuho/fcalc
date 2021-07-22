@@ -94,12 +94,13 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(358, 193);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(346, 147);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 36);
+            this.button1.Size = new System.Drawing.Size(116, 42);
             this.button1.TabIndex = 6;
             this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmbCommercialPlan
@@ -107,7 +108,7 @@ namespace FCalc.UI.Windows.Forms
             this.cmbCommercialPlan.FormattingEnabled = true;
             this.cmbCommercialPlan.Location = new System.Drawing.Point(112, 160);
             this.cmbCommercialPlan.Name = "cmbCommercialPlan";
-            this.cmbCommercialPlan.Size = new System.Drawing.Size(228, 24);
+            this.cmbCommercialPlan.Size = new System.Drawing.Size(212, 24);
             this.cmbCommercialPlan.TabIndex = 7;
             // 
             // label4
@@ -124,7 +125,7 @@ namespace FCalc.UI.Windows.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(474, 241);
+            this.ClientSize = new System.Drawing.Size(476, 203);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbCommercialPlan);
             this.Controls.Add(this.button1);

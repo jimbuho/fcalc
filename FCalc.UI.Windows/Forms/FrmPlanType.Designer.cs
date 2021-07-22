@@ -41,13 +41,13 @@ namespace FCalc.UI.Windows.Forms
             this.txtName.Location = new System.Drawing.Point(215, 29);
             this.txtName.MaxLength = 16;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(205, 22);
+            this.txtName.Size = new System.Drawing.Size(259, 22);
             this.txtName.TabIndex = 0;
             // 
             // chkRequireRange
             // 
             this.chkRequireRange.AutoSize = true;
-            this.chkRequireRange.Location = new System.Drawing.Point(50, 71);
+            this.chkRequireRange.Location = new System.Drawing.Point(25, 72);
             this.chkRequireRange.Name = "chkRequireRange";
             this.chkRequireRange.Size = new System.Drawing.Size(134, 21);
             this.chkRequireRange.TabIndex = 1;
@@ -57,7 +57,7 @@ namespace FCalc.UI.Windows.Forms
             // chkIsDynamic
             // 
             this.chkIsDynamic.AutoSize = true;
-            this.chkIsDynamic.Location = new System.Drawing.Point(50, 114);
+            this.chkIsDynamic.Location = new System.Drawing.Point(25, 118);
             this.chkIsDynamic.Name = "chkIsDynamic";
             this.chkIsDynamic.Size = new System.Drawing.Size(108, 21);
             this.chkIsDynamic.TabIndex = 2;
@@ -67,7 +67,7 @@ namespace FCalc.UI.Windows.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 29);
+            this.label1.Location = new System.Drawing.Point(22, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 17);
             this.label1.TabIndex = 3;
@@ -75,12 +75,13 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(423, 142);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(363, 99);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 32);
+            this.button1.Size = new System.Drawing.Size(111, 40);
             this.button1.TabIndex = 4;
             this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmPlanType
@@ -88,7 +89,7 @@ namespace FCalc.UI.Windows.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(541, 184);
+            this.ClientSize = new System.Drawing.Size(481, 151);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkIsDynamic);

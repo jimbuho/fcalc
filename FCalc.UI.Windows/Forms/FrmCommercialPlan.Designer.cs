@@ -40,12 +40,13 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(534, 183);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(364, 100);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 54);
+            this.button1.Size = new System.Drawing.Size(108, 49);
             this.button1.TabIndex = 0;
             this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtName
@@ -105,7 +106,7 @@ namespace FCalc.UI.Windows.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(660, 245);
+            this.ClientSize = new System.Drawing.Size(488, 166);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbPlanType);
             this.Controls.Add(this.label2);

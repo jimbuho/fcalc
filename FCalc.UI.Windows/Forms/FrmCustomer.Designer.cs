@@ -70,23 +70,24 @@ namespace UI.windows.Forms
             this.txtLegalName.Location = new System.Drawing.Point(169, 47);
             this.txtLegalName.MaxLength = 64;
             this.txtLegalName.Name = "txtLegalName";
-            this.txtLegalName.Size = new System.Drawing.Size(542, 22);
+            this.txtLegalName.Size = new System.Drawing.Size(529, 22);
             this.txtLegalName.TabIndex = 3;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(583, 167);
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnGuardar.Location = new System.Drawing.Point(584, 114);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(114, 46);
             this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(48, 167);
+            this.lblResult.Location = new System.Drawing.Point(48, 143);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(184, 17);
             this.lblResult.TabIndex = 5;
@@ -114,7 +115,7 @@ namespace UI.windows.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(754, 251);
+            this.ClientSize = new System.Drawing.Size(707, 199);
             this.Controls.Add(this.Plan);
             this.Controls.Add(this.cmbCommecialPlan);
             this.Controls.Add(this.lblResult);

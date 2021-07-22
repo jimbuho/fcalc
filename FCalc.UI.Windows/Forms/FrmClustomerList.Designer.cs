@@ -45,6 +45,7 @@ namespace FCalc.UI.Windows.Forms
             this.txtRUC = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnNewClient = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomersList)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,7 +89,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             this.txtRucSearch.Location = new System.Drawing.Point(132, 58);
             this.txtRucSearch.Name = "txtRucSearch";
-            this.txtRucSearch.Size = new System.Drawing.Size(147, 22);
+            this.txtRucSearch.Size = new System.Drawing.Size(195, 22);
             this.txtRucSearch.TabIndex = 5;
             this.txtRucSearch.TextChanged += new System.EventHandler(this.txtRucSearch_TextChanged);
             // 
@@ -103,12 +104,13 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(297, 54);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(323, 54);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 26);
+            this.button1.Size = new System.Drawing.Size(114, 32);
             this.button1.TabIndex = 7;
             this.button1.Text = "BUSCAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnDelete
@@ -206,12 +208,23 @@ namespace FCalc.UI.Windows.Forms
             this.label3.TabIndex = 14;
             this.label3.Text = "RUC";
             // 
+            // btnNewClient
+            // 
+            this.btnNewClient.Location = new System.Drawing.Point(940, 58);
+            this.btnNewClient.Name = "btnNewClient";
+            this.btnNewClient.Size = new System.Drawing.Size(113, 30);
+            this.btnNewClient.TabIndex = 18;
+            this.btnNewClient.Text = "Nuevo Cliente";
+            this.btnNewClient.UseVisualStyleBackColor = true;
+            this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
+            // 
             // FrmCustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1065, 609);
+            this.Controls.Add(this.btnNewClient);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnDelete);
@@ -255,5 +268,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.TextBox txtRUC;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnNewClient;
     }
 }

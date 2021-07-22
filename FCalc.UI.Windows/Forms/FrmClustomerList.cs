@@ -25,6 +25,11 @@ namespace FCalc.UI.Windows.Forms
 
         private void crearNuevoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CrearNuevoCliente();
+        }
+
+        private void CrearNuevoCliente()
+        {
             frmCustomer = new FrmCustomer();
             frmCustomer.TopLevel = true;
             frmCustomer.Show();
@@ -237,6 +242,11 @@ namespace FCalc.UI.Windows.Forms
                 }
             }
             return true;
+        }
+
+        private void btnNewClient_Click(object sender, EventArgs e)
+        {
+            CrearNuevoCliente();
         }
     }
 }
