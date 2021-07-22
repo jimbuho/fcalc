@@ -17,7 +17,6 @@ namespace FCalc.UI.Windows.Forms
     {
         private CommercialPlanController controller;
         PlanTypeController planTypeController;
-        FrmCommercialPlan frmCommercialPlan;
         CommercialPlanViewModel selectedItem;
         public FrmCommercialPlanList()
         {
@@ -28,9 +27,6 @@ namespace FCalc.UI.Windows.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmCommercialPlan = new FrmCommercialPlan();
-            frmCommercialPlan.TopLevel = true;
-            frmCommercialPlan.Show();
             MDIMain parent = this.MdiParent as MDIMain;
             if (parent != null)
             {
