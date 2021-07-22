@@ -28,6 +28,16 @@ namespace FCalc.UI.Windows.Forms
             frmCustomer = new FrmCustomer();
             frmCustomer.TopLevel = true;
             frmCustomer.Show();
+            MDIMain parent = this.MdiParent as MDIMain;
+            if (parent != null)
+            {
+                // Recuerde crear este metodo en el formulario MDI Como publico
+                parent.OpenFormCustomer();
+            }
+            else
+            {
+                MessageBox.Show("Parent Not exists");
+            }
         }
 
         private void FrmCustomerList_Load(object sender, EventArgs e)
