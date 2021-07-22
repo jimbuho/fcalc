@@ -54,7 +54,20 @@ namespace FCalc.UI.Windows.Forms
 
                 if (controller.CommercialPlanInsert(commercialPlanModelView))
                 {
-                    MessageBox.Show("Plan comercial guardado con exito");
+                    MessageBox.Show("Tipo de Plan guardado con exito");
+                    // Refresca la consulta del formulario
+                    MDIMain parent = this.MdiParent as MDIMain;
+                    if (parent != null && parent.frmCommercialPlanList != null)
+                    {
+                        // Recuerde este metodo "doMainQuery" debe ser publico y
+                        // frmPlanTypeList debe tener la forma get-set
+                        parent.frmCommercialPlanList.doMainQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Parent Not exists");
+                    }
+                    // Cierra el formulario actual
                     this.Close();
                 }
                 else

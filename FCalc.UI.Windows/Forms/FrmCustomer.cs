@@ -19,6 +19,7 @@ namespace UI.windows.Forms
         private CustomerController customerController;
         private CommercialPlanController commercialPlanController;
         CustomerController controller;
+       
 
         public FrmCustomer()
         {
@@ -39,9 +40,21 @@ namespace UI.windows.Forms
                 customerModelView.idCommercialplan = commercialPlanItem.Value;
                 if (customerController.CustomerInsert(customerModelView))
                 {
-                    MessageBox.Show("Cliente guardado con exito");
+                    MessageBox.Show("Tipo de Plan guardado con exito");
+                    // Refresca la consulta del formulario
+                    MDIMain parent = this.MdiParent as MDIMain;
+                    if (parent != null && parent.frmCustomerList != null)
+                    {
+                        // Recuerde este metodo "doMainQuery" debe ser publico y
+                        // frmPlanTypeList debe tener la forma get-set
+                        parent.frmCustomerList.doMainQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Parent Not exists");
+                    }
+                    // Cierra el formulario actual
                     this.Close();
-
                 }
                 else
                 {

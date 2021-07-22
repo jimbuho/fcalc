@@ -82,6 +82,16 @@ namespace FCalc.UI.Windows.Forms
             frmCommercialPlanRange = new FrmCommercialPlanRange();
             frmCommercialPlanRange.TopLevel = true;
             frmCommercialPlanRange.Show();
+            MDIMain parent = this.MdiParent as MDIMain;
+            if (parent != null)
+            {
+                // Recuerde crear este metodo en el formulario MDI Como publico
+                parent.OpenFormCommercialPlanRange();
+            }
+            else
+            {
+                MessageBox.Show("Parent Not exists");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

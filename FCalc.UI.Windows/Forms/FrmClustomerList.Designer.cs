@@ -32,7 +32,6 @@ namespace FCalc.UI.Windows.Forms
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.crearNuevoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgCustomersList = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
             this.txtRucSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -85,19 +84,9 @@ namespace FCalc.UI.Windows.Forms
             this.dgCustomersList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomersList_CellClick);
             this.dgCustomersList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomersList_CellContentClick);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 44);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 42);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Refrescar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // txtRucSearch
             // 
-            this.txtRucSearch.Location = new System.Drawing.Point(250, 54);
+            this.txtRucSearch.Location = new System.Drawing.Point(132, 58);
             this.txtRucSearch.Name = "txtRucSearch";
             this.txtRucSearch.Size = new System.Drawing.Size(147, 22);
             this.txtRucSearch.TabIndex = 5;
@@ -106,7 +95,7 @@ namespace FCalc.UI.Windows.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 57);
+            this.label1.Location = new System.Drawing.Point(12, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 17);
             this.label1.TabIndex = 6;
@@ -114,7 +103,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(415, 50);
+            this.button1.Location = new System.Drawing.Point(297, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 26);
             this.button1.TabIndex = 7;
@@ -229,7 +218,6 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtRucSearch);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.dgCustomersList);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -254,7 +242,6 @@ namespace FCalc.UI.Windows.Forms
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem crearNuevoClienteToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgCustomersList;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtRucSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

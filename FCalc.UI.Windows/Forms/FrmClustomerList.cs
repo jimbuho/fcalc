@@ -28,6 +28,16 @@ namespace FCalc.UI.Windows.Forms
             frmCustomer = new FrmCustomer();
             frmCustomer.TopLevel = true;
             frmCustomer.Show();
+            MDIMain parent = this.MdiParent as MDIMain;
+            if (parent != null)
+            {
+                // Recuerde crear este metodo en el formulario MDI Como publico
+                parent.OpenFormCustomer();
+            }
+            else
+            {
+                MessageBox.Show("Parent Not exists");
+            }
         }
 
         private void FrmCustomerList_Load(object sender, EventArgs e)
@@ -49,7 +59,7 @@ namespace FCalc.UI.Windows.Forms
             doMainQuery();
         }
 
-        private void doMainQuery()
+        public void doMainQuery()
         {
             dgCustomersList.DataSource = controller.FindActiveCustomers();
             dgCustomersList.Columns[0].HeaderText = "ID";
@@ -63,8 +73,17 @@ namespace FCalc.UI.Windows.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dgCustomersList.DataSource = controller.FindActiveCustomersByRUC(txtRucSearch.Text);
-           
+            MDIMain parent = this.MdiParent as MDIMain;
+            if (parent != null)
+            {
+                // Recuerde crear este metodo en el formulario MDI Como publico
+                parent.OpenFormCustomer();
+            }
+            else
+            {
+                MessageBox.Show("Parent Not exists");
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)

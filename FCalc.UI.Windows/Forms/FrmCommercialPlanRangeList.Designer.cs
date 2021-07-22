@@ -31,7 +31,6 @@ namespace FCalc.UI.Windows.Forms
         {
             this.grdCommercialPlanRange = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.cmbCommercialPlan = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,16 +70,6 @@ namespace FCalc.UI.Windows.Forms
             this.button1.Text = "Nuevo Rango";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Refrescar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cmbCommercialPlan
             // 
@@ -198,7 +187,6 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtEndRange);
             this.Controls.Add(this.txtStartRange);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdCommercialPlanRange);
             this.MaximizeBox = false;
@@ -217,7 +205,6 @@ namespace FCalc.UI.Windows.Forms
 
         private System.Windows.Forms.DataGridView grdCommercialPlanRange;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cmbCommercialPlan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
