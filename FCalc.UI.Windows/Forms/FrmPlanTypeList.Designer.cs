@@ -51,24 +51,25 @@ namespace FCalc.UI.Windows.Forms
             this.grdPlanTypes.Name = "grdPlanTypes";
             this.grdPlanTypes.RowHeadersWidth = 51;
             this.grdPlanTypes.RowTemplate.Height = 24;
-            this.grdPlanTypes.Size = new System.Drawing.Size(582, 282);
+            this.grdPlanTypes.Size = new System.Drawing.Size(688, 282);
             this.grdPlanTypes.TabIndex = 0;
             this.grdPlanTypes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPlanTypes_CellClick);
             this.grdPlanTypes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPlanTypes_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(478, 12);
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(591, 10);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 44);
             this.button1.TabIndex = 1;
             this.button1.Text = "Nuevo Tipo de Plan";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(353, 12);
+            this.btnDelete.Location = new System.Drawing.Point(591, 350);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 41);
             this.btnDelete.TabIndex = 4;
@@ -106,7 +107,7 @@ namespace FCalc.UI.Windows.Forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(486, 350);
+            this.button3.Location = new System.Drawing.Point(482, 350);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 41);
             this.button3.TabIndex = 8;
@@ -127,7 +128,7 @@ namespace FCalc.UI.Windows.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(600, 426);
+            this.ClientSize = new System.Drawing.Size(706, 419);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.chkIsDynamic);
