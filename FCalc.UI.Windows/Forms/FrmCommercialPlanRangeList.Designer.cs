@@ -189,8 +189,6 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.txtStartRange);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdCommercialPlanRange);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmCommercialPlanRangeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LISTA DE RANGO PLANES COMERCIALES";

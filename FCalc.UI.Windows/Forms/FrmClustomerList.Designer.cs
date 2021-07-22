@@ -234,8 +234,6 @@ namespace FCalc.UI.Windows.Forms
             this.Controls.Add(this.dgCustomersList);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmCustomerList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLIENTES";

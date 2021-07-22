@@ -54,7 +54,7 @@ namespace FCalc.UI.Windows.Forms
             cmbFiltroTipoPlan.SelectedItem = null;
         }
 
-        private void UpdateGrid()
+        public void UpdateGrid()
         {
             grdCommercialPlanRange.Columns[0].HeaderText = "ID";
             grdCommercialPlanRange.Columns[1].HeaderText = "INICIO RANGO";

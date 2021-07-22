@@ -112,8 +112,6 @@ namespace FCalc.UI.Windows.Forms
             this.ClientSize = new System.Drawing.Size(1219, 625);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grdExecutionLog);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmExecutionLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HISTORIAL";
