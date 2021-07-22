@@ -53,7 +53,7 @@ namespace FCalc.UI.Windows.Forms
             doMainQuery();
         }
 
-        private void doMainQuery()
+        public void doMainQuery()
         {
             grdCommercialPlanList.DataSource = controller.FindActiveCommercialPlan();
             grdCommercialPlanList.Columns[0].HeaderText = "ID";

@@ -9,7 +9,6 @@ namespace FCalc.UI.Windows.Forms
     public partial class FrmPlanTypeList : Form
     {
         PlanTypeController controller;
-        FrmPlanType frmPlanType;
         PlanTypeViewModel selectedItem;
         public FrmPlanTypeList()
         {
@@ -19,9 +18,16 @@ namespace FCalc.UI.Windows.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmPlanType = new FrmPlanType();
-            frmPlanType.TopLevel = true;
-            frmPlanType.Show();
+            MDIMain parent = this.MdiParent as MDIMain;
+            if (parent != null)
+            {
+                // Recuerde crear este metodo en el formulario MDI Como publico
+                parent.OpenFormPlanType();
+            }
+            else
+            {
+                MessageBox.Show("Parent Not exists");
+            }
         }
 
         private void FrmPlanTypeList_Load(object sender, EventArgs e)
@@ -34,7 +40,7 @@ namespace FCalc.UI.Windows.Forms
             doMainQuery();
         }
 
-        private void doMainQuery()
+        public void doMainQuery()
         {
             grdPlanTypes.DataSource = controller.FindActivePlanType();
             grdPlanTypes.Columns[0].HeaderText = "ID";

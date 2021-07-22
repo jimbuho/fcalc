@@ -7,7 +7,7 @@ namespace FCalc.UI.Windows.Forms
     public partial class MDIMain : Form
     {
 
-        private FrmPlanTypeList frmPlanTypeList;
+        //private FrmPlanTypeList frmPlanTypeList;
         private FrmCommercialPlanList frmCommercialPlanList;
         private FrmCustomerList frmCustomerList;
         private FrmCommercialPlanRangeList frmCommercialPlanRangeList;
@@ -16,6 +16,9 @@ namespace FCalc.UI.Windows.Forms
         private FrmCustomer frmCustomer;
         private FrmCommercialPlanRange frmCommercialPlanRange;
         private FrmExecutionLog frmExecutionLog;
+
+        public FrmPlanTypeList frmPlanTypeList { get; set; }
+
         public MDIMain()
         {
             InitializeComponent();
@@ -171,12 +174,17 @@ namespace FCalc.UI.Windows.Forms
 
         private void crearNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           if (frmPlanType == null)
-           {
-            frmPlanType = new FrmPlanType();
-            frmPlanType.MdiParent = this;
-            frmPlanType.Show();
-           }
+            OpenFormPlanType();
+        }
+
+        public void OpenFormPlanType()
+        {
+            if (frmPlanType == null)
+            {
+                frmPlanType = new FrmPlanType();
+                frmPlanType.MdiParent = this;
+                frmPlanType.Show();
+            }
             else
             {
                 if (frmPlanType.IsHandleCreated)
@@ -262,5 +270,6 @@ namespace FCalc.UI.Windows.Forms
         {
             this.WindowState = FormWindowState.Maximized;
         }
+
     }
 }
